@@ -11,12 +11,6 @@ const Edit = ({product}) => {
         photos: [],
     });
 
-    // Встановлємо значення полів інпутів за допомогою useState
-    const handleInputChange = (e) => {
-        const {name, value} = e.target;
-        setData(name, value);
-    };
-
     // Встановлюємо значення поля із фото
     const handleFileChange = (e) => {
         const files = Array.from(e.target.files);
@@ -38,14 +32,18 @@ const Edit = ({product}) => {
                 <div className="product_form">
                     <h1>Редагувати товар</h1>
                     <p>Назва</p>
-                    <input type="text" name="name" value={data.name} onChange={handleInputChange}/>
+                    <input type="text" name="name" value={data.name} onChange={e => setData('name', e.target.value)}/>
                     <p>Опис</p>
-                    <textarea name="description" value={data.description} onChange={handleInputChange}></textarea>
+                    <textarea name="description" value={data.description}
+                              onChange={e => setData('description', e.target.value)}></textarea>
                     <p>Ціна</p>
-                    <input type="text" name="price" value={data.price} onChange={handleInputChange}/>
+                    <input type="text" name="price" value={data.price}
+                           onChange={e => setData('price', e.target.value)}/>
                     <p>Кількість</p>
-                    <input type="number" name="quantity" value={data.quantity} onChange={handleInputChange}/>
-                    <p>Фото</p>
+                    <input type="number" name="quantity" value={data.quantity}
+                           onChange={e => setData('quantity', e.target.value)}/>
+                    <p>Фото (чомусь не працює)</p>
+
                     <input type="file" name="photos" multiple accept="image/*" onChange={handleFileChange}
                            style={{marginBottom: '50px', padding: '10px'}}/>
 
