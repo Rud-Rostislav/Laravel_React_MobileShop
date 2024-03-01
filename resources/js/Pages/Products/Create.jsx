@@ -11,18 +11,6 @@ const Create = () => {
         photos: [],
     });
 
-    // Встановлюємо значення полів інпутів за допомогою useState
-    const handleInputChange = (e) => {
-        const {name, value} = e.target;
-        setData(name, value);
-    };
-
-    // Встановлюємо значення поля із фото
-    const handleFileChange = (e) => {
-        const files = Array.from(e.target.files);
-        setData('photos', files);
-    };
-
     // Відправляємо дані форми
     const submit = (e) => {
         e.preventDefault();
@@ -38,25 +26,28 @@ const Create = () => {
                 <div className="product_form">
                     <h1 style={{fontSize: '1.5rem'}}>Додати новий товар</h1>
                     <p>Назва</p>
-                    <input type="text" name="name" value={data.name} onChange={handleInputChange}/>
+                    <input type="text" name="name" value={data.name} onChange={e => setData('name', e.target.value)}/>
                     {errors.name && <p style={{color: 'red'}}>{errors.name}</p>}
                     <p>Опис</p>
-                    <textarea name="description" value={data.description} onChange={handleInputChange}></textarea>
+                    <textarea name="description" value={data.description}
+                              onChange={e => setData('description', e.target.value)}></textarea>
                     {errors.description && <p style={{color: 'red'}}>{errors.description}</p>}
                     <p>Ціна</p>
-                    <input type="text" name="price" value={data.price} onChange={handleInputChange}/>
+                    <input type="text" name="price" value={data.price}
+                           onChange={e => setData('price', e.target.value)}/>
                     {errors.price && <p style={{color: 'red'}}>{errors.price}</p>}
                     <p>Кількість</p>
-                    <input type="number" name="quantity" value={data.quantity} onChange={handleInputChange}/>
+                    <input type="number" name="quantity" value={data.quantity}
+                           onChange={e => setData('quantity', e.target.value)}/>
                     {errors.quantity && <p style={{color: 'red'}}>{errors.quantity}</p>}
                     <p>Фото</p>
-                    <input type="file" name="photos" multiple accept="image/*" onChange={handleFileChange}
+                    <input type="file" name="photos" multiple accept="image/*"
+                           onChange={e => setData('photos', Array.from(e.target.files))}
                            style={{marginBottom: '50px', padding: '10px'}}/>
                     {errors.photos && <p style={{color: 'red'}}>{errors.photos}</p>}
 
                     {data.photos.length > 0 &&
-                        <div id="photoPreviews"
-                             style={{marginBottom: '50px', display: 'flex', gap: '10px', flexWrap: 'wrap'}}>
+                        <div style={{marginBottom: '50px', display: 'flex', gap: '10px', flexWrap: 'wrap'}}>
                             {data.photos.map((file, index) => (
                                 <img key={index} src={URL.createObjectURL(file)} style={{maxWidth: '150px'}}/>
                             ))}
