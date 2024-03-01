@@ -1,0 +1,129 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Загальні стилі */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+/* Шапка */
+header {
+    background-color: #1f1f1f;
+    height: 5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5vw;
+}
+
+/* Іконки в шапці */
+.header_icon {
+    height: 3.5vh;
+    width: 3.5vh;
+}
+
+/* Поле вводу */
+input, textarea {
+    box-shadow: #000000 0 0 10px -4px;
+    border-radius: 10px !important;
+    border: none;
+}
+
+/* Текстове поле */
+textarea {
+    resize: none;
+    height: 20vh;
+}
+
+h1 {
+    margin: 5vh 0 0 0;
+    font-size: 2rem;
+}
+
+/* Контейнер сторінок додавання та редагування */
+.add_product, .edit_product {
+    display: flex;
+    justify-content: center;
+    min-height: 91vh;
+    width: 50vw;
+    margin: 2vh auto;
+    box-shadow: #000000 0 0 10px -3px;
+    border-radius: 25px;
+}
+
+/* Форма додавання */
+.product_form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 25vw;
+}
+
+/* Відступи для заголовків форми */
+.product_form p {
+    margin: 2vh 0 1vh 0;
+}
+
+/* Контейнер товарів */
+.products {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 3vw;
+    padding: 5vh;
+}
+
+/* Товар */
+.product {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 2vh;
+    box-shadow: #000000 0 0 10px -5px;
+    border-radius: 10px;
+    width: 25vw;
+    min-height: 30vh;
+    padding: 2.5vh;
+}
+
+/* Кнопки редагування і видалення під товаром */
+.buttons {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+}
+
+/* Кнопка детальніше і додавання в корзину */
+.more_info, .add_to_basket {
+    border-radius: 10px;
+    padding: 10px 20px;
+    background-color: #dcdcdc;
+    width: 75%;
+}
+
+/* Кнопка видалити */
+.delete {
+    &:hover {
+        background-color: #dcdcdc !important;
+    }
+}
+
+/* Кнопка додавання в корзину */
+.add_to_basket {
+    background-color: #1f1f1f;
+    color: #ffffff;
+}
+
+/* Слайдер кнопки вперед і назад колір */
+.slick-prev:before,
+.slick-next:before {
+    color: black !important;
+    font-size: 1.5rem !important;
+    opacity: 1 !important;
+}
