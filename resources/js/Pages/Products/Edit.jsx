@@ -27,7 +27,6 @@ const Edit = ({product}) => {
     const submit = (e) => {
         e.preventDefault();
         patch(route('products.update', product.id));
-        console.log(data);
     };
 
     return (
@@ -48,13 +47,20 @@ const Edit = ({product}) => {
                     <input type="number" name="quantity" value={data.quantity} onChange={handleInputChange}/>
                     <p>Фото</p>
                     <input type="file" name="photos" multiple accept="image/*" onChange={handleFileChange}
-                           style={{marginBottom: '50px'}}/>
+                           style={{marginBottom: '50px', padding: '10px'}}/>
 
-                    {data.photos.length > 0 &&
+                    {data.photos.length > 0 ?
                         <div id="photoPreviews"
                              style={{marginBottom: '50px', display: 'flex', gap: '10px', flexWrap: 'wrap'}}>
                             {data.photos.map((file, index) => (
                                 <img key={index} src={URL.createObjectURL(file)} style={{maxWidth: '100px'}}/>
+                            ))}
+                        </div>
+                        :
+                        <div style={{marginBottom: '50px', display: 'flex', gap: '10px', flexWrap: 'wrap'}}>
+                            {product.photos.map((photo, index) => (
+                                <img key={index} src={`/storage/${photo.path}`} alt={`Photo ${index + 1}`}
+                                     style={{maxWidth: '100px'}}/>
                             ))}
                         </div>
                     }

@@ -62,6 +62,7 @@ class ProductController extends Controller
 
     public function edit(Product $product): Response
     {
+        $product->load('photos');
         return Inertia::render('Products/Edit', [
             'product' => $product,
         ]);
@@ -81,13 +82,15 @@ class ProductController extends Controller
         $product->description = $request->description;
         $product->price = $request->price;
         $product->quantity = $request->quantity;
+
+        $product->save();
+
         if ($request->hasFile('photos')) {
             foreach ($request->file('photos') as $photo) {
                 $path = $photo->store('product_photos', 'public');
                 $product->photos()->create(['path' => $path]);
             }
         }
-        $product->save();
 
         return redirect()->route('products.show', $product);
     }
