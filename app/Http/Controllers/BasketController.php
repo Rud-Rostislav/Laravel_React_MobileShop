@@ -3,14 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
-use Illuminate\Foundation\Application;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
-use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
-use Inertia\Response;
 
 class BasketController extends Controller
 {
@@ -23,8 +17,15 @@ class BasketController extends Controller
 
     public function addToBasket(Product $product)
     {
+        // Load the 'photos' relationship
+        $product->load('photos');
+
         $basket = session()->get('basket', []);
-        $basket[] = $product->toArray();
+        // Include photos in the basket item
+        $basket[] = [
+            'product' => $product->toArray(),
+            'photos' => $product->photos->toArray(), // Access the loaded photos
+        ];
         session()->put('basket', $basket);
     }
 

@@ -19,7 +19,7 @@ const Index = ({ products }) => {
     const addToBasket = async (product) => {
         try {
             const response = await axios.post(
-                route('add-to-basket', { ...product }),
+                route('add-to-basket', product.id),
                 null,
                 {
                     headers: {
@@ -31,10 +31,9 @@ const Index = ({ products }) => {
             toast.success('Товар додано до кошика', {
                 position: "bottom-center",
                 hideProgressBar: true,
-                autoClose: 2000,
+                autoClose: 1500,
                 theme: "dark",
             });
-
         } catch (error) {
             console.error('Error:', error.response.data);
         }
