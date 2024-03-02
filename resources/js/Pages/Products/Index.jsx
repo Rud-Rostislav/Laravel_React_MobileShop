@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import Header from "@/Pages/Header.jsx";
 import { Head, Link } from '@inertiajs/react';
-import axios from 'axios'; // Import axios for making HTTP requests
+import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Index = ({ products }) => {
     const [productsList] = useState(products);
     const [csrfToken, setCsrfToken] = useState(null);
 
     useEffect(() => {
-        // Fetch CSRF token from the meta tag
         const token = document.head.querySelector('meta[name="csrf-token"]');
         if (token) {
             setCsrfToken(token.content);
@@ -17,7 +18,6 @@ const Index = ({ products }) => {
 
     const addToBasket = async (product) => {
         try {
-            // Make a POST request to add the product to the basket
             const response = await axios.post(
                 route('add-to-basket', { ...product }),
                 null,
@@ -27,9 +27,16 @@ const Index = ({ products }) => {
                     }
                 }
             );
-            console.log(response.data); // Log the response
+            // Display a success notification
+            toast.success('Товар додано до кошика', {
+                position: "bottom-center",
+                hideProgressBar: true,
+                autoClose: 2000,
+                theme: "dark",
+            });
+
         } catch (error) {
-            console.error('Error:', error.response.data); // Log the error
+            console.error('Error:', error.response.data);
         }
     };
 
@@ -37,6 +44,7 @@ const Index = ({ products }) => {
         <div>
             <Header />
             <Head title="Всі товари" />
+            <ToastContainer />
 
             <h1>Всі товари</h1>
 

@@ -8,13 +8,15 @@ const Basket = ({basket}) => {
     return (
         <div>
             <Header/>
-            <h1>Кошик</h1>
 
-            {basket.length === 0 ? <p>Ваш кошик порожній</p> :
-                <Link href={route('clear-basket')} style={{fontSize: '1.2rem'}}>Очистити весь кошик</Link>
+
+            {basket.length === 0 ? <h1>Кошик порожній</h1> :
+                <div>
+                    <h1>Кошик</h1>
+                    <Link href={route('clear-basket')} style={{fontSize: '1.2rem'}}>Очистити весь кошик</Link>
+                    <h2 style={{fontSize: '1.4rem', margin: '1vh'}}>Загально до сплати {totalPrice} грн</h2>
+                </div>
             }
-
-            <h2 style={{fontSize: '1.4rem', margin: '1vh'}}>Загально до сплати {totalPrice} грн</h2>
 
             <div style={{display: 'flex', flexDirection: 'column', gap: '1rem', alignItems: 'center', margin: '5vh'}}>
                 {basket.map((product) => (
@@ -26,9 +28,6 @@ const Basket = ({basket}) => {
                     }}>
                         <h2 style={{fontSize: '1.4rem'}}>{product.name}</h2>
                         <p style={{fontSize: '1.2rem'}}>Ціна: {product.price} грн</p>
-                        {product.photos && product.photos.length > 0 &&
-                            <img src={`storage/${product.photos[0].path}`} alt="Product image"/>
-                        }
                     </div>
                 ))}
             </div>

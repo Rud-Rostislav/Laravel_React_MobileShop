@@ -21,17 +21,15 @@ class BasketController extends Controller
         ]);
     }
 
-    public function addToBasket(Request $request, Product $product)
+    public function addToBasket(Product $product)
     {
-        // Logic to add the product to the basket using session storage
         $basket = session()->get('basket', []);
-        $basket[] = $product->toArray(); // Convert the product object to an array
+        $basket[] = $product->toArray();
         session()->put('basket', $basket);
     }
 
     public function clearBasket()
     {
-        // Clear the basket session data
         Session::forget('basket');
     }
 }
