@@ -74,7 +74,7 @@ const Edit = ({ product }) => {
                             <div key={index} style={{position: 'relative'}}>
                                 {photo.path && <img src={`/storage/${photo.path}`} alt={`Photo ${index + 1}`} style={{maxWidth: '100px'}}/>}
                                 {photo.file && !photo.path && <img src={URL.createObjectURL(photo.file)} alt={`Photo ${index + 1}`} style={{maxWidth: '100px'}}/>}
-                                <button type="button" onClick={() => removePhoto(photo.id)} style={{position: 'absolute', top: '5px', right: '5px'}}>X</button>
+                                <button type="button" onClick={() => removePhoto(photo.id)} style={{color: 'red', fontSize: '1.2rem'}}>X</button>
                             </div>
                         ))}
                     </div>
