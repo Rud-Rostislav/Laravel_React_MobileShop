@@ -58,7 +58,7 @@ const Show = ({product}) => {
                             <p style={{
                                 fontSize: '1.2rem',
                                 marginBottom: '25px'
-                            }}>Залишилось: {product.quantity > 0 ? product.quantity + ' шт' : 'Товар відсутній'}</p>
+                            }}> {product.quantity > 0 ? 'Залишилось: ' + product.quantity + ' шт' : null}</p>
 
                             <div className="buttons" style={{width: '100%', justifyContent: 'center'}}>
 
