@@ -7,6 +7,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
+use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -85,6 +86,18 @@ class ProductController extends Controller
 
         $product->save();
 
+        // Delete photos
+        if ($request->has('deleted_photos')) {
+            $deletedPhotos = $product->photos()->whereIn('id', $request->input('deleted_photos'))->get();
+            foreach ($deletedPhotos as $deletedPhoto) {
+                // Delete the file from storage
+                Storage::delete('public/' . $deletedPhoto->path);
+                // Delete the photo record
+                $deletedPhoto->delete();
+            }
+        }
+
+        // Store new photos
         if ($request->hasFile('photos')) {
             foreach ($request->file('photos') as $photo) {
                 $path = $photo->store('product_photos', 'public');

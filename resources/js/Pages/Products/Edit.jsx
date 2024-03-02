@@ -1,18 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Header from "@/Pages/Header.jsx";
-import {Head, useForm} from '@inertiajs/react';
+import { Head, useForm } from '@inertiajs/react';
 
-const Edit = ({product}) => {
-    const {data, setData, patch} = useForm({
+const Edit = ({ product }) => {
+    const { data, setData, patch } = useForm({
         name: product.name,
         description: product.description,
         price: product.price,
         quantity: product.quantity,
-        photos: [],
+        photos: product.photos.map(photo => ({ id: photo.id, file: null, path: photo.path })),
     });
 
-    // Відправляємо дані форми
-// Відправляємо дані форми
+    const [deletedPhotos, setDeletedPhotos] = useState([]);
+
+    const removePhoto = (photoId) => {
+        setDeletedPhotos([...deletedPhotos, photoId]);
+        setData('photos', data.photos.filter(photo => photo.id !== photoId));
+    };
+
     const submit = (e) => {
         e.preventDefault();
         const formData = new FormData();
@@ -21,9 +26,15 @@ const Edit = ({product}) => {
         formData.append('price', data.price);
         formData.append('quantity', data.quantity);
         data.photos.forEach((photo) => {
-            formData.append('photos[]', photo);
+            if (photo.file) {
+                formData.append('photos[]', photo.file);
+            }
         });
-        formData.append('_method', 'PATCH'); // Додайте це, щоб Laravel розпізнавав PATCH-запит
+        deletedPhotos.forEach((photoId) => {
+            formData.append('deleted_photos[]', photoId);
+        });
+        formData.append('_method', 'PATCH');
+
         fetch(route('products.update', product), {
             method: 'POST',
             body: formData,
@@ -32,18 +43,14 @@ const Edit = ({product}) => {
             },
         }).then(response => {
             if (response.ok) {
-                // Redirect or do something else upon successful update
                 window.location.href = route('products.show', product);
             } else {
-                // Handle errors
-                // You can display an error message or handle errors accordingly
+                console.error('Error occurred:', response.statusText);
             }
         }).catch(error => {
-            // Handle network errors
             console.error('Error occurred:', error);
         });
     };
-
 
     return (
         <div>
@@ -56,38 +63,23 @@ const Edit = ({product}) => {
                     <p>Назва</p>
                     <input type="text" name="name" value={data.name} onChange={e => setData('name', e.target.value)}/>
                     <p>Опис</p>
-                    <textarea name="description" value={data.description}
-                              onChange={e => setData('description', e.target.value)}></textarea>
+                    <textarea name="description" value={data.description} onChange={e => setData('description', e.target.value)}></textarea>
                     <p>Ціна</p>
-                    <input type="text" name="price" value={data.price}
-                           onChange={e => setData('price', e.target.value)}/>
+                    <input type="text" name="price" value={data.price} onChange={e => setData('price', e.target.value)}/>
                     <p>Кількість</p>
-                    <input type="number" name="quantity" value={data.quantity}
-                           onChange={e => setData('quantity', e.target.value)}/>
-                    <p>Фото (чомусь не працює)</p>
-
-                    <input type="file" name="photos" multiple accept="image/*"
-                           onChange={e => setData('photos', Array.from(e.target.files))}
-                           style={{marginBottom: '50px', padding: '10px'}}/>
-
-                    {data.photos.length > 0 ?
-                        <div id="photoPreviews"
-                             style={{marginBottom: '50px', display: 'flex', gap: '10px', flexWrap: 'wrap'}}>
-                            {data.photos.map((file, index) => (
-                                <img key={index} src={URL.createObjectURL(file)} style={{maxWidth: '100px'}}/>
-                            ))}
-                        </div>
-                        :
-                        <div style={{marginBottom: '50px', display: 'flex', gap: '10px', flexWrap: 'wrap'}}>
-                            {product.photos.map((photo, index) => (
-                                <img key={index} src={`/storage/${photo.path}`} alt={`Photo ${index + 1}`}
-                                     style={{maxWidth: '100px'}}/>
-                            ))}
-                        </div>
-                    }
-
-                    <input type="submit" value="Зберегти зміни" className='add_to_basket'
-                           style={{width: '100%', marginBottom: '50px'}}/>
+                    <input type="number" name="quantity" value={data.quantity} onChange={e => setData('quantity', e.target.value)}/>
+                    <p>Фото</p>
+                    <div id="photoPreviews" style={{marginBottom: '50px', display: 'flex', gap: '10px', flexWrap: 'wrap'}}>
+                        {data.photos.map((photo, index) => (
+                            <div key={index} style={{position: 'relative'}}>
+                                {photo.path && <img src={`/storage/${photo.path}`} alt={`Photo ${index + 1}`} style={{maxWidth: '100px'}}/>}
+                                {photo.file && !photo.path && <img src={URL.createObjectURL(photo.file)} alt={`Photo ${index + 1}`} style={{maxWidth: '100px'}}/>}
+                                <button type="button" onClick={() => removePhoto(photo.id)} style={{position: 'absolute', top: '5px', right: '5px'}}>X</button>
+                            </div>
+                        ))}
+                    </div>
+                    <input type="file" name="photos" multiple accept="image/*" onChange={e => setData('photos', [...data.photos, ...Array.from(e.target.files).map(file => ({ id: null, file, path: null }))])} style={{marginBottom: '50px', padding: '10px'}}/>
+                    <input type="submit" value="Зберегти зміни" className='add_to_basket' style={{width: '100%', marginBottom: '50px'}}/>
                 </div>
             </form>
         </div>
