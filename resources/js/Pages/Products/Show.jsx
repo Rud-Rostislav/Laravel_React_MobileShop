@@ -1,13 +1,17 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import Header from "@/Pages/Header.jsx";
 import {Head, usePage} from "@inertiajs/react";
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Dropdown from "@/Components/Dropdown.jsx";
+import axios from "axios";
+import {toast, ToastContainer} from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const Show = ({product}) => {
     const {auth} = usePage().props;
+    const [csrfToken, setCsrfToken] = useState(null);
 
     const settings = {
         dots: true,
@@ -19,10 +23,41 @@ const Show = ({product}) => {
         autoplaySpeed: 3500
     };
 
+    useEffect(() => {
+        const token = document.head.querySelector('meta[name="csrf-token"]');
+        if (token) {
+            setCsrfToken(token.content);
+        }
+    }, []);
+
+    const addToBasket = async (product) => {
+        try {
+            const response = await axios.post(
+                route('add-to-basket', product.id),
+                null,
+                {
+                    headers: {
+                        'X-CSRF-TOKEN': csrfToken,
+                    }
+                }
+            );
+            // Display a success notification
+            toast.success('Товар додано до кошика', {
+                position: "bottom-center",
+                hideProgressBar: true,
+                autoClose: 1500,
+                theme: "dark",
+            });
+        } catch (error) {
+            console.error('Error:', error.response.data);
+        }
+    };
+
     return (
         <>
             <Header/>
             <Head title={product.name}/>
+            <ToastContainer />
 
             <div className="products" style={{fontSize: '1.2rem', minHeight: '95vh'}}>
                 <div className="product" style={{width: '50vw'}}>
@@ -49,7 +84,12 @@ const Show = ({product}) => {
                     <p>Ціна: {product.price} грн</p>
 
                     {product.quantity > 0 ?
-                        <a href="" className="add_to_basket" style={{width: '50%', padding: '1vh'}}>Додати у корзину</a>
+                        <button
+                            onClick={() => addToBasket(product)}
+                            className="add_to_basket"
+                        >
+                            Додати у корзину
+                        </button>
                         : <p className="out_of_stock">Немає в наявності</p>
                     }
 
