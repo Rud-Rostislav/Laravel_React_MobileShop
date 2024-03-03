@@ -21,4 +21,5 @@ php artisan migrate:fresh --seed
 Зробити .env  
 php artisan migrate  
 php artisan migrate:fresh --seed  
-php artisan storage:link 
+php artisan storage:link
+php artisan key:generate

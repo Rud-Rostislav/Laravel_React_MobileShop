@@ -1,15 +1,24 @@
 <?php
 
 use App\Http\Controllers\BasketController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
+use App\Models\Order;
+use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 Route::redirect('/', '/products',);
 
 Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
+
+    $products = Product::with('photos')->get();
+    $orders = Order::all();
+    return Inertia::render('Dashboard', [
+        'orders' => $orders,
+        'products' => $products
+    ]);
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -24,7 +33,9 @@ Route::get('/products', [ProductController::class, 'index'])->name('products.ind
 Route::get('/products/{product}', [ProductController::class, 'show'])->name('products.show');
 
 Route::get('/basket', [BasketController::class, 'showBasket'])->name('basket');
-Route::get('/clear-basket', [BasketController::class, 'clearBasket'])->name('clear-basket');
+Route::post('/clear-basket', [BasketController::class, 'clearBasket'])->name('clear-basket');
 Route::post('/add-to-basket/{product}', [BasketController::class, 'addToBasket'])->name('add-to-basket');
+
+Route::post('/basket', [OrderController::class, 'store'])->name('order.store');
 
 require __DIR__ . '/auth.php';
