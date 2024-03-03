@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect} from 'react';
 import Header from "@/Pages/Header.jsx";
-import { Link } from "@inertiajs/react";
+import {Link} from "@inertiajs/react";
 
-const Basket = ({ basket }) => {
+const Basket = ({basket}) => {
     const [basketItems, setBasketItems] = useState(basket);
     const [totalPrice, setTotalPrice] = useState(0);
 
@@ -19,9 +19,15 @@ const Basket = ({ basket }) => {
     }, [basketItems]);
 
     const removeFromBasket = (index) => {
+        console.log(basketItems);
+        if (basketItems.length === 0) {
+            axios.post(route('clear-basket'));
+            setBasketItems([]);
+        } else {
         const updatedBasket = [...basketItems];
         updatedBasket.splice(index, 1);
         setBasketItems(updatedBasket);
+        }
     };
 
     const updateQuantity = (index, quantity) => {
@@ -32,17 +38,17 @@ const Basket = ({ basket }) => {
 
     return (
         <div>
-            <Header />
+            <Header/>
 
             {basketItems.length === 0 ? <h1>Кошик порожній</h1> :
                 <div>
                     <h1>Кошик</h1>
-                    <Link href={route('clear-basket')} style={{ fontSize: '1.2rem' }}>Очистити кошик</Link>
-                    <h2 style={{ fontSize: '1.2rem', margin: '1vh' }}>Загально до сплати: {totalPrice} грн</h2>
+                    <Link href={route('clear-basket')} style={{fontSize: '1.2rem'}}>Очистити кошик</Link>
+                    <h2 style={{fontSize: '1.2rem', margin: '1vh'}}>Загально до сплати: {totalPrice} грн</h2>
                 </div>
             }
 
-            <div style={{ display: 'flex', gap: '25px', justifyContent: 'center', margin: '5vh', flexWrap: 'wrap' }}>
+            <div style={{display: 'flex', gap: '25px', justifyContent: 'center', margin: '5vh', flexWrap: 'wrap'}}>
                 {basketItems.map((item, index) => (
                     <div key={index} style={{
                         boxShadow: 'black 0px 0px 10px -4px',
@@ -56,10 +62,10 @@ const Basket = ({ basket }) => {
                     }}>
                         {item.photos && item.photos.length > 0 &&
                             <img src={`storage/${item.photos[0].path}`} alt="Product image"
-                                 style={{ width: '10vw' }} />
+                                 style={{width: '10vw'}}/>
                         }
-                        <h2 style={{ fontSize: '1.4rem' }}>{item.product.name}</h2>
-                        <p style={{ fontSize: '1.4rem' }}>Ціна: {item.product.price} грн</p>
+                        <h2 style={{fontSize: '1.4rem'}}>{item.product.name}</h2>
+                        <p style={{fontSize: '1.4rem'}}>Ціна: {item.product.price} грн</p>
                         <input
                             type="number"
                             name="quantity"
@@ -69,7 +75,7 @@ const Basket = ({ basket }) => {
                         />
 
                         <button onClick={() => removeFromBasket(index)}
-                                style={{ fontSize: '1.5rem', position: 'absolute', top: '20px', right: '20px' }}
+                                style={{fontSize: '1.5rem', position: 'absolute', top: '20px', right: '20px'}}
                         >X
                         </button>
                     </div>
