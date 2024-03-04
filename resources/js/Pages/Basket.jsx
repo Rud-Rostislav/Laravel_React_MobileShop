@@ -124,13 +124,13 @@ const Basket = ({basket}) => {
                               gap: '10px'
                           }}>
                         <p>Ім'я</p>
-                        <input type="text" name='name' required value='Імя'/>
+                        <input type="text" name='name' required />
                         <p>Пошта</p>
-                        <input type="email" name='email' required value='mail@mail.com'/>
+                        <input type="email" name='email' required />
                         <p>Телефон</p>
-                        <input type="text" name='phone' required value='+380123456789'/>
+                        <input type="text" name='phone' required />
                         <p>Коментар</p>
-                        <textarea name="comment">Comment</textarea>
+                        <textarea name="comment"></textarea>
 
                         <button type="submit" className='add_to_basket'
                                 style={{width: '300px', margin: '5vh 0'}}>Оформити
