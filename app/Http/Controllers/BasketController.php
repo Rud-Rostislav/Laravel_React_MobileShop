@@ -17,14 +17,12 @@ class BasketController extends Controller
 
     public function addToBasket(Product $product)
     {
-        // Load the 'photos' relationship
         $product->load('photos');
 
         $basket = session()->get('basket', []);
-        // Include photos in the basket item
         $basket[] = [
             'product' => $product->toArray(),
-            'photos' => $product->photos->toArray(), // Access the loaded photos
+            'photos' => $product->photos->toArray()
         ];
         session()->put('basket', $basket);
     }

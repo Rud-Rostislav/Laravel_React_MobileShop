@@ -1,16 +1,19 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import {Head} from '@inertiajs/react';
 import {useState} from "react";
+import Dropdown from "@/Components/Dropdown.jsx";
 
 export default function Dashboard({auth, orders, products}) {
     const [ordersList, setOrdersList] = useState(orders);
-    const [productsList, setProductsList] = useState(products);
+    const [productsList] = useState(products);
 
-    console.log(productsList);
-    // Function to parse product ids from string and return corresponding products
     const getProductsByIds = (ids) => {
-        const productIds = ids.split(',').map(id => parseInt(id.trim())); // Parse and split product ids
-        return productIds.map(id => productsList.find(product => product.id === id)); // Find corresponding products
+        const productIds = ids.split(',').map(id => parseInt(id.trim()));
+        return productIds.map(id => productsList.find(product => product.id === id));
+    }
+
+    const handleDeleteOrder = (id) => {
+        setOrdersList(ordersList.filter(order => order.id !== id));
     }
 
     return (
@@ -27,7 +30,7 @@ export default function Dashboard({auth, orders, products}) {
                 flexWrap: 'wrap',
                 gap: '25px',
                 padding: '5vh 0',
-                justifyContent: 'center'
+                justifyContent: 'center',
             }}>
                 {ordersList.map(order => (
                     <div key={order.id} style={{
@@ -35,16 +38,34 @@ export default function Dashboard({auth, orders, products}) {
                         borderRadius: '10px',
                         width: '25vw',
                         padding: '10px',
-                        minHeight: '50vh',
+                        minHeight: '75vh',
                         display: 'flex',
                         flexDirection: 'column',
-                        justifyContent: 'space-around',
+                        justifyContent: 'space-evenly',
+                        position: 'relative',
                     }}>
+
+                        <Dropdown.Link as="button" onClick={() => handleDeleteOrder(order.id)}
+                                       href={route('order.destroy', order.id)}
+                                       method="delete" style={{
+                            width: '50px',
+                            height: '50px',
+                            color: 'white',
+                            backgroundColor: '#1a1a1a',
+                            borderRadius: '5px',
+                            position: 'absolute',
+                            top: '10px',
+                            right: '10px',
+                            display: 'flex',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                        }}>X</Dropdown.Link>
+
+                        <p>Загально до сплати: {getProductsByIds(order.products_id).reduce((total, product) => total + product.price, 0)}</p>
                         <p>{order.name} - {order.email} - {order.phone}</p>
                         <p>{order.comment}</p>
 
                         <div style={{display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: '50px'}}>
-                            {/* Display products for this order */}
                             {getProductsByIds(order.products_id).map(product => (
                                 <div key={product.id} style={{width: '100%', display: 'flex', alignItems: 'center'}}>
                                     {product.photos && product.photos.length > 0 &&
@@ -52,6 +73,7 @@ export default function Dashboard({auth, orders, products}) {
                                              style={{width: '5vw'}}/>
                                     }
                                     <p>{product.name} - {product.price} </p>
+
                                 </div>
                             ))}
                         </div>

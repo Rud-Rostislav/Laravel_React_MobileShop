@@ -35,12 +35,6 @@ const Basket = ({basket}) => {
         setBasketItems([]);
     };
 
-    const updateQuantity = (index, quantity) => {
-        const updatedBasket = [...basketItems];
-        updatedBasket[index].quantity = quantity;
-        setBasketItems(updatedBasket);
-    };
-
     const makeOrder = (e) => {
         e.preventDefault();
         axios.post(route('order.store'), {
@@ -124,11 +118,11 @@ const Basket = ({basket}) => {
                               gap: '10px'
                           }}>
                         <p>Ім'я</p>
-                        <input type="text" name='name' required />
+                        <input type="text" name='name' required/>
                         <p>Пошта</p>
-                        <input type="email" name='email' required />
+                        <input type="email" name='email' required/>
                         <p>Телефон</p>
-                        <input type="text" name='phone' required />
+                        <input type="text" name='phone' required/>
                         <p>Коментар</p>
                         <textarea name="comment"></textarea>
 

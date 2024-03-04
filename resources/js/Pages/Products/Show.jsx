@@ -41,7 +41,6 @@ const Show = ({product}) => {
                     }
                 }
             );
-            // Display a success notification
             toast.success('Товар додано до кошика', {
                 position: "bottom-center",
                 hideProgressBar: true,
@@ -57,7 +56,7 @@ const Show = ({product}) => {
         <>
             <Header/>
             <Head title={product.name}/>
-            <ToastContainer />
+            <ToastContainer/>
 
             <div className="products" style={{fontSize: '1.2rem', minHeight: '95vh'}}>
                 <div className="product" style={{width: '50vw'}}>
