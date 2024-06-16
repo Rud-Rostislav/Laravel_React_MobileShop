@@ -10,7 +10,7 @@ class BasketController extends Controller
 {
     public function showBasket()
     {
-        return Inertia::render('Basket', [
+        return Inertia::render('Basket/Index', [
             'basket' => session()->get('basket', [])
         ]);
     }

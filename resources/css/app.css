@@ -17,7 +17,7 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 2.5vw;
+    gap: 5vw;
 }
 
 /* Іконки в шапці */
@@ -29,7 +29,7 @@ header {
 /* Поле вводу */
 input, textarea {
     box-shadow: #000000 0 0 10px -4px;
-    border-radius: 10px !important;
+    border-radius: 15px !important;
     border: none;
 }
 
@@ -39,9 +39,15 @@ textarea {
     height: 20vh;
 }
 
+/* Назва сторінки */
 h1 {
-    margin: 5vh 0 0 0;
+    margin-top: 2.5vh;
     font-size: 2rem;
+}
+
+/* Картинка */
+img {
+    width: 10vw;
 }
 
 /* Контейнер сторінок додавання та редагування */
@@ -49,7 +55,7 @@ h1 {
     display: flex;
     justify-content: center;
     min-height: 91vh;
-    width: 50vw;
+    width: 35vw;
     margin: 2vh auto;
     box-shadow: #000000 0 0 10px -3px;
     border-radius: 25px;
@@ -60,7 +66,7 @@ h1 {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 25vw;
+    width: 30vw;
 }
 
 /* Відступи для заголовків форми */
@@ -70,11 +76,11 @@ h1 {
 
 /* Контейнер товарів */
 .products {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 3vw;
-    padding: 5vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: 2.5vh;
+    grid-row-gap: 2.5vh;
+    padding: 2.5vh 15vw;
 }
 
 /* Товар */
@@ -86,13 +92,11 @@ h1 {
     align-items: center;
     gap: 2vh;
     box-shadow: #000000 0 0 10px -5px;
-    border-radius: 10px;
-    width: 25vw;
-    min-height: 30vh;
-    padding: 2.5vh;
+    border-radius: 15px;
+    padding: 2.5vh 2vw;
 }
 
-/* Кнопки редагування і видалення під товаром */
+/* Кнопки редагування і видалення під товаром у детальній сторінці */
 .buttons {
     display: flex;
     gap: 25px;
@@ -101,15 +105,16 @@ h1 {
 
 /* Кнопка детальніше і додавання в корзину */
 .more_info, .add_to_basket {
-    border-radius: 15px;
-    padding: 10px 20px;
-    background-color: #dcdcdc;
+    border-radius: 20px;
+    padding: 10px 5px;
+    background-color: #e1e1e1;
     width: 75%;
-    border: #1f1f1f;
 }
 
 /* Кнопка видалити */
 .delete {
+    color: red;
+
     &:hover {
         background-color: #dcdcdc !important;
     }
@@ -118,7 +123,7 @@ h1 {
 /* Кнопка додавання в корзину */
 .add_to_basket {
     background-color: #1f1f1f;
-    color: #ffffff;
+    color: #2dff00;
 }
 
 /* Слайдер кнопки вперед і назад колір */

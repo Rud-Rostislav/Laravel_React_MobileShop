@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from "@/Pages/Header.jsx";
+import Header from "@/Components/Header.jsx";
 import {Head, useForm} from '@inertiajs/react';
 
 const Create = () => {

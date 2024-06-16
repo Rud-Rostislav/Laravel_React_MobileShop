@@ -106,6 +106,12 @@ class ProductController extends Controller
 
     public function destroy(Product $product): Application|Redirector|RedirectResponse|\Illuminate\Contracts\Foundation\Application
     {
+        if ($photos = $product->photos()->get()) {
+            foreach ($photos as $photo) {
+                Storage::delete('public/' . $photo->path);
+            }
+        }
+
         $product->delete();
         return redirect(route('products.index'));
     }

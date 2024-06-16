@@ -1,42 +1,12 @@
-import React, {useState, useEffect} from 'react';
-import Header from "@/Pages/Header.jsx";
+import React, {useState} from 'react';
+import Header from "@/Components/Header.jsx";
 import {Head, Link} from '@inertiajs/react';
-import axios from 'axios';
-import {ToastContainer, toast} from 'react-toastify';
+import {ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Add from "@/Pages/Basket/Add.jsx";
 
 const Index = ({products}) => {
     const [productsList] = useState(products);
-    const [csrfToken, setCsrfToken] = useState(null);
-
-    useEffect(() => {
-        const token = document.head.querySelector('meta[name="csrf-token"]');
-        if (token) {
-            setCsrfToken(token.content);
-        }
-    }, []);
-
-    const addToBasket = async (product) => {
-        try {
-            const response = await axios.post(
-                route('add-to-basket', product.id),
-                null,
-                {
-                    headers: {
-                        'X-CSRF-TOKEN': csrfToken,
-                    }
-                }
-            );
-            toast.success('Товар додано до кошика', {
-                position: "bottom-center",
-                hideProgressBar: true,
-                autoClose: 1500,
-                theme: "dark",
-            });
-        } catch (error) {
-            console.error('Error:', error.response.data);
-        }
-    };
 
     return (
         <div>
@@ -48,8 +18,8 @@ const Index = ({products}) => {
 
             <div className="products">
                 {productsList.map((product) => (
-                    <div className="product" key={product.id}>
-                        <h2 style={{fontSize: '1.4rem'}}>{product.name}</h2>
+                    <div className="product" key={product.id} style={{justifyContent: product.photos ? 'space-evenly' : 'center'}}>
+                        <h2 style={{fontSize: '2rem'}}>{product.name}</h2>
 
                         {product.photos && product.photos.length > 0 &&
                             <img src={`storage/${product.photos[0].path}`} alt="Product image"/>
@@ -60,12 +30,7 @@ const Index = ({products}) => {
                         <Link href={route('products.show', product.id)} className="more_info">Детальніше</Link>
 
                         {product.quantity > 0 ?
-                            <button
-                                onClick={() => addToBasket(product)}
-                                className="add_to_basket"
-                            >
-                                Додати у корзину
-                            </button>
+                            <Add product={product}/>
                             : <p className="out_of_stock">Немає в наявності</p>
                         }
                     </div>

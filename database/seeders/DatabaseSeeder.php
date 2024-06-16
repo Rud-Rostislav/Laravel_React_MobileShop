@@ -35,7 +35,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'iPhone 12 Pro max',
             'description' => 'Description of the product iPhone 12 Pro max',
             'price' => 32999,
-            'quantity' => 0
+            'quantity' => 32
         ]);
 
         Product::factory()->create([
@@ -56,7 +56,28 @@ class DatabaseSeeder extends Seeder
             'name' => 'iPhone 8',
             'description' => 'Description of the product iPhone 8',
             'price' => 16999,
-            'quantity' => 3
+            'quantity' => 45
+        ]);
+
+        Product::factory()->create([
+            'name' => 'iPhone 7',
+            'description' => 'Description of the product iPhone 7',
+            'price' => 14999,
+            'quantity' => 6
+        ]);
+
+        Product::factory()->create([
+            'name' => 'iPhone 6',
+            'description' => 'Description of the product iPhone 6',
+            'price' => 9999,
+            'quantity' => 17
+        ]);
+
+        Product::factory()->create([
+            'name' => 'AirPods',
+            'description' => 'Description of the product AirPods',
+            'price' => 1999,
+            'quantity' => 32
         ]);
     }
 }

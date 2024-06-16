@@ -1,56 +1,16 @@
-import React, {useEffect, useState} from 'react';
-import Header from "@/Pages/Header.jsx";
+import React from 'react';
+import Header from "@/Components/Header.jsx";
 import {Head, usePage} from "@inertiajs/react";
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Dropdown from "@/Components/Dropdown.jsx";
-import axios from "axios";
-import {toast, ToastContainer} from "react-toastify";
+import {ToastContainer} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import Add from "@/Pages/Basket/Add.jsx";
 
 const Show = ({product}) => {
     const {auth} = usePage().props;
-    const [csrfToken, setCsrfToken] = useState(null);
-
-    const settings = {
-        dots: true,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        autoplay: true,
-        autoplaySpeed: 3500
-    };
-
-    useEffect(() => {
-        const token = document.head.querySelector('meta[name="csrf-token"]');
-        if (token) {
-            setCsrfToken(token.content);
-        }
-    }, []);
-
-    const addToBasket = async (product) => {
-        try {
-            const response = await axios.post(
-                route('add-to-basket', product.id),
-                null,
-                {
-                    headers: {
-                        'X-CSRF-TOKEN': csrfToken,
-                    }
-                }
-            );
-            toast.success('Товар додано до кошика', {
-                position: "bottom-center",
-                hideProgressBar: true,
-                autoClose: 1500,
-                theme: "dark",
-            });
-        } catch (error) {
-            console.error('Error:', error.response.data);
-        }
-    };
 
     return (
         <>
@@ -58,15 +18,17 @@ const Show = ({product}) => {
             <Head title={product.name}/>
             <ToastContainer/>
 
-            <div className="products" style={{fontSize: '1.2rem', minHeight: '95vh'}}>
-                <div className="product" style={{width: '50vw'}}>
+            <div className="products"
+                 style={{fontSize: '1.2rem', minHeight: '95vh', gridTemplateColumns: '1fr', justifyItems: 'center'}}>
+                <div className="product" style={{width: '50vw',}}>
                     <h3>{product.name}</h3>
 
                     {product.photos.length > 1 ?
-                        <Slider {...settings} style={{width: '40vh'}}>
+                        <Slider style={{width: '20vw'}}>
                             {product.photos.map((photo, index) => (
                                 <div key={index}>
-                                    <img src={`/storage/${photo.path}`} alt={`Photo ${index + 1}`}/>
+                                    <img src={`/storage/${photo.path}`} alt={`Photo ${index + 1}`}
+                                         style={{width: '20vw'}}/>
                                 </div>
                             ))}
                         </Slider>
@@ -83,12 +45,7 @@ const Show = ({product}) => {
                     <p>Ціна: {product.price} грн</p>
 
                     {product.quantity > 0 ?
-                        <button
-                            onClick={() => addToBasket(product)}
-                            className="add_to_basket"
-                        >
-                            Додати у корзину
-                        </button>
+                        <Add product={product}/>
                         : <p className="out_of_stock">Немає в наявності</p>
                     }
 

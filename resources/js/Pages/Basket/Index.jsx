@@ -1,10 +1,10 @@
 import React, {useState, useEffect} from 'react';
-import Header from "@/Pages/Header.jsx";
+import Header from "@/Components/Header.jsx";
 import axios from 'axios';
 import {ToastContainer, toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const Basket = ({basket}) => {
+const Index = ({basket}) => {
     const [basketItems, setBasketItems] = useState(basket);
     const [totalPrice, setTotalPrice] = useState(0);
 
@@ -48,15 +48,11 @@ const Basket = ({basket}) => {
 
         axios.post(route('clear-basket'))
             .then(response => {
-                // Handle successful response
                 setBasketItems([]); // Clear the basket items
-                // Any other actions you want to perform after clearing the basket
             })
             .catch(error => {
-                // Handle error
                 console.error('Error clearing basket:', error);
             });
-
 
         toast.success('Замовлення оформлено', {
             position: "bottom-center",
@@ -138,4 +134,4 @@ const Basket = ({basket}) => {
     );
 };
 
-export default Basket;
+export default Index;
