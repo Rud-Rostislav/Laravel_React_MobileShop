@@ -1,4 +1,4 @@
-# Laravel React + Laravel Vue
+# Laravel + React
 Підготовка:  
 composer create-project laravel/laravel laravel_react  
 composer require laravel/breeze --dev  
