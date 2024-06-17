@@ -19,17 +19,6 @@ const Index = ({basket}) => {
         calculateTotalPrice();
     }, [basketItems]);
 
-    const removeFromBasket = (index) => {
-        if (basketItems.length === 0) {
-            axios.post(route('clear-basket'));
-            setBasketItems([]);
-        } else {
-            const updatedBasket = [...basketItems];
-            updatedBasket.splice(index, 1);
-            setBasketItems(updatedBasket);
-        }
-    };
-
     const clearBasket = () => {
         axios.post(route('clear-basket'));
         setBasketItems([]);
@@ -48,7 +37,7 @@ const Index = ({basket}) => {
 
         axios.post(route('clear-basket'))
             .then(response => {
-                setBasketItems([]); // Clear the basket items
+                setBasketItems([]);
             })
             .catch(error => {
                 console.error('Error clearing basket:', error);
@@ -70,49 +59,72 @@ const Index = ({basket}) => {
             {basketItems.length === 0 ? <h1>Кошик порожній</h1> :
                 <div>
                     <h1>Кошик</h1>
-                    <button onClick={clearBasket}>Очистити кошик</button>
-                    <h2 style={{fontSize: '1.2rem', margin: '1vh'}}>Загально до сплати: {totalPrice} грн</h2>
+                    <button onClick={clearBasket} style={{color: 'red'}}>Очистити кошик</button>
+
+                    <div style={{
+                        boxShadow: 'black 0px 0px 10px -4px',
+                        borderRadius: '10px',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        height: '5vh',
+                        width: '25vw',
+                        margin: '0 auto',
+                        marginTop: '2.5vh',
+                    }}>
+                        <h2>Загально до
+                            сплати: {totalPrice} грн</h2>
+                    </div>
 
 
                     <div style={{
-                        display: 'flex',
-                        gap: '25px',
+                        display: 'grid',
+                        gap: '10px',
                         justifyContent: 'center',
-                        margin: '5vh',
+                        margin: '2.5vh',
                         flexWrap: 'wrap'
                     }}>
                         {basketItems.map((item, index) => (
                             <div key={index} style={{
                                 boxShadow: 'black 0px 0px 10px -4px',
                                 borderRadius: '10px',
-                                padding: '25px',
                                 width: '50vw',
-                                display: 'flex',
+                                height: '10vh',
+                                display: 'grid',
+                                gridTemplateColumns: '1fr 2fr 2fr',
                                 alignItems: 'center',
-                                justifyContent: 'space-around',
+                                justifyItems: 'center',
                                 position: 'relative'
                             }}>
-                                {item.photos && item.photos.length > 0 &&
+                                {item.photos.length > 0 ?
                                     <img src={`storage/${item.photos[0].path}`} alt="Product image"
-                                         style={{width: '10vw'}}/>
+                                         style={{width: '4vw'}}/>
+                                    :
+                                    <p></p>
                                 }
                                 <h2 style={{fontSize: '1.4rem'}}>{item.product.name}</h2>
                                 <p style={{fontSize: '1.4rem'}}>Ціна: {item.product.price} грн</p>
-                                <button onClick={() => removeFromBasket(index)}
-                                        style={{fontSize: '1.5rem', position: 'absolute', top: '20px', right: '20px'}}
-                                >X
-                                </button>
                             </div>
                         ))}
+
                     </div>
+
+
                     <form method="POST" onSubmit={makeOrder}
                           style={{
                               display: 'flex',
                               justifyContent: 'center',
                               flexDirection: 'column',
                               alignItems: 'center',
-                              gap: '10px'
+                              gap: '10px',
+                              boxShadow: 'black 0px 0px 10px -4px',
+                              borderRadius: '10px',
+                              padding: '25px',
+                              width: '50vw',
+                              margin: '0 auto 2.5vh auto'
                           }}>
+                        <h1>Оформлення замовлення</h1>
                         <p>Ім'я</p>
                         <input type="text" name='name' required/>
                         <p>Пошта</p>
@@ -123,8 +135,7 @@ const Index = ({basket}) => {
                         <textarea name="comment"></textarea>
 
                         <button type="submit" className='add_to_basket'
-                                style={{width: '300px', margin: '5vh 0'}}>Оформити
-                            замовлення
+                                style={{margin: '2.5vh 0'}}>Замовити
                         </button>
                     </form>
                 </div>

@@ -1,9 +1,9 @@
 <?php
 
-use App\Http\Controllers\BasketController;
-use App\Http\Controllers\OrderController;
-use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Shop\BasketController;
+use App\Http\Controllers\Shop\OrderController;
+use App\Http\Controllers\Shop\ProductController;
 use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;

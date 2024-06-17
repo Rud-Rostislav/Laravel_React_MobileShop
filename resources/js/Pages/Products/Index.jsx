@@ -18,7 +18,8 @@ const Index = ({products}) => {
 
             <div className="products">
                 {productsList.map((product) => (
-                    <div className="product" key={product.id} style={{justifyContent: product.photos ? 'space-evenly' : 'center'}}>
+                    <div className="product" key={product.id}
+                         style={{justifyContent: product.photos ? 'space-evenly' : 'center'}}>
                         <h2 style={{fontSize: '2rem'}}>{product.name}</h2>
 
                         {product.photos && product.photos.length > 0 &&
@@ -27,7 +28,8 @@ const Index = ({products}) => {
 
                         <p style={{fontSize: '1.2rem'}}>Ціна: {product.price} грн</p>
 
-                        <Link href={route('products.show', product.id)} className="more_info">Детальніше</Link>
+                        <Link href={route('products.show', product.id)} className="more_info"
+                        >Детальніше</Link>
 
                         {product.quantity > 0 ?
                             <Add product={product}/>
