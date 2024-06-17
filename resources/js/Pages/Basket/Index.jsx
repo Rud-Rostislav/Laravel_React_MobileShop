@@ -69,12 +69,12 @@ const Index = ({basket}) => {
                         alignItems: 'center',
                         justifyContent: 'center',
                         height: '5vh',
-                        width: '25vw',
+                        width: '10vw',
                         margin: '0 auto',
                         marginTop: '2.5vh',
                     }}>
                         <h2>Загально до
-                            сплати: {totalPrice} грн</h2>
+                            сплати: <strong>{totalPrice}</strong> грн</h2>
                     </div>
 
 

@@ -23,7 +23,7 @@ class OrderController extends Controller
             'name' => 'required',
             'email' => 'required',
             'phone' => 'required',
-            'comment' => 'required',
+            'comment' => 'nullable',
             'products_id' => 'required',
         ]);
 
@@ -31,7 +31,7 @@ class OrderController extends Controller
         $order->name = $request->name;
         $order->email = $request->email;
         $order->phone = $request->phone;
-        $order->comment = $request->comment;
+        $order->comment = $request->comment ?? '';
         $order->products_id = $request->products_id;
         $order->save();
 
