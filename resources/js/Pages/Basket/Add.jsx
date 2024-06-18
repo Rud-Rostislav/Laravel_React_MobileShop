@@ -15,7 +15,7 @@ const Add = ( {product}) => {
 
     const addToBasket = async (product) => {
         try {
-            const response = await axios.post(
+            await axios.post(
                 route('add-to-basket', product.id),
                 null,
                 {

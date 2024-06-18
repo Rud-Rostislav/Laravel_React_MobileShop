@@ -1,11 +1,9 @@
-import { useState } from 'react';
-import ApplicationLogo from '@/Components/ApplicationLogo';
+import {useState} from 'react';
 import Dropdown from '@/Components/Dropdown';
 import NavLink from '@/Components/NavLink';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink';
-import { Link } from '@inertiajs/react';
 
-export default function Authenticated({ user, header, children }) {
+export default function Authenticated({user, header, children}) {
     const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false);
 
     return (
@@ -21,7 +19,7 @@ export default function Authenticated({ user, header, children }) {
                                 </NavLink>
 
                                 <NavLink href={route('products.index')} active={route().current('products.index')}>
-                                    До магазину
+                                    Магазин
                                 </NavLink>
                             </div>
                         </div>

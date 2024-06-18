@@ -49,7 +49,6 @@ const Index = ({basket}) => {
             autoClose: 2000,
             theme: "dark",
         });
-
     };
 
     return (
@@ -59,69 +58,18 @@ const Index = ({basket}) => {
             {basketItems.length === 0 ? <h1>Кошик порожній</h1> :
                 <div>
                     <h1>Кошик</h1>
-                    <button onClick={clearBasket} style={{color: 'red'}}>Очистити кошик</button>
-
-                    <div style={{
-                        boxShadow: 'black 0px 0px 10px -4px',
-                        borderRadius: '10px',
-                        display: 'flex',
-                        flexDirection: 'column',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        height: '5vh',
-                        width: '10vw',
-                        margin: '0 auto',
-                        marginTop: '2.5vh',
-                    }}>
-                        <h2>Загально до
-                            сплати: <strong>{totalPrice}</strong> грн</h2>
-                    </div>
-
-
-                    <div style={{
-                        display: 'grid',
-                        gap: '10px',
-                        justifyContent: 'center',
-                        margin: '2.5vh',
-                        flexWrap: 'wrap'
-                    }}>
-                        {basketItems.map((item, index) => (
-                            <div key={index} style={{
-                                boxShadow: 'black 0px 0px 10px -4px',
-                                borderRadius: '10px',
-                                width: '50vw',
-                                height: '10vh',
-                                display: 'grid',
-                                gridTemplateColumns: '1fr 2fr 2fr',
-                                alignItems: 'center',
-                                justifyItems: 'center',
-                                position: 'relative'
-                            }}>
-                                {item.photos.length > 0 ?
-                                    <img src={`storage/${item.photos[0].path}`} alt="Product image"
-                                         style={{width: '4vw'}}/>
-                                    :
-                                    <p></p>
-                                }
-                                <h2 style={{fontSize: '1.4rem'}}>{item.product.name}</h2>
-                                <p style={{fontSize: '1.4rem'}}>Ціна: {item.product.price} грн</p>
-                            </div>
-                        ))}
-
-                    </div>
-
+                    <button onClick={clearBasket} style={{color: 'red', margin: '2vh 0'}}>Очистити кошик</button>
 
                     <form method="POST" onSubmit={makeOrder}
                           style={{
                               display: 'flex',
                               justifyContent: 'center',
                               flexDirection: 'column',
-                              alignItems: 'center',
                               gap: '10px',
                               boxShadow: 'black 0px 0px 10px -4px',
                               borderRadius: '10px',
                               padding: '25px',
-                              width: '50vw',
+                              width: '25vw',
                               margin: '0 auto 2.5vh auto'
                           }}>
                         <h1>Оформлення замовлення</h1>
@@ -132,10 +80,40 @@ const Index = ({basket}) => {
                         <p>Телефон</p>
                         <input type="text" name='phone' required/>
                         <p>Коментар</p>
-                        <textarea name="comment"></textarea>
+                        <textarea name="comment" style={{marginBottom: '50px'}}></textarea>
+
+                        {basketItems.map((item, index) => (
+                            <div key={index} style={{
+                                boxShadow: 'black 0px 0px 10px -4px',
+                                borderRadius: '10px',
+                                height: '15vh',
+                                display: 'grid',
+                                gridTemplateColumns: '1fr 1fr',
+                                alignItems: 'center',
+                                justifyItems: 'center',
+                            }}>
+                                {item.photos.length > 0 ?
+                                    <div style={{
+                                        display: 'flex',
+                                        flexDirection: 'column',
+                                        gap: '10px',
+                                        alignItems: 'center'
+                                    }}>
+                                        <img src={`storage/${item.photos[0].path}`} alt="Product image"
+                                             style={{width: '4vw'}}/>
+                                        <h2 style={{fontSize: '1.4rem'}}>{item.product.name}</h2>
+                                    </div>
+                                    :
+                                    <h2 style={{fontSize: '1.4rem'}}>{item.product.name}</h2>
+                                }
+                                <p style={{fontSize: '1.4rem'}}>Ціна: {item.product.price} грн</p>
+                            </div>
+                        ))}
+
+                        <h2 style={{marginTop: '50px'}}>Загально до сплати: <strong>{totalPrice}</strong> грн</h2>
 
                         <button type="submit" className='add_to_basket'
-                                style={{margin: '2.5vh 0'}}>Замовити
+                                style={{margin: '2.5vh auto 0 auto', width: '100%'}}>Замовити
                         </button>
                     </form>
                 </div>

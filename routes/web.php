@@ -37,4 +37,8 @@ Route::post('/add-to-basket/{product}', [BasketController::class, 'addToBasket']
 Route::post('/order', [OrderController::class, 'store'])->name('order.store');
 Route::delete('/order/{order}', [OrderController::class, 'destroy'])->name('order.destroy');
 
+Route::fallback(function () {
+    return redirect()->route('products.index');
+});
+
 require __DIR__ . '/auth.php';
