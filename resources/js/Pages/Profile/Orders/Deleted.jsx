@@ -3,7 +3,7 @@ import {Head, Link} from '@inertiajs/react';
 import {useState} from "react";
 import Dropdown from "@/Components/Dropdown.jsx";
 
-export default function Dashboard({auth, orders, products}) {
+export default function Deleted({auth, orders, products}) {
     const [ordersList, setOrdersList] = useState(orders);
     const [productsList] = useState(products);
 
@@ -20,9 +20,9 @@ export default function Dashboard({auth, orders, products}) {
         <AuthenticatedLayout user={auth.user}>
             <Head title="Кабінет"/>
 
-            <h1>Кількість замовлень: {ordersList.length}</h1>
+            <h1>Кількість замовлень у корзині: {ordersList.length}</h1>
 
-            <Link href={route('order.deleted')}>Корзина замовлень</Link>
+            <Link href={route('dashboard')}>Всі замовлення</Link>
 
             {ordersList.map(order => (
                 <div style={{

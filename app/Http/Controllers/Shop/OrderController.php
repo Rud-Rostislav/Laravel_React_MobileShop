@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Shop;
 
 use App\Http\Controllers\Controller;
 use App\Models\Order;
+use App\Models\Product;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class OrderController extends Controller
 {
@@ -33,5 +35,13 @@ class OrderController extends Controller
     {
         $order->delete();
         return redirect()->route('dashboard');
+    }
+
+    public function deleted()
+    {
+        return Inertia::render('Profile/Orders/Deleted', [
+            'orders' => Order::onlyTrashed()->get(),
+            'products' => Product::with('photos')->get()
+        ]);
     }
 }

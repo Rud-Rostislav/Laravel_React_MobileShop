@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Order;
 use App\Models\Product;
 use App\Models\User;
 use Illuminate\Database\Seeder;
@@ -78,6 +79,22 @@ class DatabaseSeeder extends Seeder
             'description' => 'Description of the product AirPods',
             'price' => 1999,
             'quantity' => 32
+        ]);
+
+        Order::create([
+            'name' => 'Admin',
+            'email' => 'admin@mail.com',
+            'phone' => '123456789',
+            'comment' => 'Comment',
+            'products_id' => '1,2,3,4,5,6,7,8,9'
+        ]);
+
+        Order::create([
+            'name' => 'Admin',
+            'email' => 'admin@mail.com',
+            'phone' => '123456789',
+            'comment' => 'Comment',
+            'products_id' => '3, 6, 1'
         ]);
     }
 }

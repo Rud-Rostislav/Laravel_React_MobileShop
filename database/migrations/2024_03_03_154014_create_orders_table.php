@@ -14,6 +14,7 @@ return new class extends Migration {
             $table->string('phone');
             $table->string('comment');
             $table->string('products_id');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

@@ -36,6 +36,7 @@ Route::post('/add-to-basket/{product}', [BasketController::class, 'addToBasket']
 
 Route::post('/order', [OrderController::class, 'store'])->name('order.store');
 Route::delete('/order/{order}', [OrderController::class, 'destroy'])->name('order.destroy');
+Route::get('/order/deleted', [OrderController::class, 'deleted'])->name('order.deleted');
 
 Route::fallback(function () {
     return redirect()->route('products.index');
