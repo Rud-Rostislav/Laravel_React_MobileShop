@@ -69,7 +69,7 @@ const Index = ({basket}) => {
                               boxShadow: 'black 0px 0px 10px -4px',
                               borderRadius: '10px',
                               padding: '25px',
-                              width: '25vw',
+                              width: '50vw',
                               margin: '0 auto 2.5vh auto'
                           }}>
                         <h1>Оформлення замовлення</h1>

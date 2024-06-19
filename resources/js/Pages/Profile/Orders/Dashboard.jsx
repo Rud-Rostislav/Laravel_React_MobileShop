@@ -1,5 +1,5 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.jsx';
-import {Head} from '@inertiajs/react';
+import {Head, Link} from '@inertiajs/react';
 import {useState} from "react";
 import Dropdown from "@/Components/Dropdown.jsx";
 
@@ -55,20 +55,23 @@ export default function Dashboard({auth, orders, products}) {
 
 
                     {getProductsByIds(order.products_id).map(product => (
-                        <div key={product.id}
-                             style={{
-                                 marginTop: '50px',
-                                 display: 'flex',
-                                 flexDirection: 'column',
-                                 gap: '10px',
-                                 alignItems: 'center',
-                             }}>
+                        <Link href={route('products.show', product.id)} key={product.id}
+                              style={{
+                                  marginTop: '50px',
+                                  display: 'flex',
+                                  flexDirection: 'column',
+                                  gap: '10px',
+                                  alignItems: 'center',
+                                  boxShadow: 'rgb(0 0 0) 0px 0px 8px -2px',
+                                  padding: '10px',
+                                  borderRadius: '10px',
+                              }}>
                             {product.photos && product.photos.length > 0 &&
                                 <img src={`storage/${product.photos[0].path}`} alt="Product image"
                                      style={{width: '100px'}}/>
                             }
                             <p>{product.name} - {product.price} </p>
-                        </div>
+                        </Link>
                     ))}
                 </div>
             ))}

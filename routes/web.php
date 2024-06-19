@@ -14,7 +14,7 @@ Route::redirect('/', '/products');
 Route::get('/dashboard', function () {
     $products = Product::with('photos')->get();
     $orders = Order::all();
-    return Inertia::render('Profile/Dashboard', [
+    return Inertia::render('Profile/Orders/Dashboard', [
         'orders' => $orders,
         'products' => $products
     ]);
