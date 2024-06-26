@@ -22,7 +22,7 @@ export default function Dashboard({auth, orders, products}) {
 
             <h1>Кількість замовлень: {ordersList.length}</h1>
 
-            <Link href={route('order.deleted')}>Корзина замовлень</Link>
+            <Link href={route('order.deleted')}>Видалені замовлення</Link>
 
             {ordersList.map(order => (
                 <div style={{

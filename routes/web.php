@@ -20,12 +20,6 @@ Route::get('/dashboard', function () {
     ]);
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
-
 Route::resource('/products', ProductController::class)->except('index', 'show')->middleware('auth');
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
 Route::get('/products/{product}', [ProductController::class, 'show'])->name('products.show');
@@ -37,6 +31,13 @@ Route::post('/add-to-basket/{product}', [BasketController::class, 'addToBasket']
 Route::post('/order', [OrderController::class, 'store'])->name('order.store');
 Route::delete('/order/{order}', [OrderController::class, 'destroy'])->name('order.destroy');
 Route::get('/order/deleted', [OrderController::class, 'deleted'])->name('order.deleted');
+Route::put('/order/{order}/restore', [OrderController::class, 'restore'])->name('order.restore');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
 
 Route::fallback(function () {
     return redirect()->route('products.index');

@@ -1,5 +1,5 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.jsx';
-import {Head, Link} from '@inertiajs/react';
+import {Head, Link, useForm} from '@inertiajs/react';
 import {useState} from "react";
 import Dropdown from "@/Components/Dropdown.jsx";
 
@@ -12,15 +12,28 @@ export default function Deleted({auth, orders, products}) {
         return productIds.map(id => productsList.find(product => product.id === id));
     }
 
-    const handleDeleteOrder = (id) => {
-        setOrdersList(ordersList.filter(order => order.id !== id));
+    /*    const handleDeleteOrder = (id) => {
+            setOrdersList(ordersList.filter(order => order.id !== id));
+        }*/
+
+    const {data, setData, patch} = useForm({
+        name: '',
+        email: '',
+        phone: '',
+        comment: '',
+        deleted_at: '',
+    })
+
+    const restoreOrder = (e, order) => {
+        e.preventDefault();
+        patch(route('order.restore', order));
     }
 
     return (
         <AuthenticatedLayout user={auth.user}>
             <Head title="Кабінет"/>
 
-            <h1>Кількість замовлень у корзині: {ordersList.length}</h1>
+            <h1>Кількість видалених замовлень: {ordersList.length}</h1>
 
             <Link href={route('dashboard')}>Всі замовлення</Link>
 
@@ -43,18 +56,20 @@ export default function Deleted({auth, orders, products}) {
                     <p>Загально ({order.products_id.split(',').length}) до
                         сплати: {getProductsByIds(order.products_id).reduce((total, product) => total + product.price, 0)}</p>
 
-                    <Dropdown.Link as="button" onClick={() => handleDeleteOrder(order.id)}
-                                   href={route('order.destroy', order.id)}
-                                   method="delete" style={{
-                        width: '80%',
-                        color: 'white',
-                        backgroundColor: '#1a1a1a',
-                        borderRadius: '10px',
-                        display: 'flex',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                    }}>Видалити замовлення</Dropdown.Link>
 
+                    <form onSubmit={(e) => restoreOrder(e, order)}>
+                        <input type="hidden" name="id" value={order.id}/>
+                        <input type="text" name={ 'deleted_at'} value={data.deleted_at} onChange={e => setData('deleted_at', e.target.value)}/>
+                        <button type="submit" style={{
+                            width: '80%',
+                            color: 'white',
+                            backgroundColor: '#1a1a1a',
+                            borderRadius: '10px',
+                            display: 'flex',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                        }}>Відновити замовлення</button>
+                    </form>
 
                     {getProductsByIds(order.products_id).map(product => (
                         <Link href={route('products.show', product.id)} key={product.id}
