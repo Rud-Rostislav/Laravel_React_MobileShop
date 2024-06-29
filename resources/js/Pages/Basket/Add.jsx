@@ -25,7 +25,7 @@ const Add = ({product}) => {
                 }
             );
             toast.success('Товар додано до кошика', {
-                position: "bottom-right",
+                position: "bottom-center",
                 autoClose: 2000,
                 theme: "dark",
             });

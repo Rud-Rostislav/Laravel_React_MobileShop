@@ -12,13 +12,13 @@
 }
 
 body {
-    background-color: #000000;
+    background: #090909;
     color: #ffffff;
 }
 
 /* Шапка */
 header {
-    background-color: #1d1d1d;
+    background: #202020;
     height: 5vh;
     display: flex;
     justify-content: center;
@@ -40,7 +40,7 @@ main {
 
 /* Футер */
 footer {
-    background-color: #1d1d1d;
+    background: #202020;
     color: #8a8a8a;
     font-size: 1.25rem;
     height: 5vh;
@@ -58,9 +58,9 @@ footer {
 
 /* Поле вводу */
 input, textarea {
-    background: #000000 !important;
+    background: #090909 !important;
     color: #ffffff !important;
-    border-radius: 15px !important;
+    border-radius: 10px !important;
     border: none;
     height: 5vh;
 }
@@ -119,9 +119,9 @@ h1 {
 
 /* Кнопки в слайдері */
 .slider_button {
-    background: #000000;
-    border-radius: 50%;
-    font-size: 3rem;
+    background: #090909;
+    border-radius: 25%;
+    font-size: 2.5rem;
     height: 5vh;
     width: 2.5vw;
     display: flex;
@@ -135,9 +135,8 @@ h1 {
     flex-direction: column;
     justify-content: center;
     gap: 5vh;
-    box-shadow: #ffffff 0 0 10px -5px;
     border-radius: 10px;
-    background: #1d1d1d;
+    background: #202020;
     width: 30vw;
     padding: 2vh 2vw;
 }
@@ -170,7 +169,7 @@ h1 {
     flex-wrap: wrap;
     align-items: center;
     gap: 2vh;
-    background: #1d1d1d;
+    background: #202020;
     padding: 2vh 1vw;
 }
 
@@ -181,7 +180,7 @@ h1 {
     flex-wrap: wrap;
     align-items: center;
     gap: 2.5vh;
-    background: #1d1d1d;
+    background: #202020;
     padding: 10px 25px;
     border-radius: 25px;
     width: 25vw;
@@ -211,7 +210,7 @@ h1 {
 .more_info, .add_to_basket {
     border-radius: 20px;
     padding: 10px 5px;
-    background: #000000;
+    background: #090909;
     width: 100%;
     text-align: center;
     height: 5vh;
@@ -229,13 +228,13 @@ h1 {
     color: red;
 
     &:hover {
-        background-color: #000000 !important;
+        background: #090909 !important;
     }
 }
 
 /* Кнопка додавання в корзину */
 .add_to_basket {
-    background-color: #000000;
+    background: #090909;
     color: #8dff6e;
     width: 100%;
 }
