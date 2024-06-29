@@ -13,31 +13,32 @@ const Index = ({products}) => {
         <>
             <Header/>
             <Head title="Всі товари"/>
-            <ToastContainer/>
 
             <main>
+                <ToastContainer/>
                 <h1>Всі товари</h1>
 
                 <div className="products">
                     {productsList.map((product) => (
-                        <div className="product" key={product.id}
-                             style={{justifyContent: product.photos ? 'center' : 'center'}}>
-                            <h2 style={{fontSize: '2rem'}}>{product.name}</h2>
+                        <div className="product" key={product.id}>
+
+                            <p className="product_name">{product.name}</p>
 
                             {product.photos && product.photos.length > 0 ?
-                                <img src={`storage/${product.photos[0].path}`} alt="Product image"/>
-                                : <p style={{width: '10vw', height: '10vw'}}></p>
+                                <img className='image_index' src={`/storage/${product.photos[0].path}`}
+                                     alt="Product image"/>
+                                : <p className='empty_image'></p>
                             }
 
-                            <p style={{fontSize: '1.2rem'}}>Ціна: {product.price} грн</p>
+                            <p className='product_price'>Ціна: {product.price} грн</p>
 
                             <Link href={route('products.show', product.id)} className="more_info">Детальніше</Link>
 
                             {product.quantity > 0
                                 ? <Add product={product}/>
-                                :
-                                <button className='more_info' style={{cursor: 'not-allowed', color: 'red'}}>Немає в наявності</button>
+                                : <button className='more_info quantity_zero'>Немає в наявності</button>
                             }
+
                         </div>
                     ))}
                 </div>

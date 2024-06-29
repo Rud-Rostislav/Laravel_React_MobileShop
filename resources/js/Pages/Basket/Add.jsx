@@ -3,7 +3,7 @@ import axios from 'axios';
 import {toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const Add = ( {product}) => {
+const Add = ({product}) => {
     const [csrfToken, setCsrfToken] = useState(null);
 
     useEffect(() => {
@@ -25,9 +25,8 @@ const Add = ( {product}) => {
                 }
             );
             toast.success('Товар додано до кошика', {
-                position: "bottom-center",
-                hideProgressBar: true,
-                autoClose: 1500,
+                position: "bottom-right",
+                autoClose: 2000,
                 theme: "dark",
             });
         } catch (error) {

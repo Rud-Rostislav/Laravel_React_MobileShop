@@ -20,19 +20,24 @@ const Edit = ({product}) => {
 
     const submit = (e) => {
         e.preventDefault();
+
         const formData = new FormData();
+
         formData.append('name', data.name);
         formData.append('description', data.description);
         formData.append('price', data.price);
         formData.append('quantity', data.quantity);
+
         data.photos.forEach((photo) => {
             if (photo.file) {
                 formData.append('photos[]', photo.file);
             }
         });
+
         deletedPhotos.forEach((photoId) => {
             formData.append('deleted_photos[]', photoId);
         });
+
         formData.append('_method', 'PATCH');
 
         fetch(route('products.update', product), {
@@ -44,11 +49,7 @@ const Edit = ({product}) => {
         }).then(response => {
             if (response.ok) {
                 window.location.href = route('products.show', product);
-            } else {
-                console.error('Error occurred:', response.statusText);
             }
-        }).catch(error => {
-            console.error('Error occurred:', error);
         });
     };
 
@@ -58,47 +59,42 @@ const Edit = ({product}) => {
             <Head title="Редагувати товар"/>
 
             <form onSubmit={submit} className="edit_product">
-                <div className="product_form">
-                    <h1>Редагувати товар</h1>
-                    <p>Назва</p>
-                    <input type="text" name="name" value={data.name} onChange={e => setData('name', e.target.value)}/>
-                    <p>Опис</p>
-                    <textarea name="description" value={data.description}
-                              onChange={e => setData('description', e.target.value)}></textarea>
-                    <p>Ціна</p>
-                    <input type="text" name="price" value={data.price}
-                           onChange={e => setData('price', e.target.value)}/>
-                    <p>Кількість</p>
-                    <input type="number" name="quantity" min='0' value={data.quantity}
-                           onChange={e => setData('quantity', e.target.value)}/>
-                    <p>Фото</p>
-                    <input type="file" name="photos" multiple accept="image/*"
-                           onChange={e => setData('photos', [...data.photos, ...Array.from(e.target.files).map(file => ({
-                               id: null,
-                               file,
-                               path: null
-                           }))])} style={{marginBottom: '50px', padding: '10px'}}/>
+                <h1>Редагувати товар</h1>
+                <p>Назва</p>
+                <input type="text" name="name" value={data.name} onChange={e => setData('name', e.target.value)}/>
+                <p>Опис</p>
+                <textarea name="description" value={data.description}
+                          onChange={e => setData('description', e.target.value)}></textarea>
+                <p>Ціна</p>
+                <input type="text" name="price" value={data.price}
+                       onChange={e => setData('price', e.target.value)}/>
+                <p>Кількість</p>
+                <input type="number" name="quantity" min='0' value={data.quantity}
+                       onChange={e => setData('quantity', e.target.value)}/>
+                <p>Фото</p>
+                <input type="file" name="photos" multiple accept="image/*"
+                       onChange={e => setData('photos', [...data.photos, ...Array.from(e.target.files).map(file => ({
+                           id: null,
+                           file,
+                           path: null
+                       }))])}/>
 
-                    <div id="photoPreviews"
-                         style={{marginBottom: '50px', display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', justifyItems: 'center', gap: '10px'}}>
-                        {data.photos.map((photo, index) => (
-                            <div key={index} style={{position: 'relative'}}>
-                                {photo.path && <img src={`/storage/${photo.path}`} alt={`Photo ${index + 1}`}
-                                                    />}
-                                {photo.file && !photo.path &&
-                                    <img src={URL.createObjectURL(photo.file)} alt={`Photo ${index + 1}`}
-                                         />}
-                                <button type="button" onClick={() => removePhoto(photo.id)}
-                                        style={{color: 'red', fontSize: '1.2rem'}}>X
-                                </button>
-                            </div>
-                        ))}
-                    </div>
-
-
-                    <input type="submit" value="Зберегти зміни" className='add_to_basket'
-                           style={{width: '100%', marginBottom: '50px'}}/>
+                <div id="photoPreviews">
+                    {data.photos.map((photo, index) => (
+                        <div key={index}>
+                            {photo.path && <img src={`/storage/${photo.path}`} alt={`Photo ${index + 1}`}
+                            />}
+                            {photo.file && !photo.path &&
+                                <img src={URL.createObjectURL(photo.file)} alt={`Photo ${index + 1}`}
+                                />}
+                            <button type="button" onClick={() => removePhoto(photo.id)}>X</button>
+                        </div>
+                    ))}
                 </div>
+
+
+                <input type="submit" value="Зберегти зміни" className='add_to_basket'
+                       style={{width: '100%', marginBottom: '50px'}}/>
             </form>
         </div>
     );
