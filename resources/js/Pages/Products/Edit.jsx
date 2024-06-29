@@ -69,30 +69,33 @@ const Edit = ({product}) => {
                     <input type="text" name="price" value={data.price}
                            onChange={e => setData('price', e.target.value)}/>
                     <p>Кількість</p>
-                    <input type="number" name="quantity" value={data.quantity}
+                    <input type="number" name="quantity" min='0' value={data.quantity}
                            onChange={e => setData('quantity', e.target.value)}/>
                     <p>Фото</p>
-                    <div id="photoPreviews"
-                         style={{marginBottom: '50px', display: 'flex', gap: '10px', flexWrap: 'wrap'}}>
-                        {data.photos.map((photo, index) => (
-                            <div key={index} style={{position: 'relative'}}>
-                                {photo.path && <img src={`/storage/${photo.path}`} alt={`Photo ${index + 1}`}
-                                                    style={{maxWidth: '100px'}}/>}
-                                {photo.file && !photo.path &&
-                                    <img src={URL.createObjectURL(photo.file)} alt={`Photo ${index + 1}`}
-                                         style={{maxWidth: '100px'}}/>}
-                                <button type="button" onClick={() => removePhoto(photo.id)}
-                                        style={{color: 'red', fontSize: '1.2rem'}}>X
-                                </button>
-                            </div>
-                        ))}
-                    </div>
                     <input type="file" name="photos" multiple accept="image/*"
                            onChange={e => setData('photos', [...data.photos, ...Array.from(e.target.files).map(file => ({
                                id: null,
                                file,
                                path: null
                            }))])} style={{marginBottom: '50px', padding: '10px'}}/>
+
+                    <div id="photoPreviews"
+                         style={{marginBottom: '50px', display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', justifyItems: 'center', gap: '10px'}}>
+                        {data.photos.map((photo, index) => (
+                            <div key={index} style={{position: 'relative'}}>
+                                {photo.path && <img src={`/storage/${photo.path}`} alt={`Photo ${index + 1}`}
+                                                    />}
+                                {photo.file && !photo.path &&
+                                    <img src={URL.createObjectURL(photo.file)} alt={`Photo ${index + 1}`}
+                                         />}
+                                <button type="button" onClick={() => removePhoto(photo.id)}
+                                        style={{color: 'red', fontSize: '1.2rem'}}>X
+                                </button>
+                            </div>
+                        ))}
+                    </div>
+
+
                     <input type="submit" value="Зберегти зміни" className='add_to_basket'
                            style={{width: '100%', marginBottom: '50px'}}/>
                 </div>

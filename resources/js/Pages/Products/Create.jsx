@@ -40,6 +40,7 @@ const Create = () => {
                     <input type="number" name="quantity" value={data.quantity}
                            onChange={e => setData('quantity', e.target.value)}/>
                     {errors.quantity && <p style={{color: 'red'}}>{errors.quantity}</p>}
+
                     <p>Фото</p>
                     <input type="file" name="photos" multiple accept="image/*"
                            onChange={e => setData('photos', Array.from(e.target.files))}
@@ -47,9 +48,9 @@ const Create = () => {
                     {errors.photos && <p style={{color: 'red'}}>{errors.photos}</p>}
 
                     {data.photos.length > 0 &&
-                        <div style={{marginBottom: '50px', display: 'flex', gap: '10px', flexWrap: 'wrap'}}>
+                        <div style={{marginBottom: '50px', display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', justifyItems: 'center', gap: '10px'}}>
                             {data.photos.map((file, index) => (
-                                <img key={index} src={URL.createObjectURL(file)} style={{maxWidth: '150px'}}/>
+                                <img key={index} src={URL.createObjectURL(file)}/>
                             ))}
                         </div>
                     }

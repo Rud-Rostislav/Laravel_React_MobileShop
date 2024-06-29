@@ -46,16 +46,12 @@ const Show = ({product}) => {
 
                     {product.quantity > 0 ?
                         <Add product={product}/>
-                        : <p className="out_of_stock">Немає в наявності</p>
+                        : <button className='more_info' style={{ cursor: 'not-allowed', color: 'red'}}>Немає в наявності</button>
+
                     }
 
                     {auth.user ?
                         <div style={{width: '100%'}}>
-                            <p style={{
-                                fontSize: '1.2rem',
-                                marginBottom: '25px'
-                            }}> {product.quantity > 0 ? 'Залишилось: ' + product.quantity + ' шт' : null}</p>
-
                             <div className="buttons" style={{width: '100%', justifyContent: 'center'}}>
 
                                 <a href={route('products.edit', product.id)} className='more_info'
