@@ -44,9 +44,11 @@ class ProductController extends Controller
         $product->quantity = $request->quantity;
         $product->save();
 
+        $productFolder = 'product_photos/' . $product->id;
+
         if ($request->hasFile('photos')) {
-            foreach ($request->file('photos') as $photo) {
-                $path = $photo->store('product_photos', 'public');
+            foreach ($request->file('photos') as $index => $photo) {
+                $path = $photo->storeAs($productFolder, 'product_' . $product->id . '_photo_' . ($index + 1) . '.' . $photo->getClientOriginalExtension(), 'public');
                 $product->photos()->create(['path' => $path]);
             }
         }
@@ -96,9 +98,19 @@ class ProductController extends Controller
         }
 
         if ($request->hasFile('photos')) {
-            foreach ($request->file('photos') as $photo) {
-                $path = $photo->store('product_photos', 'public');
-                $product->photos()->create(['path' => $path]);
+            $existingPhotos = $product->photos->pluck('path')->toArray();
+
+            foreach ($request->file('photos') as $index => $photo) {
+                $fileName = 'product_' . $product->id . '_photo_' . ($index + 1) . '.' . $photo->getClientOriginalExtension();
+                $path = $photo->storeAs('product_photos', $fileName, 'public');
+
+                if (in_array($fileName, $existingPhotos)) {
+                    Storage::delete('public/product_photos/' . $fileName);
+                    $existingPhoto = $product->photos()->where('path', 'like', '%' . $fileName)->first();
+                    $existingPhoto->update(['path' => $path]);
+                } else {
+                    $product->photos()->create(['path' => $path]);
+                }
             }
         }
 
