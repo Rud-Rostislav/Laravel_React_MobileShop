@@ -39,13 +39,20 @@ const Show = ({product}) => {
                     <p className="product_name">{product.name}</p>
 
                     {product.photos && product.photos.length > 0 ?
-                        <div className='slider'>
-                            <button onClick={previousSlide} className='slider_button'>&#60;</button>
+                        <div className={ product.photos.length > 1 ? 'slider' : 'slider_single_photo'}>
+                            {product.photos.length > 1 &&
+                                <button onClick={previousSlide} className='slider_button'>&#60;</button>
+                            }
+
+                            {/*<p className='slider_count'>{slider + 1}/{product.photos.length}</p>*/}
 
                             <img className='image_show' src={`/storage/${product.photos[slider].path}`}
                                  alt="Product image"/>
 
-                            <button onClick={nextSlide} className='slider_button'>&#62;</button>
+                            {product.photos.length > 1 &&
+                                <button onClick={nextSlide} className='slider_button'>&#62;</button>
+                            }
+
                         </div>
 
                         : <p className='empty_image'></p>

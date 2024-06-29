@@ -54,7 +54,7 @@ const Create = () => {
                         </div>
                     }
 
-                    <input type="submit" className='add_to_basket'/>
+                    <input type="submit" className='add_to_basket' value='Додати товар'/>
 
                 </form>
             </main>
