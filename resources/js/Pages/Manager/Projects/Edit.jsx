@@ -1,7 +1,6 @@
-import {useForm} from "@inertiajs/react";
-import Dropdown from "@/Components/Dropdown.jsx";
+import {router, useForm} from "@inertiajs/react";
 
-export default function Edit({project, setEditProjectName, updateProjectName}) {
+export default function Edit({project, setEditProjectName, updateProjectName, deleteProject}) {
     const {data, setData, patch} = useForm({
         name: project.name,
     });
@@ -11,6 +10,16 @@ export default function Edit({project, setEditProjectName, updateProjectName}) {
         await patch(route("projects.update", project.id), {
             onSuccess: () => {
                 updateProjectName(project.id, data.name);
+                setEditProjectName(null);
+            }
+        });
+    };
+
+    const handleDelete = async (e) => {
+        e.preventDefault();
+        await router.delete(route("projects.destroy", project.id), {
+            onSuccess: () => {
+                deleteProject(project.id);
                 setEditProjectName(null);
             }
         });
@@ -30,14 +39,9 @@ export default function Edit({project, setEditProjectName, updateProjectName}) {
                 <button type="submit" className="black_button green project_edit_name_input">
                     Зберегти назву
                 </button>
-                <Dropdown.Link
-                    as="button"
-                    href={route("projects.destroy", project.id)}
-                    className="black_button red project_edit_name_input"
-                    method="delete"
-                >
+                <button onClick={handleDelete} className="black_button red project_edit_name_input">
                     Видалити проєкт
-                </Dropdown.Link>
+                </button>
             </form>
         </>
     );

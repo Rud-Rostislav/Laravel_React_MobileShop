@@ -30,8 +30,8 @@ export default function Index(props) {
         project_id: '',
     });
 
-    const [tasks, setTasks] = useState(props.tasks);
-    let tasksLengths = tasks ? tasks[tasks.length - 1].id : 0;
+    const [tasks, setTasks] = useState(props.tasks || []);
+    let tasksLengths = tasks.length ? tasks[tasks.length - 1].id : 0;
 
     const createTask = (e) => {
         e.preventDefault();
@@ -57,8 +57,13 @@ export default function Index(props) {
 
     const updateProjectName = (id, newName) => {
         const updatedProjects = projects.map(project =>
-            project.id === id ? { ...project, name: newName } : project
+            project.id === id ? {...project, name: newName} : project
         );
+        setProjects(updatedProjects);
+    };
+
+    const deleteProject = (id) => {
+        const updatedProjects = projects.filter(project => project.id !== id);
         setProjects(updatedProjects);
     };
 
@@ -75,13 +80,14 @@ export default function Index(props) {
                     </button>
                 </form>
 
-                {projects.map((project) => (
+                {projects.length && projects.map((project) => (
                     <div className="project" key={project.id}>
                         {editProjectName !== project.id
                             ?
                             <button onClick={() => setEditProjectName(project.id)}
                                     className='project_header'>{project.name}</button>
-                            : <Edit project={project} setEditProjectName={setEditProjectName} updateProjectName={updateProjectName}/>
+                            : <Edit project={project} setEditProjectName={setEditProjectName}
+                                    updateProjectName={updateProjectName} deleteProject={deleteProject}/>
                         }
 
                         {project.tasks.map((task) => (
