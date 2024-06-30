@@ -94,14 +94,14 @@ h1 {
 
 /* Картинка та заглушка якщо немає картинки  */
 .image_index, .empty_image {
-    width: 50%;
-    height: 20vh;
+    width: 8vw;
+    height: 18vh;
 }
 
 /* Картинка у детальній сторінці */
 .image_show {
-    width: 15vw;
-    height: 27vh;
+    width: 12vw;
+    height: 26vh;
 }
 
 /* Слайдер */

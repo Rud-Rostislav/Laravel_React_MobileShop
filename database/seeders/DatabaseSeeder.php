@@ -19,66 +19,66 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Product::create([
-            'name' => 'iPhone 15 Pro max',
-            'description' => 'Description of the product iPhone 15 Pro max',
-            'price' => 63999,
-            'quantity' => 70
-        ]);
-
-        Product::create([
-            'name' => 'iPhone 14 Pro max',
-            'description' => 'Description of the product iPhone 14 Pro max',
-            'price' => 53999,
-            'quantity' => 20
-        ]);
-
-        Product::create([
-            'name' => 'iPhone 12 Pro max',
-            'description' => 'Description of the product iPhone 12 Pro max',
-            'price' => 32999,
-            'quantity' => 32
-        ]);
-
-        Product::create([
-            'name' => 'iPhone 11 Pro max',
-            'description' => 'Description of the product iPhone 11 Pro max',
-            'price' => 31999,
-            'quantity' => 10
-        ]);
-
-        Product::create([
-            'name' => 'iPhone 10',
-            'description' => 'Description of the product iPhone 10',
-            'price' => 29999,
-            'quantity' => 5
-        ]);
-
-        Product::create([
-            'name' => 'iPhone 8',
-            'description' => 'Description of the product iPhone 8',
-            'price' => 16999,
-            'quantity' => 45
-        ]);
-
-        Product::create([
-            'name' => 'iPhone 7',
-            'description' => 'Description of the product iPhone 7',
-            'price' => 14999,
-            'quantity' => 6
+            'name' => 'iPhone 5',
+            'description' => 'Description of the product iPhone 5',
+            'price' => 500,
+            'quantity' => 1
         ]);
 
         Product::create([
             'name' => 'iPhone 6',
             'description' => 'Description of the product iPhone 6',
-            'price' => 9999,
-            'quantity' => 17
+            'price' => 600,
+            'quantity' => 2
         ]);
 
         Product::create([
-            'name' => 'AirPods',
-            'description' => 'Description of the product AirPods',
-            'price' => 1999,
-            'quantity' => 32
+            'name' => 'iPhone 7',
+            'description' => 'Description of the product iPhone 7',
+            'price' => 700,
+            'quantity' => 3
+        ]);
+
+        Product::create([
+            'name' => 'iPhone 8',
+            'description' => 'Description of the product iPhone 8',
+            'price' => 800,
+            'quantity' => 4
+        ]);
+
+        Product::create([
+            'name' => 'iPhone 10',
+            'description' => 'Description of the product iPhone 10',
+            'price' => 900,
+            'quantity' => 5
+        ]);
+
+        Product::create([
+            'name' => 'iPhone 11',
+            'description' => 'Description of the product iPhone 11',
+            'price' => 1000,
+            'quantity' => 6
+        ]);
+
+        Product::create([
+            'name' => 'iPhone 12',
+            'description' => 'Description of the product iPhone 12',
+            'price' => 1100,
+            'quantity' => 7
+        ]);
+
+        Product::create([
+            'name' => 'iPhone 13',
+            'description' => 'Description of the product iPhone 13',
+            'price' => 1200,
+            'quantity' => 8
+        ]);
+
+        Product::create([
+            'name' => 'iPhone 14 Pro Max',
+            'description' => 'Description of the product iPhone 14 Pro Max',
+            'price' => 1300,
+            'quantity' => 9
         ]);
 
         Order::create([

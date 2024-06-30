@@ -40,7 +40,7 @@ export default function Confirmed({auth, orders, products}) {
                             <div key={`${product?.id}_${index}`}
                                  className='order_product'>
                                 {product?.photos && product.photos.length > 0 &&
-                                    <img src={`storage/${product.photos[0].path}`} alt="Product image"
+                                    <img src={`/storage/${product.photos[0].path}`} alt="Product image"
                                          className='order_product_image'/>
                                 }
                                 <p>{product?.name}</p>
