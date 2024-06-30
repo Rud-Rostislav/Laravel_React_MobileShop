@@ -93,7 +93,7 @@ export default function Index(props) {
                             }
 
                             {project.tasks.map((task) => (
-                                <div key={ task.id}>
+                                <div key={task.id}>
                                     {editTask !== task.id ?
                                         <div onClick={() => setEditTask(task.id)} className='rows'>
                                             <p className='capitalize-text border-right'>{task.name.slice(0, 50)}</p>
@@ -104,7 +104,7 @@ export default function Index(props) {
                                                 {task.completed ? 'Виконано' : 'У виконанні'}</p>
                                         </div>
                                         :
-                                        <EditTask project={project} task={task} setTasks={setTasks} setEditTask={setEditTask}/>
+                                        <EditTask task={task} setEditTask={setEditTask}/>
                                     }
                                 </div>
                             ))}
