@@ -1,10 +1,10 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.jsx';
-import {Head, Link} from '@inertiajs/react';
+import {Head} from '@inertiajs/react';
 import React, {useState} from "react";
 import Dropdown from "@/Components/Dropdown.jsx";
 
 export default function Dashboard({auth, orders, products}) {
-    const [ordersList, setOrdersList] = useState(orders);
+    const [ordersList] = useState(orders);
     const [productsList] = useState(products);
 
     const getProductsByIds = (ids) => {

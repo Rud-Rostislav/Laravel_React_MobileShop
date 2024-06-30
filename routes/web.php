@@ -31,10 +31,12 @@ Route::post('/clear-basket', [BasketController::class, 'clearBasket'])->name('cl
 Route::post('/add-to-basket/{product}', [BasketController::class, 'addToBasket'])->name('add-to-basket');
 
 Route::post('/order', [OrderController::class, 'store'])->name('order.store');
-Route::delete('/order/{order}', [OrderController::class, 'destroy'])->name('order.destroy');
-Route::get('/order/confirmed', [OrderController::class, 'confirmed'])->name('order.confirmed');
-Route::patch('/order/not-confirmed/{order}', [OrderController::class, 'notConfirm'])->name('order.notConfirm');
-Route::patch('/order/{order}', [OrderController::class, 'confirm'])->name('order.confirm');
+Route::group(['middleware' => 'auth'], function () {
+    Route::delete('/order/{order}', [OrderController::class, 'destroy'])->name('order.destroy');
+    Route::get('/order/confirmed', [OrderController::class, 'confirmed'])->name('order.confirmed');
+    Route::patch('/order/not-confirmed/{order}', [OrderController::class, 'notConfirm'])->name('order.notConfirm');
+    Route::patch('/order/{order}', [OrderController::class, 'confirm'])->name('order.confirm');
+});
 
 Route::resource('/projects', ProjectController::class)->except('create', 'show', 'edit');
 Route::resource('/tasks', TaskController::class)->except('index', 'create', 'show', 'edit');
