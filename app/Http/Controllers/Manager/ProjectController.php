@@ -28,13 +28,6 @@ class ProjectController extends Controller
         return to_route('projects.index');
     }
 
-    public function edit(Project $project)
-    {
-        return Inertia::render('Manager/Projects/Edit', [
-            'project' => $project,
-        ]);
-    }
-
     public function update(Request $request, Project $project)
     {
         $validate = $request->validate([
@@ -51,5 +44,4 @@ class ProjectController extends Controller
         $project->delete();
         return to_route('projects.index');
     }
-
 }

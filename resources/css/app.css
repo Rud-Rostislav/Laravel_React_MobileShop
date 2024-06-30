@@ -49,7 +49,7 @@ footer {
     height: 1.5vw;
 }
 
-input, textarea {
+input, textarea, select {
     background: #090909 !important;
     color: #ffffff !important;
     border-radius: 10px !important;
@@ -353,7 +353,44 @@ h1 {
 .project_edit_name_input {
     border-radius: 0 !important;
     width: 100%;
+    height: 100%;
+    font-size: 1.1rem;
     background: #101010 !important;
+    &:hover {
+        background: #101010 !important;
+    }
+}
+
+.task_edit_input {
+    background: #ffffff !important;
+    color: #000000 !important;
+    font-size: 1.25rem;
+    &:hover {
+        background: #ffffff !important;
+    }
+}
+
+.task_edit_input_right_border {
+    border-right: 1px solid #5c5c5c;
+}
+
+.task_edit_input_left_border {
+    border-left: 1px solid #5c5c5c;
+}
+
+.task_edit_input:first-child {
+    margin: 10px 0;
+    border-top: 1px solid #5c5c5c;
+    border-right: 1px solid #5c5c5c;
+}
+
+.task_edit_input_top_border {
+    border-top: 1px solid #5c5c5c;
+}
+
+.task_edit_input_left_border {
+    border-left: 1px solid #5c5c5c;
+    border-top: 1px solid #5c5c5c;
 }
 
 .project_header {

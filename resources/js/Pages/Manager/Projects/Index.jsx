@@ -3,6 +3,7 @@ import {Head, Link, router, useForm} from "@inertiajs/react";
 import Header from "@/Components/Header.jsx";
 import Footer from "@/Components/Footer.jsx";
 import Edit from "@/Pages/Manager/Projects/Edit.jsx";
+import EditTask from "@/Pages/Manager/Tasks/Edit.jsx";
 
 export default function Index(props) {
     // Projects
@@ -54,6 +55,7 @@ export default function Index(props) {
     };
 
     const [editProjectName, setEditProjectName] = useState(null);
+    const [editTask, setEditTask] = useState(null);
 
     const updateProjectName = (id, newName) => {
         const updatedProjects = projects.map(project =>
@@ -80,41 +82,49 @@ export default function Index(props) {
                     </button>
                 </form>
 
-                {projects.length && projects.map((project) => (
-                    <div className="project" key={project.id}>
-                        {editProjectName !== project.id
-                            ?
-                            <button onClick={() => setEditProjectName(project.id)}
-                                    className='project_header'>{project.name}</button>
-                            : <Edit project={project} setEditProjectName={setEditProjectName}
-                                    updateProjectName={updateProjectName} deleteProject={deleteProject}/>
-                        }
+                {projects.length ? projects.map((project) => (
+                        <div className="project" key={project.id}>
+                            {editProjectName !== project.id
+                                ?
+                                <button onClick={() => setEditProjectName(project.id)}
+                                        className='project_header'>{project.name}</button>
+                                : <Edit project={project} setEditProjectName={setEditProjectName}
+                                        updateProjectName={updateProjectName} deleteProject={deleteProject}/>
+                            }
 
-                        {project.tasks.map((task) => (
-                            <Link href={route('tasks.edit', task.id)} key={task.id} className='rows'>
-                                <p className='capitalize-text border-right'>{task.name.slice(0, 50)}</p>
-                                <p className='capitalize-text'>{task.description.slice(0, 75)}</p>
-                                <p className={task.completed
-                                    ? 'green border-left remove_background_hover'
-                                    : 'red border-left remove_background_hover'}>
-                                    {task.completed ? 'Виконано' : 'У виконанні'}</p>
-                            </Link>
-                        ))}
+                            {project.tasks.map((task) => (
+                                <div key={ task.id}>
+                                    {editTask !== task.id ?
+                                        <div onClick={() => setEditTask(task.id)} className='rows'>
+                                            <p className='capitalize-text border-right'>{task.name.slice(0, 50)}</p>
+                                            <p className='capitalize-text'>{task.description.slice(0, 75)}</p>
+                                            <p className={task.completed
+                                                ? 'green border-left remove_background_hover'
+                                                : 'red border-left remove_background_hover'}>
+                                                {task.completed ? 'Виконано' : 'У виконанні'}</p>
+                                        </div>
+                                        :
+                                        <EditTask project={project} task={task} setTasks={setTasks} setEditTask={setEditTask}/>
+                                    }
+                                </div>
+                            ))}
 
-                        <form className='rows form_input' onSubmit={createTask}>
-                            <input type="text" name="name"
-                                   onChange={e => setData('name', e.target.value)}
-                                   placeholder="Назва задачі" className='task_input'/>
+                            <form className='rows form_input' onSubmit={createTask}>
+                                <input type="text" name="name"
+                                       onChange={e => setData('name', e.target.value)}
+                                       placeholder="Назва задачі" className='task_input'/>
 
-                            <input type="text" name="description" onChange={e => setData('description', e.target.value)}
-                                   placeholder="Опис задачі" className='task_input'/>
+                                <input type="text" name="description" onChange={e => setData('description', e.target.value)}
+                                       placeholder="Опис задачі" className='task_input'/>
 
-                            <button type="submit" onClick={e => addTask(e, project.id)} className='task_input'>Додати
-                                задачу
-                            </button>
-                        </form>
-                    </div>
-                ))}
+                                <button type="submit" onClick={e => addTask(e, project.id)} className='task_input'>Додати
+                                    задачу
+                                </button>
+                            </form>
+                        </div>
+                    ))
+                    : null
+                }
 
             </main>
             <Footer/>

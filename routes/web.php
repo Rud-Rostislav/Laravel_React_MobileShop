@@ -36,7 +36,7 @@ Route::get('/order/confirmed', [OrderController::class, 'confirmed'])->name('ord
 Route::patch('/order/not-confirmed/{order}', [OrderController::class, 'notConfirm'])->name('order.notConfirm');
 Route::patch('/order/{order}', [OrderController::class, 'confirm'])->name('order.confirm');
 
-Route::resource('/projects', ProjectController::class)->except('create', 'show');
+Route::resource('/projects', ProjectController::class)->except('create', 'show', 'edit');
 Route::resource('/tasks', TaskController::class)->except('index', 'create', 'show');
 
 Route::middleware('auth')->group(function () {
