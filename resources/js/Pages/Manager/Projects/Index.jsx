@@ -1,5 +1,5 @@
 import {useState} from "react";
-import {Head, Link, router, useForm} from "@inertiajs/react";
+import {Head, router, useForm} from "@inertiajs/react";
 import Header from "@/Components/Header.jsx";
 import Footer from "@/Components/Footer.jsx";
 import Edit from "@/Pages/Manager/Projects/Edit.jsx";
@@ -22,6 +22,7 @@ export default function Index(props) {
 
         setProjects([...projects, newProject]);
         router.post(route('projects.store'), project);
+        window.location.reload()
     }
 
     // Tasks
@@ -37,18 +38,18 @@ export default function Index(props) {
     const createTask = (e) => {
         e.preventDefault();
         post(route('tasks.store'));
+        window.location.reload()
     };
 
     const addTask = (e, id) => {
         const projectIndex = projects.findIndex(p => p.id === id);
-        const projectTasks = [...projects[projectIndex].tasks, {
+        projects[projectIndex].tasks = [...projects[projectIndex].tasks, {
             id: tasksLengths + 1,
             name: data.name,
             description: data.description,
             project_id: id,
             completed: false
         }];
-        projects[projectIndex].tasks = projectTasks;
         setProjects([...projects]);
         tasksLengths++;
         setData('project_id', id);
@@ -116,6 +117,8 @@ export default function Index(props) {
 
                                 <input type="text" name="description" onChange={e => setData('description', e.target.value)}
                                        placeholder="Опис задачі" className='task_input'/>
+
+                                <input type="hidden" name="project_id" value={project.id}/>
 
                                 <button type="submit" onClick={e => addTask(e, project.id)} className='task_input'>Додати
                                     задачу

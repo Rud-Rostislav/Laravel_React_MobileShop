@@ -39,9 +39,11 @@ export default function Edit(props) {
                 <button type="submit" className='project_edit_name_input green task_edit_input_right_border'>Оновити
                     задачу
                 </button>
-                <Dropdown.Link className="project_edit_name_input red black_button" as="button"
+
+                <Dropdown.Link onClick={() => window.location.reload()} className="project_edit_name_input red black_button" as="button"
                                href={route('tasks.destroy', task.id)}
                                method="delete">Видалити задачу</Dropdown.Link>
+
                 <button className='project_edit_name_input red task_edit_input_left_border'
                         onClick={() => props.setEditTask(false)}>Приховати
                     редагування

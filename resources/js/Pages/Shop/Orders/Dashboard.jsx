@@ -12,7 +12,6 @@ export default function Dashboard({auth, orders, products}) {
         return productIds.map(id => productsList.find(product => product.id === id));
     }
 
-
     return (
         <AuthenticatedLayout user={auth.user}>
             <Head title="Кабінет"/>
