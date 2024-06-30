@@ -59,15 +59,15 @@ const Edit = ({product}) => {
             <main className='main_create'>
 
                 <form onSubmit={submit} className="edit_product">
-                    <input type="text" name="name" value={data.name} onChange={e => setData('name', e.target.value)}/>
+                    <input placeholder='Назва' type="text" name="name" value={data.name} onChange={e => setData('name', e.target.value)}/>
 
-                    <textarea name="description" value={data.description}
+                    <textarea placeholder='Опис' name="description" value={data.description}
                               onChange={e => setData('description', e.target.value)}></textarea>
 
-                    <input type="text" name="price" value={data.price}
+                    <input placeholder='Ціна' type="text" name="price" value={data.price}
                            onChange={e => setData('price', e.target.value)}/>
 
-                    <input type="number" name="quantity" min='0' value={data.quantity}
+                    <input placeholder='Кількість' type="number" name="quantity" min='0' value={data.quantity}
                            onChange={e => setData('quantity', e.target.value)}/>
 
                     <input type="file" name="photos" multiple accept="image/*"

@@ -22,22 +22,22 @@ const Index = ({products}) => {
                     {productsList.map((product) => (
                         <div className="product" key={product.id}>
 
-                            <p className="product_name">{product.name}</p>
+                            <Link className="product_link" href={route('products.show', product.id)}>
+                                <p className="product_name">{product.name}</p>
 
-                            {product.photos && product.photos.length > 0 ?
-                                <img className='image_index' src={`/storage/${product.photos[0].path}`}
-                                     alt="Product image"/>
-                                : <p className='empty_image'></p>
-                            }
+                                {product.photos && product.photos.length > 0 ?
+                                    <img className='image_index' src={`/storage/${product.photos[0].path}`}
+                                         alt="Product image"/>
+                                    : <p className='empty_image'></p>
+                                }
+                            </Link>
 
-                            <p className='product_price'>Ціна: {product.price} грн</p>
-
-                            <Link href={route('products.show', product.id)} className="more_info">Детальніше</Link>
-
-                            {product.quantity > 0
-                                ? <Add product={product}/>
-                                : <button className='more_info quantity_zero'>Немає в наявності</button>
-                            }
+                            <div className='product_button'>
+                                {product.quantity > 0
+                                    ? <Add product={product}/>
+                                    : <button className='more_info quantity_zero'>Немає в наявності</button>
+                                }
+                            </div>
 
                         </div>
                     ))}

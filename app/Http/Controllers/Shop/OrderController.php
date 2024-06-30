@@ -37,11 +37,27 @@ class OrderController extends Controller
         return redirect()->route('dashboard');
     }
 
-    public function deleted()
+    public function confirm(Order $order)
     {
-        return Inertia::render('Profile/Orders/Deleted', [
-            'orders' => Order::onlyTrashed()->get(),
-            'products' => Product::with('photos')->get()
+        $order->confirmed = true;
+        $order->save();
+        return redirect()->route('order.confirmed');
+    }
+
+    public function notConfirm(Order $order)
+    {
+        $order->confirmed = false;
+        $order->save();
+        return redirect()->route('dashboard');
+    }
+
+    public function confirmed()
+    {
+        $products = Product::with('photos')->get();
+        $orders = Order::all();
+        return Inertia::render('Profile/Orders/Confirmed', [
+            'orders' => $orders,
+            'products' => $products
         ]);
     }
 }

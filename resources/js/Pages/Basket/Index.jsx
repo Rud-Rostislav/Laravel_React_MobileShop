@@ -3,6 +3,7 @@ import Header from "@/Components/Header.jsx";
 import axios from 'axios';
 import {ToastContainer, toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Footer from "@/Components/Footer.jsx";
 
 const Index = ({basket}) => {
     const [basketItems, setBasketItems] = useState(basket);
@@ -52,74 +53,49 @@ const Index = ({basket}) => {
     };
 
     return (
-        <div>
+        <>
             <Header/>
             <ToastContainer/>
-            {basketItems.length === 0 ? <h1>Кошик порожній</h1> :
-                <div>
-                    <h1>Кошик</h1>
-                    <button onClick={clearBasket} style={{color: 'red', margin: '2vh 0'}}>Очистити кошик</button>
+            <main className='main_create'>
 
-                    <form method="POST" onSubmit={makeOrder}
-                          style={{
-                              display: 'flex',
-                              justifyContent: 'center',
-                              flexDirection: 'column',
-                              gap: '10px',
-                              boxShadow: 'black 0px 0px 10px -4px',
-                              borderRadius: '10px',
-                              padding: '25px',
-                              width: '50vw',
-                              margin: '0 auto 2.5vh auto'
-                          }}>
-                        <h1>Оформлення замовлення</h1>
-                        <p>Ім'я</p>
-                        <input type="text" name='name' required/>
-                        <p>Пошта</p>
-                        <input type="email" name='email' required/>
-                        <p>Телефон</p>
-                        <input type="text" name='phone' required/>
-                        <p>Коментар</p>
-                        <textarea name="comment" style={{marginBottom: '50px'}}></textarea>
+                {basketItems.length === 0 ? <h1>Кошик порожній</h1> :
+                    <>
+                        <form method="POST" onSubmit={makeOrder} className='add_product basket_order'>
+                            <input type="text" name='name' required placeholder='ПІБ'/>
+                            <input type="email" name='email' required placeholder='Пошта'/>
+                            <input type="text" name='phone' required placeholder='Номер телефону'/>
+                            <textarea name="comment" placeholder='Коментар'></textarea>
 
-                        {basketItems.map((item, index) => (
-                            <div key={index} style={{
-                                boxShadow: 'black 0px 0px 10px -4px',
-                                borderRadius: '10px',
-                                height: '15vh',
-                                display: 'grid',
-                                gridTemplateColumns: '1fr 1fr',
-                                alignItems: 'center',
-                                justifyItems: 'center',
-                            }}>
-                                {item.photos.length > 0 ?
-                                    <div style={{
-                                        display: 'flex',
-                                        flexDirection: 'column',
-                                        gap: '10px',
-                                        alignItems: 'center'
-                                    }}>
-                                        <img src={`storage/${item.photos[0].path}`} alt="Product image"
-                                             style={{width: '4vw'}}/>
-                                        <h2 style={{fontSize: '1.4rem'}}>{item.product.name}</h2>
+                            <div className='basket_products'>
+                                {basketItems.map((item, index) => (
+                                    <div key={index} className='basket_product'>
+                                        {item.photos.length > 0 ?
+                                            <div className='basket_product'>
+                                                <img className='basket_image' src={`storage/${item.photos[0].path}`}
+                                                     alt="Product image"/>
+                                                <p className='product_name'>{item.product.name}</p>
+                                            </div>
+                                            :
+                                            <p className='product_name'>{item.product.name}</p>
+                                        }
+                                        <p className='product_price'>{item.product.price} грн</p>
                                     </div>
-                                    :
-                                    <h2 style={{fontSize: '1.4rem'}}>{item.product.name}</h2>
-                                }
-                                <p style={{fontSize: '1.4rem'}}>Ціна: {item.product.price} грн</p>
+                                ))}
                             </div>
-                        ))}
 
-                        <h2 style={{marginTop: '50px'}}>Загально до сплати: <strong>{totalPrice}</strong> грн</h2>
+                            <p className='total_length'>Кількість товарів: <strong>{basketItems.length}</strong></p>
+                            <p className='total_price'>До сплати: <strong>{totalPrice}</strong> грн</p>
 
-                        <button type="submit" className='add_to_basket'
-                                style={{margin: '2.5vh auto 0 auto', width: '100%'}}>Замовити
-                        </button>
-                    </form>
-                </div>
-            }
+                            <button type="submit" className='add_to_basket'>Замовити</button>
+                            <button onClick={clearBasket} className='add_to_basket error'>Очистити кошик</button>
+                        </form>
+                    </>
+                }
 
-        </div>
+            </main>
+
+            <Footer/>
+        </>
     );
 };
 
