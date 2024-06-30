@@ -22,14 +22,6 @@ class TaskController extends Controller
         return redirect()->route('projects.index');
     }
 
-    public function edit(Task $task)
-    {
-        return Inertia::render('Manager/Tasks/Edit', [
-            'task' => $task,
-            'projects' => Project::all(),
-        ]);
-    }
-
     public function update(Request $request, Task $task)
     {
         $validate = $request->validate([

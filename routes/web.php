@@ -37,7 +37,7 @@ Route::patch('/order/not-confirmed/{order}', [OrderController::class, 'notConfir
 Route::patch('/order/{order}', [OrderController::class, 'confirm'])->name('order.confirm');
 
 Route::resource('/projects', ProjectController::class)->except('create', 'show', 'edit');
-Route::resource('/tasks', TaskController::class)->except('index', 'create', 'show');
+Route::resource('/tasks', TaskController::class)->except('index', 'create', 'show', 'edit');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
