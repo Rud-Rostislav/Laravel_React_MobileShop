@@ -36,7 +36,7 @@ const Add = ({product}) => {
 
     return (
         <>
-            <button onClick={() => addToBasket(product)} className="add_to_basket">
+            <button onClick={() => addToBasket(product)} className="black_button green">
                 Додати у корзину
             </button>
         </>

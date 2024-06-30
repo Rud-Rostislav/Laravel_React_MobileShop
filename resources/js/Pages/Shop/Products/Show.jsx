@@ -4,7 +4,7 @@ import {Head, usePage} from "@inertiajs/react";
 import Dropdown from "@/Components/Dropdown.jsx";
 import {ToastContainer} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
-import Add from "@/Pages/Basket/Add.jsx";
+import Add from "@/Pages/Shop/Basket/Add.jsx";
 import Footer from "@/Components/Footer.jsx";
 
 const Show = ({product}) => {
@@ -39,18 +39,21 @@ const Show = ({product}) => {
                     <p className="product_name">{product.name}</p>
 
                     {product.photos && product.photos.length > 0 ?
-                        <div className={ product.photos.length > 1 ? 'slider' : 'slider_single_photo'}>
+                        <div className={product.photos.length > 1 ? 'slider' : 'slider_single_photo'}>
                             {product.photos.length > 1 &&
                                 <button onClick={previousSlide} className='slider_button'>&#60;</button>
                             }
 
-                            {/*<p className='slider_count'>{slider + 1}/{product.photos.length}</p>*/}
 
                             <img className='image_show' src={`/storage/${product.photos[slider].path}`}
                                  alt="Product image"/>
 
                             {product.photos.length > 1 &&
                                 <button onClick={nextSlide} className='slider_button'>&#62;</button>
+                            }
+
+                            {product.photos.length > 1 &&
+                                <p className='slider_count'>{slider + 1} / {product.photos.length}</p>
                             }
 
                         </div>
@@ -60,20 +63,20 @@ const Show = ({product}) => {
 
                     <p>{product.description}</p>
 
-                    <p>Ціна: {product.price} грн</p>
+                    <p className='product_price'>Ціна: {product.price} грн</p>
 
                     {product.quantity > 0 ?
                         <Add product={product}/>
-                        : <button className='more_info quantity_zero'>Немає в
+                        : <button className='black_button no_product'>Немає в
                             наявності</button>
 
                     }
 
                     {auth.user ?
                         <div className="buttons">
-                            <a href={route('products.edit', product.id)} className='more_info'>Редагувати</a>
+                            <a href={route('products.edit', product.id)} className='black_button'>Редагувати</a>
                             <Dropdown.Link as="button" href={route('products.destroy', product.id)}
-                                           method="delete" className="more_info delete">Видалити</Dropdown.Link>
+                                           method="delete" className="black_button red">Видалити</Dropdown.Link>
                         </div> : null}
 
                 </div>

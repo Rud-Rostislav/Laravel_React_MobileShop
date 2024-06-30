@@ -17,21 +17,21 @@ class ProductController extends Controller
     public function index(): Response
     {
         $products = Product::with('photos')->get();
-        return Inertia::render('Products/Index', [
+        return Inertia::render('Shop/Products/Index', [
             'products' => $products,
         ]);
     }
 
     public function create(): Response
     {
-        return Inertia::render('Products/Create');
+        return Inertia::render('Shop/Products/Create');
     }
 
 
     public function show(Product $product): Response
     {
         $product->load('photos');
-        return Inertia::render('Products/Show', [
+        return Inertia::render('Shop/Products/Show', [
             'product' => $product,
         ]);
     }
@@ -40,7 +40,7 @@ class ProductController extends Controller
     public function edit(Product $product): Response
     {
         $product->load('photos');
-        return Inertia::render('Products/Edit', [
+        return Inertia::render('Shop/Products/Edit', [
             'product' => $product,
         ]);
     }

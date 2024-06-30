@@ -4,6 +4,8 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Shop\BasketController;
 use App\Http\Controllers\Shop\OrderController;
 use App\Http\Controllers\Shop\ProductController;
+use App\Http\Controllers\Manager\ProjectController;
+use App\Http\Controllers\Manager\TaskController;
 use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
@@ -14,7 +16,7 @@ Route::redirect('/', '/products');
 Route::get('/dashboard', function () {
     $products = Product::with('photos')->get();
     $orders = Order::all();
-    return Inertia::render('Profile/Orders/Dashboard', [
+    return Inertia::render('Shop/Orders/Dashboard', [
         'orders' => $orders,
         'products' => $products
     ]);
@@ -33,6 +35,9 @@ Route::delete('/order/{order}', [OrderController::class, 'destroy'])->name('orde
 Route::get('/order/confirmed', [OrderController::class, 'confirmed'])->name('order.confirmed');
 Route::patch('/order/not-confirmed/{order}', [OrderController::class, 'notConfirm'])->name('order.notConfirm');
 Route::patch('/order/{order}', [OrderController::class, 'confirm'])->name('order.confirm');
+
+Route::resource('/projects', ProjectController::class)->except('create', 'show');
+Route::resource('/tasks', TaskController::class)->except('index', 'create', 'show');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

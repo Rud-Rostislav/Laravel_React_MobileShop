@@ -86,14 +86,13 @@ const Index = ({basket}) => {
                             <p className='total_length'>Кількість товарів: <strong>{basketItems.length}</strong></p>
                             <p className='total_price'>До сплати: <strong>{totalPrice}</strong> грн</p>
 
-                            <button type="submit" className='add_to_basket'>Замовити</button>
-                            <button onClick={clearBasket} className='add_to_basket error'>Очистити кошик</button>
+                            <button type="submit" className='black_button green'>Замовити</button>
+                            <button onClick={clearBasket} className='black_button red'>Очистити кошик</button>
                         </form>
                     </>
                 }
 
             </main>
-
             <Footer/>
         </>
     );

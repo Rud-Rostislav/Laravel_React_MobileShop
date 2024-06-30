@@ -31,10 +31,10 @@ export default function Confirmed({auth, orders, products}) {
                         </p>
 
                         <Dropdown.Link as="button" href={route('order.destroy', order.id)}
-                                       method="delete" className='add_to_basket error'>Видалити</Dropdown.Link>
+                                       method="delete" className='black_button red'>Видалити</Dropdown.Link>
 
                         <Dropdown.Link as="button" href={route('order.notConfirm', order)} method='patch'
-                                       className='add_to_basket error'>Не виконано</Dropdown.Link>
+                                       className='black_button red'>Не виконано</Dropdown.Link>
 
                         {getProductsByIds(order.products_id).map((product, index) => (
                             <div key={`${product?.id}_${index}`}

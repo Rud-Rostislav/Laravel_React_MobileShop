@@ -55,7 +55,7 @@ class OrderController extends Controller
     {
         $products = Product::with('photos')->get();
         $orders = Order::all();
-        return Inertia::render('Profile/Orders/Confirmed', [
+        return Inertia::render('Shop/Orders/Confirmed', [
             'orders' => $orders,
             'products' => $products
         ]);

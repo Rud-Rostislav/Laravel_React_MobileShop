@@ -1,6 +1,6 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.jsx';
 import {Head, Link} from '@inertiajs/react';
-import {useState} from "react";
+import React, {useState} from "react";
 import Dropdown from "@/Components/Dropdown.jsx";
 
 export default function Dashboard({auth, orders, products}) {
@@ -26,23 +26,24 @@ export default function Dashboard({auth, orders, products}) {
                         <p>{order.email} - {order.phone}</p>
                         <p>Коментар: {order.comment.length > 0 ? order.comment : ''}</p>
 
-                        <p>
+                        <p className='total_price'>
                             Загально ({order.products_id.split(',').length}) до
                             сплати: {getProductsByIds(order.products_id).reduce((total, product) => total + (product?.price ?? 0), 0)} грн.
                         </p>
 
                         <Dropdown.Link as="button" href={route('order.confirm', order)} method='patch'
-                                       className='add_to_basket'>Виконано</Dropdown.Link>
+                                       className='black_button green'>Виконано</Dropdown.Link>
 
                         {getProductsByIds(order.products_id).map((product, index) => (
                             <div key={`${product?.id}_${index}`}
                                  className='order_product'>
-                                {product?.photos && product.photos.length > 0 &&
+                                {product?.photos && product.photos.length > 0 ?
                                     <img src={`/storage/${product.photos[0].path}`} alt="Product image"
                                          className='order_product_image'/>
+                                    : <p className='empty_image'></p>
                                 }
-                                <p>{product?.name}</p>
-                                <p>{product?.price} грн</p>
+                                <p className='product_name'>{product?.name}</p>
+                                <p className='product_price'>{product?.price} грн</p>
                             </div>
                         ))}
                     </div>

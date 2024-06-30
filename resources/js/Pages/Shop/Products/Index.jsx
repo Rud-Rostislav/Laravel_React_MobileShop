@@ -3,7 +3,7 @@ import Header from "@/Components/Header.jsx";
 import {Head, Link} from '@inertiajs/react';
 import {ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Add from "@/Pages/Basket/Add.jsx";
+import Add from "@/Pages/Shop/Basket/Add.jsx";
 import Footer from "@/Components/Footer.jsx";
 
 const Index = ({products}) => {
@@ -35,7 +35,7 @@ const Index = ({products}) => {
                             <div className='product_button'>
                                 {product.quantity > 0
                                     ? <Add product={product}/>
-                                    : <button className='more_info quantity_zero'>Немає в наявності</button>
+                                    : <button className='black_button no_product'>Немає в наявності</button>
                                 }
                             </div>
 

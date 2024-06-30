@@ -25,6 +25,10 @@ export default function Authenticated({user, header, children}) {
                                 <NavLink style={{color: '#ffffff'}} href={route('products.index')}>
                                     Магазин
                                 </NavLink>
+
+                                <NavLink style={{color: '#ffffff'}} href={route('projects.index')}>
+                                    Таск менеджер
+                                </NavLink>
                             </div>
                         </div>
 

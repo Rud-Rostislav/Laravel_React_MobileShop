@@ -22,6 +22,10 @@ const Header = () => {
                                                                     alt="Admin"/></NavLink>}
             {auth.user ? <NavLink href={route('dashboard')}><img className='header_icon' src="/icons/admin.png"
                                                                  alt="Admin"/></NavLink> : null}
+
+            <NavLink href={route('projects.index')} active={route().current('projects.index')}><img className='header_icon'
+                                                                                    src="/icons/list.png"
+                                                                                    alt="Basket"/></NavLink>
         </header>
     );
 }
