@@ -1,72 +1,44 @@
-import {Link, useForm} from "@inertiajs/react";
-import {useState} from "react";
+import {useForm} from "@inertiajs/react";
 import Dropdown from "@/Components/Dropdown.jsx";
 
-export default function Create(props) {
-    const [project] = useState(props.project);
+export default function Edit({project, setEditProjectName, updateProjectName}) {
     const {data, setData, patch} = useForm({
         name: project.name,
     });
 
-    const submit = (e) => {
+    const submit = async (e) => {
         e.preventDefault();
-        patch(route('projects.update', project.id));
+        await patch(route("projects.update", project.id), {
+            onSuccess: () => {
+                updateProjectName(project.id, data.name);
+                setEditProjectName(null);
+            }
+        });
     };
 
     return (
         <>
-            <nav style={{
-                backgroundColor: '#202020',
-                color: 'white',
-                padding: '10px',
-                display: 'flex',
-                justifyContent: 'center',
-                gap: '2rem',
-                fontSize: '1.25rem',
-                height: '5vh'
-            }}><Link href={route('projects.index')}>Projects</Link>
-            </nav>
-
-            <form onSubmit={submit}
-                  style={{
-                      display: 'flex',
-                      flexDirection: 'column',
-                      justifyContent: 'center',
-                      gap: '1rem',
-                      alignItems: 'center',
-                      height: '95vh',
-                  }}>
-
-                <h1 style={{textAlign: 'center', fontSize: '2rem'}}>Edit {project.name}</h1>
-
-                <input type="text" name='name' value={data.name} onChange={(e) => setData('name', e.target.value)}
-                       placeholder="Project name"/>
-
-                <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem'}}>
-
-                    <button type="submit"
-                            style={{
-                                fontSize: '1.25rem', border: '1px solid black',
-                                borderRadius: '5px'
-                            }}>Edit
-                    </button>
-
-                    <Dropdown.Link className="dropdown-link" as="button" href={route('projects.destroy', project.id)}
-                                   method="delete"
-                                   style={{
-                                       color: 'red',
-                                       fontSize: '1.25rem',
-                                       display: 'flex',
-                                       justifyContent: 'center',
-                                       alignItems: 'center',
-                                       border: '1px solid black',
-                                       borderRadius: '5px',
-                                   }}>
-                        Delete
-                    </Dropdown.Link>
-
-                </div>
+            <form onSubmit={submit} className="project_edit_name">
+                <input
+                    type="text"
+                    className="project_edit_name_input"
+                    name="name"
+                    value={data.name}
+                    onChange={(e) => setData('name', e.target.value)}
+                    placeholder="Назва проєкту"
+                />
+                <button type="submit" className="black_button green project_edit_name_input">
+                    Зберегти назву
+                </button>
+                <Dropdown.Link
+                    as="button"
+                    href={route("projects.destroy", project.id)}
+                    className="black_button red project_edit_name_input"
+                    method="delete"
+                >
+                    Видалити проєкт
+                </Dropdown.Link>
             </form>
         </>
-    )
+    );
 }

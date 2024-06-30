@@ -314,25 +314,19 @@ h1 {
     display: grid;
     grid-template-columns: 1fr;
     justify-items: center;
+    align-items: center;
     gap: 50px;
 }
 
 .project {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     width: 50vw;
     border-radius: 10px;
-    background: #c8c8c8;
     color: black;
     box-shadow: 0 0 10px -4px #ffffff;
-}
-
-.project_header {
-    font-size: 1.5rem;
-    padding: 10px;
-    background-color: #101010;
-    color: white;
-    border-radius: 10px 10px 0 0;
+    /*border: 1px solid red;*/
 }
 
 .rows {
@@ -340,12 +334,42 @@ h1 {
     grid-template-columns: 1fr 2fr 1fr;
     align-items: center;
     justify-items: center;
-    padding: 10px;
     border-top: 1px solid #5c5c5c;
+    font-size: 1.25rem;
+    background: white;
+
+    &:hover {
+        background-color: #dddddd !important;
+    }
 }
 
-.no_border {
-    border: none;
+.project_edit_name {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    align-items: center;
+    background: #101010;
+}
+
+.project_edit_name_input {
+    border-radius: 0 !important;
+    width: 100%;
+    background: #101010 !important;
+}
+
+.project_header {
+    height: 5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    background-color: #101010;
+    color: white;
+    border-radius: 10px 10px 0 0;
+}
+
+.remove_background_hover:hover {
+    background-color: #dddddd !important;
+    /*border: 1px solid red !important;*/
 }
 
 .capitalize-text {
@@ -356,16 +380,33 @@ h1 {
     padding: 0 !important;
     background: #101010;
     color: white;
-    border-radius: 0 !important;
+    border-radius: 0 0 10px 10px !important;
 }
 
 .task_input {
     width: 100%;
-    border: none;
-    text-align: center;
-    color: white;
     background: #101010 !important;
     border-radius: 0 !important;
     height: 5vh;
-    /*border: 1px solid red !important;*/
+}
+
+.task_input:first-child {
+    border-radius: 0 0 0 10px !important;
+    border-right: 1px solid #5c5c5c;
+}
+
+.task_input:last-child {
+    border-radius: 0 0 10px 0 !important;
+    border-left: 1px solid #5c5c5c;
+    font-size: 1rem;
+}
+
+.border-right {
+    border-right: 1px solid #5c5c5c;
+    width: 100%;
+}
+
+.border-left {
+    border-left: 1px solid #5c5c5c;
+    width: 100%;
 }

@@ -112,63 +112,63 @@ class DatabaseSeeder extends Seeder
 
         for ($i = 1; $i <= 3; $i++) {
             Project::factory()->create([
-                'name' => "Project {$i}",
+                'name' => "Проект {$i}",
             ]);
         }
 
         Task::factory()->create([
-            'name' => "Task 1",
-            'description' => "Description 1",
+            'name' => "Задача 1",
+            'description' => "Опис задачі 1",
             'project_id' => 1,
             'completed' => true
         ]);
         Task::factory()->create([
-            'name' => "Task 2",
-            'description' => "Description 2",
+            'name' => "Задача 2",
+            'description' => "Опис задачі 2",
             'project_id' => 1,
             'completed' => true
         ]);
         Task::factory()->create([
-            'name' => "Task 3",
-            'description' => "Description 3",
+            'name' => "Задача 3",
+            'description' => "Опис задачі 3",
             'project_id' => 1,
             'completed' => true
         ]);
 
         Task::factory()->create([
-            'name' => "Task 4",
-            'description' => "Description 4",
+            'name' => "Задача 4",
+            'description' => "Опис задачі 4",
             'project_id' => 2,
             'completed' => false
         ]);
         Task::factory()->create([
-            'name' => "Task 5",
-            'description' => "Description 5",
+            'name' => "Задача 5",
+            'description' => "Опис задачі 5",
             'project_id' => 2,
             'completed' => false
         ]);
         Task::factory()->create([
-            'name' => "Task 6",
-            'description' => "Description 6",
+            'name' => "Задача 6",
+            'description' => "Опис задачі 6",
             'project_id' => 2,
             'completed' => false
         ]);
 
         Task::factory()->create([
-            'name' => "Task 7",
-            'description' => "Description 7",
+            'name' => "Задача 7",
+            'description' => "Опис задачі 7",
             'project_id' => 3,
             'completed' => true
         ]);
         Task::factory()->create([
-            'name' => "Task 8",
-            'description' => "Description 8",
+            'name' => "Задача 8",
+            'description' => "Опис задачі 8",
             'project_id' => 3,
             'completed' => false
         ]);
         Task::factory()->create([
-            'name' => "Task 9",
-            'description' => "Description 9",
+            'name' => "Задача 9",
+            'description' => "Опис задачі 9",
             'project_id' => 3,
             'completed' => true
         ]);
