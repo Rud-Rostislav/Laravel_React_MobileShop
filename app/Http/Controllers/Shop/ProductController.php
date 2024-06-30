@@ -71,7 +71,7 @@ class ProductController extends Controller
             $existingPhotos = $product->photos->pluck('path')->toArray();
 
             foreach ($request->file('photos') as $index => $photo) {
-                $fileName =  'photo_' . ($index + 1) . '.' . $photo->getClientOriginalExtension();
+                $fileName = 'photo_' . ($index + 1) . '.' . $photo->getClientOriginalExtension();
                 $folderPath = 'photos/product_' . $product->id;
 
                 if (!Storage::disk('public')->exists($folderPath)) {
@@ -116,7 +116,13 @@ class ProductController extends Controller
         if ($photos = $product->photos()->get()) {
             foreach ($photos as $photo) {
                 Storage::delete('public/' . $photo->path);
+                $photo->delete();
             }
+        }
+
+        $folderPath = 'photos/product_' . $product->id;
+        if (Storage::disk('public')->exists($folderPath) && !Storage::disk('public')->allFiles($folderPath)) {
+            Storage::disk('public')->deleteDirectory($folderPath);
         }
 
         $product->delete();
