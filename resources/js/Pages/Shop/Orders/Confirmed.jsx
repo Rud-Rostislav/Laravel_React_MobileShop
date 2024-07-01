@@ -21,6 +21,12 @@ export default function Confirmed({auth, orders, products}) {
             <div className='orders'>
                 {ordersList.filter(order => order.confirmed).map(order => (
                     <div className='order order_confirmed' key={order.id}>
+                        <Dropdown.Link as="button" href={route('order.destroy', order.id)}
+                                       method="delete" className='black_button red'>Видалити</Dropdown.Link>
+
+                        <Dropdown.Link as="button" href={route('order.notConfirm', order)} method='patch'
+                                       className='black_button red'>Не виконано</Dropdown.Link>
+
                         <p>{order.name}</p>
                         <p>{order.email} - {order.phone}</p>
                         <p>Коментар: {order.comment.length > 0 ? order.comment : ''}</p>
@@ -29,12 +35,6 @@ export default function Confirmed({auth, orders, products}) {
                             Загально ({order.products_id.split(',').length}) до
                             сплати: {getProductsByIds(order.products_id).reduce((total, product) => total + (product?.price ?? 0), 0)} грн.
                         </p>
-
-                        <Dropdown.Link as="button" href={route('order.destroy', order.id)}
-                                       method="delete" className='black_button red'>Видалити</Dropdown.Link>
-
-                        <Dropdown.Link as="button" href={route('order.notConfirm', order)} method='patch'
-                                       className='black_button red'>Не виконано</Dropdown.Link>
 
                         {getProductsByIds(order.products_id).map((product, index) => (
                             <Link href={route('products.show', product)} key={`${product?.id}_${index}`}

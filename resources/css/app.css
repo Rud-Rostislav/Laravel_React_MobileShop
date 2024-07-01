@@ -657,6 +657,13 @@ h1 {
         grid-template-columns: 1fr;
     }
 
+    .order_product {
+        width: 30vw;
+    }
+    .order_product_image {
+        width: 20vw;
+    }
+
     .product_show {
         width: 90vw;
     }
@@ -697,6 +704,10 @@ h1 {
     .add_product_image {
         width: 40vw;
         height: 18vh;
+    }
+
+    .order_product_image {
+        width: 35vw;
     }
 }
 

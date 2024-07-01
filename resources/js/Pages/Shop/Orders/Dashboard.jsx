@@ -21,6 +21,9 @@ export default function Dashboard({auth, orders, products}) {
             <div className='orders'>
                 {ordersList.filter(order => order.confirmed === 0).map(order => (
                     <div className='order' key={order.id}>
+                        <Dropdown.Link as="button" href={route('order.confirm', order)} method='patch'
+                                       className='black_button green'>Виконано</Dropdown.Link>
+
                         <p>{order.name}</p>
                         <p>{order.email} - {order.phone}</p>
                         <p>Коментар: {order.comment.length > 0 ? order.comment : ''}</p>
@@ -29,9 +32,6 @@ export default function Dashboard({auth, orders, products}) {
                             Загально ({order.products_id.split(',').length}) до
                             сплати: {getProductsByIds(order.products_id).reduce((total, product) => total + (product?.price ?? 0), 0)} грн.
                         </p>
-
-                        <Dropdown.Link as="button" href={route('order.confirm', order)} method='patch'
-                                       className='black_button green'>Виконано</Dropdown.Link>
 
                         {getProductsByIds(order.products_id).map((product, index) => (
                             <Link href={route( 'products.show', product?.id)} key={`${product?.id}_${index}`}
