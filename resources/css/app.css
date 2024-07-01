@@ -46,7 +46,7 @@ footer {
 
 .header_icon {
     width: 1.5vw;
-    height: 1.5vw;
+    height: 3vh;
 }
 
 input, textarea, select {
@@ -150,7 +150,7 @@ h1 {
 }
 
 .image_index, .empty_image {
-    width: 8vw;
+    width: 10vw;
     height: 18vh;
 }
 
@@ -165,7 +165,7 @@ h1 {
     background: #202020;
     padding: 25px 25px;
     border-radius: 25px;
-    width: 25vw;
+    width: 30vw;
 }
 
 .image_show {
@@ -217,7 +217,7 @@ h1 {
     gap: 5vh;
     border-radius: 10px;
     background: #202020;
-    width: 30vw;
+    width: 40vw;
     padding: 3vh 2vw;
 }
 
@@ -304,7 +304,6 @@ h1 {
 }
 
 /* ORDER CONFIRMED */
-/* Сторінка виконаного замовлення */
 .order_confirmed {
     grid-template-columns: repeat(6, 1fr);
 }
@@ -322,11 +321,10 @@ h1 {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 50vw;
+    width: 75vw;
     border-radius: 10px;
     color: black;
     box-shadow: 0 0 10px -4px #ffffff;
-    /*border: 1px solid red;*/
 }
 
 .rows {
@@ -356,6 +354,7 @@ h1 {
     height: 100%;
     font-size: 1.1rem;
     background: #101010 !important;
+
     &:hover {
         background: #101010 !important;
     }
@@ -365,6 +364,7 @@ h1 {
     background: #ffffff !important;
     color: #000000 !important;
     font-size: 1.25rem;
+
     &:hover {
         background: #ffffff !important;
     }
@@ -406,7 +406,6 @@ h1 {
 
 .remove_background_hover:hover {
     background-color: #dddddd !important;
-    /*border: 1px solid red !important;*/
 }
 
 .capitalize-text {
@@ -446,4 +445,302 @@ h1 {
 .border-left {
     border-left: 1px solid #5c5c5c;
     width: 100%;
+}
+
+/* MEDIA SCREEN */
+@media screen and (max-width: 1500px) {
+    .image_index, .empty_image {
+        width: 50%;
+        height: 16vh;
+    }
+
+    .header_icon {
+        width: 2vw;
+        height: 3vh;
+    }
+
+    .basket_products {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .basket_image {
+        width: 15vw;
+        height: 20vh;
+    }
+
+    .add_product, .edit_product {
+        width: 50vw;
+    }
+
+    .orders {
+        padding: 0 10vw;
+    }
+
+    .order {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .product_show {
+        width: 40vw;
+    }
+
+    .image_show {
+        width: 14vw;
+        height: 26vh;
+    }
+
+    .add_product_image_container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 1250px) {
+    .image_index, .empty_image {
+        width: 50%;
+        height: 14vh;
+    }
+
+    .products {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .header_icon {
+        width: 2.5vw;
+        height: 3vh;
+    }
+
+    header {
+        gap: 7.5vw
+    }
+
+    .basket_image {
+        width: 15vw;
+    }
+
+    .add_product, .edit_product {
+        width: 60vw;
+    }
+
+    .orders {
+        padding: 0 7.5vw;
+    }
+
+    .order_product {
+        width: 15vw;
+    }
+
+    .order_product_image {
+        width: 12vw;
+        height: 18vh;
+    }
+
+    .product_show {
+        width: 50vw;
+    }
+
+    .image_show {
+        width: 16vw;
+        height: 26vh;
+    }
+
+    .add_product_image {
+        width: 14vw;
+        height: 18vh;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .image_index, .empty_image {
+        width: 50%;
+        height: 14vh;
+    }
+
+    .products {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .header_icon {
+        width: 2.75vw;
+        height: 3vh;
+    }
+
+    .basket_image {
+        width: 20vw;
+    }
+
+    .add_product, .edit_product {
+        width: 70vw;
+    }
+
+    .orders {
+        padding: 0 5vw;
+    }
+
+    .order {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .order_product {
+        width: 20vw;
+    }
+
+    .order_product_image {
+        width: 14vw;
+        height: 18vh;
+    }
+
+    .product_show {
+        width: 60vw;
+    }
+
+    .image_show {
+        width: 20vw;
+        height: 26vh;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .image_index, .empty_image {
+        width: 50%;
+        height: 12vh;
+    }
+
+    .products {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .header_icon {
+        width: 3.5vw;
+        height: 3vh;
+    }
+
+    header {
+        gap: 10vw;
+    }
+
+    .basket_products {
+        grid-template-columns: 1fr;
+    }
+
+    .basket_image {
+        width: 25vw;
+    }
+
+    .add_product, .edit_product {
+        width: 80vw;
+    }
+
+    main {
+        padding: 20px;
+    }
+
+    .project {
+        width: 90vw;
+    }
+
+    .rows {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .orders {
+        padding: 0 1vw;
+    }
+
+    .order {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .order_product {
+        width: 25vw;
+    }
+
+    .order_product_image {
+        width: 18vw;
+        height: 18vh;
+    }
+
+    .product_show {
+        width: 75vw;
+    }
+
+    .image_show {
+        width: 26vw;
+        height: 26vh;
+    }
+
+    .add_product_image {
+        width: 20vw;
+        height: 18vh;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .image_index, .empty_image {
+        width: 50%;
+        height: 14vh;
+    }
+
+    .products {
+        grid-template-columns: 1fr;
+    }
+
+    .header_icon {
+        width: 6.5vw;
+        height: 3vh;
+    }
+
+    header {
+        gap: 10vw;
+    }
+
+    .basket_image {
+        width: 40vw;
+    }
+
+    .add_product, .edit_product {
+        width: 90vw;
+    }
+
+    .order {
+        grid-template-columns: 1fr;
+    }
+
+    .product_show {
+        width: 90vw;
+    }
+
+    .image_show {
+        width: 50vw;
+        height: 26vh;
+    }
+
+    .black_button {
+        margin: 0 auto;
+        font-size: 1rem;
+    }
+
+    .add_product_image {
+        width: 30vw;
+        height: 18vh;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    main {
+        padding: 15px;
+    }
+
+    .image_show {
+        width: 65vw;
+        height: 26vh;
+    }
+
+    .basket_image {
+        width: 50vw;
+    }
+
+    .add_product_image {
+        width: 40vw;
+        height: 18vh;
+    }
 }

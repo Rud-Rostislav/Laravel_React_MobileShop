@@ -4,6 +4,7 @@ import axios from 'axios';
 import {ToastContainer, toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Footer from "@/Components/Footer.jsx";
+import {Link} from "@inertiajs/react";
 
 const Index = ({basket}) => {
     const [basketItems, setBasketItems] = useState(basket);
@@ -68,7 +69,7 @@ const Index = ({basket}) => {
 
                             <div className='basket_products'>
                                 {basketItems.map((item, index) => (
-                                    <div key={index} className='basket_product'>
+                                    <Link href={route('products.show', item.product.id)} key={index} className='basket_product'>
                                         {item.photos.length > 0 ?
                                             <div className='basket_product'>
                                                 <img className='basket_image' src={`storage/${item.photos[0].path}`}
@@ -79,7 +80,7 @@ const Index = ({basket}) => {
                                             <p className='product_name'>{item.product.name}</p>
                                         }
                                         <p className='product_price'>{item.product.price} грн</p>
-                                    </div>
+                                    </Link>
                                 ))}
                             </div>
 

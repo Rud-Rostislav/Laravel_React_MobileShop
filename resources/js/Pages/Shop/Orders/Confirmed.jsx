@@ -37,7 +37,7 @@ export default function Confirmed({auth, orders, products}) {
                                        className='black_button red'>Не виконано</Dropdown.Link>
 
                         {getProductsByIds(order.products_id).map((product, index) => (
-                            <div key={`${product?.id}_${index}`}
+                            <Link href={route('products.show', product)} key={`${product?.id}_${index}`}
                                  className='order_product'>
                                 {product?.photos && product.photos.length > 0 &&
                                     <img src={`/storage/${product.photos[0].path}`} alt="Product image"
@@ -45,7 +45,7 @@ export default function Confirmed({auth, orders, products}) {
                                 }
                                 <p>{product?.name}</p>
                                 <p>{product?.price} грн</p>
-                            </div>
+                            </Link>
                         ))}
                     </div>
                 ))}

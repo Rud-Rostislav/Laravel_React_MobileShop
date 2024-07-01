@@ -1,5 +1,5 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.jsx';
-import {Head} from '@inertiajs/react';
+import {Head, Link} from '@inertiajs/react';
 import React, {useState} from "react";
 import Dropdown from "@/Components/Dropdown.jsx";
 
@@ -34,7 +34,7 @@ export default function Dashboard({auth, orders, products}) {
                                        className='black_button green'>Виконано</Dropdown.Link>
 
                         {getProductsByIds(order.products_id).map((product, index) => (
-                            <div key={`${product?.id}_${index}`}
+                            <Link href={route( 'products.show', product?.id)} key={`${product?.id}_${index}`}
                                  className='order_product'>
                                 {product?.photos && product.photos.length > 0 ?
                                     <img src={`/storage/${product.photos[0].path}`} alt="Product image"
@@ -43,7 +43,7 @@ export default function Dashboard({auth, orders, products}) {
                                 }
                                 <p className='product_name'>{product?.name}</p>
                                 <p className='product_price'>{product?.price} грн</p>
-                            </div>
+                            </Link>
                         ))}
                     </div>
                 ))}
