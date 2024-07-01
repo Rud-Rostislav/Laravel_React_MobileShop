@@ -27,24 +27,24 @@ const Create = () => {
 
                     <input type="text" name="name"
                            onChange={e => setData('name', e.target.value)} placeholder='Назва'/>
-                    {errors.name && <p className='error'>{errors.name}</p>}
+                    {errors.name && <p className='red'>{errors.name}</p>}
 
                     <textarea name="description"
                               onChange={e => setData('description', e.target.value)} placeholder='Опис'></textarea>
-                    {errors.description && <p className='error'>{errors.description}</p>}
+                    {errors.description && <p className='red'>{errors.description}</p>}
 
                     <input type="text" name="price"
                            onChange={e => setData('price', e.target.value)} placeholder='Ціна'/>
-                    {errors.price && <p className='error'>{errors.price}</p>}
+                    {errors.price && <p className='red'>{errors.price}</p>}
 
                     <input type="number" name="quantity"
                            onChange={e => setData('quantity', e.target.value)} placeholder='Кількість'/>
-                    {errors.quantity && <p className='error'>{errors.quantity}</p>}
+                    {errors.quantity && <p className='red'>{errors.quantity}</p>}
 
                     <input type="file" name="photos" multiple accept="image/*"
                            onChange={e => setData('photos', Array.from(e.target.files))}
                     />
-                    {errors.photos && <p className='error'>{errors.photos}</p>}
+                    {errors.photos && <p className='red'>{errors.photos}</p>}
 
                     {data.photos.length > 0 &&
                         <div className='add_product_image_container'>

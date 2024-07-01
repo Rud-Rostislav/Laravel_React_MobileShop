@@ -24,6 +24,16 @@ header {
     gap: 5vw;
 }
 
+.border-b-2:hover {
+    transition: 0.5s;
+    border-bottom: 1px solid #858585 !important;
+    margin: 0 5px
+}
+
+.border-b-2 {
+    transition: 0.5s;
+}
+
 main {
     min-height: 90vh;
     padding: 50px;
@@ -42,11 +52,6 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.header_icon {
-    width: 1.5vw;
-    height: 3vh;
 }
 
 input, textarea, select {
@@ -150,8 +155,8 @@ h1 {
 }
 
 .image_index, .empty_image {
-    width: 10vw;
-    height: 18vh;
+    width: 8vw;
+    height: 20vh;
 }
 
 /* PRODUCT SHOW */
@@ -170,7 +175,7 @@ h1 {
 
 .image_show {
     width: 12vw;
-    height: 26vh;
+    height: 30vh;
 }
 
 .slider {
@@ -229,8 +234,8 @@ h1 {
 }
 
 .add_product_image {
-    width: 10vw;
-    height: 18vh;
+    width: 8vw;
+    height: 20vh;
 }
 
 /* BASKET */
@@ -264,7 +269,7 @@ h1 {
 
 .basket_image {
     width: 5vw;
-    height: 10vh;
+    height: 12vh;
 }
 
 /* DASHBOARD */
@@ -300,7 +305,7 @@ h1 {
 
 .order_product_image {
     width: 8vw;
-    height: 18vh;
+    height: 22vh;
 }
 
 /* ORDER CONFIRMED */
@@ -450,13 +455,7 @@ h1 {
 /* MEDIA SCREEN */
 @media screen and (max-width: 1500px) {
     .image_index, .empty_image {
-        width: 50%;
-        height: 16vh;
-    }
-
-    .header_icon {
-        width: 2vw;
-        height: 3vh;
+        width: 10vw;
     }
 
     .basket_products {
@@ -464,8 +463,7 @@ h1 {
     }
 
     .basket_image {
-        width: 15vw;
-        height: 20vh;
+        width: 8vw;
     }
 
     .add_product, .edit_product {
@@ -486,7 +484,6 @@ h1 {
 
     .image_show {
         width: 14vw;
-        height: 26vh;
     }
 
     .add_product_image_container {
@@ -496,25 +493,15 @@ h1 {
 
 @media screen and (max-width: 1250px) {
     .image_index, .empty_image {
-        width: 50%;
-        height: 14vh;
+        width: 12vw;
     }
 
     .products {
         grid-template-columns: repeat(4, 1fr);
     }
 
-    .header_icon {
-        width: 2.5vw;
-        height: 3vh;
-    }
-
-    header {
-        gap: 7.5vw
-    }
-
     .basket_image {
-        width: 15vw;
+        width: 10vw;
     }
 
     .add_product, .edit_product {
@@ -531,7 +518,6 @@ h1 {
 
     .order_product_image {
         width: 12vw;
-        height: 18vh;
     }
 
     .product_show {
@@ -540,7 +526,6 @@ h1 {
 
     .image_show {
         width: 16vw;
-        height: 26vh;
     }
 
     .add_product_image {
@@ -551,21 +536,11 @@ h1 {
 
 @media screen and (max-width: 1000px) {
     .image_index, .empty_image {
-        width: 50%;
-        height: 14vh;
+        width: 14vw;
     }
 
     .products {
         grid-template-columns: repeat(3, 1fr);
-    }
-
-    .header_icon {
-        width: 2.75vw;
-        height: 3vh;
-    }
-
-    .basket_image {
-        width: 20vw;
     }
 
     .add_product, .edit_product {
@@ -586,7 +561,6 @@ h1 {
 
     .order_product_image {
         width: 14vw;
-        height: 18vh;
     }
 
     .product_show {
@@ -594,36 +568,21 @@ h1 {
     }
 
     .image_show {
-        width: 20vw;
-        height: 26vh;
+        width: 18vw;
     }
 }
 
 @media screen and (max-width: 750px) {
     .image_index, .empty_image {
-        width: 50%;
-        height: 12vh;
+        width: 18vw;
     }
 
     .products {
         grid-template-columns: repeat(2, 1fr);
     }
 
-    .header_icon {
-        width: 3.5vw;
-        height: 3vh;
-    }
-
-    header {
-        gap: 10vw;
-    }
-
-    .basket_products {
-        grid-template-columns: 1fr;
-    }
-
     .basket_image {
-        width: 25vw;
+        width: 16vw;
     }
 
     .add_product, .edit_product {
@@ -655,8 +614,7 @@ h1 {
     }
 
     .order_product_image {
-        width: 18vw;
-        height: 18vh;
+        width: 16vw;
     }
 
     .product_show {
@@ -664,8 +622,7 @@ h1 {
     }
 
     .image_show {
-        width: 26vw;
-        height: 26vh;
+        width: 24vw;
     }
 
     .add_product_image {
@@ -676,25 +633,20 @@ h1 {
 
 @media screen and (max-width: 500px) {
     .image_index, .empty_image {
-        width: 50%;
-        height: 14vh;
+        width: 26vw;
     }
 
     .products {
         grid-template-columns: 1fr;
     }
 
-    .header_icon {
-        width: 6.5vw;
-        height: 3vh;
-    }
-
-    header {
-        gap: 10vw;
+    .basket_products {
+        grid-template-columns: 1fr;
     }
 
     .basket_image {
-        width: 40vw;
+        width: 30vw;
+        height: 16vh;
     }
 
     .add_product, .edit_product {
@@ -710,8 +662,7 @@ h1 {
     }
 
     .image_show {
-        width: 50vw;
-        height: 26vh;
+        width: 40vw;
     }
 
     .black_button {
@@ -726,21 +677,100 @@ h1 {
 }
 
 @media screen and (max-width: 350px) {
+    .image_index, .empty_image {
+        width: 40vw;
+    }
+
     main {
         padding: 15px;
     }
 
     .image_show {
-        width: 65vw;
-        height: 26vh;
+        width: 55vw;
     }
 
     .basket_image {
-        width: 50vw;
+        width: 40vw;
+        height: 18vh;
     }
 
     .add_product_image {
         width: 40vw;
         height: 18vh;
     }
+}
+
+/* BURGER MENU */
+/* Кнопка показу меню */
+.burger-menu {
+    cursor: pointer;
+    font-size: 1.5rem;
+    margin: 10px;
+    display: none;
+}
+
+/* Меню */
+.menu {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 50px;
+    left: 0;
+    background-color: #202020;
+    z-index: 1000;
+    width: 100%;
+}
+
+/* Відкрите меню */
+.menu.open {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.menu.open a {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    width: 100%;
+}
+
+.header_icon {
+    width: 24px;
+    height: 24px;
+    margin: 10px;
+}
+
+@media (min-width: 500px) {
+    .burger-menu {
+        display: none;
+    }
+
+    .menu {
+        display: flex;
+        flex-direction: row;
+        position: static;
+        background-color: transparent;
+        box-shadow: none;
+        width: auto;
+    }
+}
+
+@media (max-width: 500px) {
+    .burger-menu {
+        display: inline-block;
+    }
+
+    .menu {
+        display: none;
+    }
+
+    .menu.open {
+        display: flex;
+    }
+}
+
+.burger_text {
+    color: white;
 }
