@@ -7,9 +7,10 @@ import 'react-toastify/dist/ReactToastify.css';
 import Add from "@/Pages/Shop/Basket/Add.jsx";
 import Footer from "@/Components/Footer.jsx";
 
-const Show = ({product}) => {
+const Show = ({product, basket}) => {
     const {auth} = usePage().props;
     const [slider, setSlider] = useState(0);
+    const [basketQuantity, setBasketQuantity] = useState(basket.length);
 
     const previousSlide = () => {
         if (slider === 0) {
@@ -29,7 +30,7 @@ const Show = ({product}) => {
 
     return (
         <>
-            <Header/>
+            <Header basketQuantity={basketQuantity}/>
             <Head title={product.name}/>
             <ToastContainer/>
 
@@ -66,7 +67,7 @@ const Show = ({product}) => {
                     <p className='product_price'>Ціна: {product.price} грн</p>
 
                     {product.quantity > 0 ?
-                        <Add product={product}/>
+                        <Add product={product} basketQuantity={basketQuantity} setBasketQuantity={setBasketQuantity}/>
                         : <button className='black_button no_product'>Немає в
                             наявності</button>
 

@@ -3,7 +3,7 @@ import axios from 'axios';
 import {toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const Add = ({product}) => {
+const Add = ({product, basketQuantity, setBasketQuantity}) => {
     const [csrfToken, setCsrfToken] = useState(null);
 
     useEffect(() => {
@@ -14,30 +14,27 @@ const Add = ({product}) => {
     }, []);
 
     const addToBasket = async (product) => {
-        try {
-            await axios.post(
-                route('add-to-basket', product.id),
-                null,
-                {
-                    headers: {
-                        'X-CSRF-TOKEN': csrfToken,
-                    }
+        await axios.post(
+            route('add-to-basket', product.id),
+            null,
+            {
+                headers: {
+                    'X-CSRF-TOKEN': csrfToken,
                 }
-            );
-            toast.success('Товар додано до кошика', {
-                position: "bottom-center",
-                autoClose: 2000,
-                theme: "dark",
-            });
-        } catch (error) {
-            console.error('Error:', error.response.data);
-        }
+            }
+        );
+        toast.success('Додано до кошика', {
+            position: "bottom-center",
+            autoClose: 2000,
+            theme: "dark",
+        });
+        setBasketQuantity(basketQuantity + 1);
     };
 
     return (
         <>
             <button onClick={() => addToBasket(product)} className="black_button green">
-                Додати у корзину
+                Додати у кошик
             </button>
         </>
     );

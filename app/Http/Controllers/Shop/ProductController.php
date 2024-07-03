@@ -19,6 +19,7 @@ class ProductController extends Controller
         $products = Product::with('photos')->get();
         return Inertia::render('Shop/Products/Index', [
             'products' => $products,
+            'basket' => session()->get('basket', []),
         ]);
     }
 
@@ -27,15 +28,14 @@ class ProductController extends Controller
         return Inertia::render('Shop/Products/Create');
     }
 
-
     public function show(Product $product): Response
     {
         $product->load('photos');
         return Inertia::render('Shop/Products/Show', [
             'product' => $product,
+            'basket' => session()->get('basket', []),
         ]);
     }
-
 
     public function edit(Product $product): Response
     {

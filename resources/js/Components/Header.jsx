@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {usePage} from '@inertiajs/react';
 import NavLink from '@/Components/NavLink';
 
-const Header = () => {
+const Header = ({basketQuantity}) => {
     const {auth} = usePage().props;
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -24,6 +24,7 @@ const Header = () => {
 
                 <NavLink href={route('basket')} active={route().current('basket')}>
                     <img className='header_icon' src="/icons/basket.png" alt="Basket"/>
+                    {basketQuantity ? <p className='green'>{basketQuantity}</p> : null}
                     {isMenuOpen && <p className='burger_text'>Корзина</p>}
                 </NavLink>
 

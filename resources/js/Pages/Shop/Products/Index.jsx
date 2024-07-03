@@ -6,12 +6,13 @@ import 'react-toastify/dist/ReactToastify.css';
 import Add from "@/Pages/Shop/Basket/Add.jsx";
 import Footer from "@/Components/Footer.jsx";
 
-const Index = ({products}) => {
+const Index = ({products, basket}) => {
     const [productsList] = useState(products);
+    const [basketQuantity, setBasketQuantity] = useState(basket.length);
 
     return (
         <>
-            <Header/>
+            <Header basketQuantity={basketQuantity}/>
             <Head title="Всі товари"/>
 
             <main>
@@ -34,7 +35,7 @@ const Index = ({products}) => {
 
                             <div className='product_button'>
                                 {product.quantity > 0
-                                    ? <Add product={product}/>
+                                    ? <Add product={product} basketQuantity={basketQuantity} setBasketQuantity={setBasketQuantity}/>
                                     : <button className='black_button no_product'>Немає в наявності</button>
                                 }
                             </div>
