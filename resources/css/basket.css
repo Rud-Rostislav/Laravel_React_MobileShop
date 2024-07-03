@@ -1,0 +1,27 @@
+.basket_order {
+    gap: 2.5vh;
+}
+
+.total_length {
+    font-size: 1.25rem;
+    font-weight: bolder;
+}
+
+.basket_products {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-items: center;
+    align-items: center;
+    gap: 25px;
+    background: #090909;
+    padding: 25px;
+    border-radius: 10px;
+}
+
+.basket_product {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
