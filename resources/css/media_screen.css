@@ -29,6 +29,10 @@
         grid-template-columns: repeat(3, 1fr);
     }
 
+    .basket_products {
+        grid-template-columns: 1fr 1fr;
+    }
+
     .add_product, .edit_product {
         width: 60vw;
     }

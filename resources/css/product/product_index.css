@@ -6,6 +6,14 @@
 
 .product {
     background: #202020;
+
+    transition: 0.5s;
+
+    &:hover {
+        transition: 0.5s;
+        scale: 102.5%;
+        background: #151515;
+    }
 }
 
 .product_link {

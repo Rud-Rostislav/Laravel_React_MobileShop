@@ -1,6 +1,6 @@
 .basket_products {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     gap: 25px;
     background: #090909;
     padding: 25px;
