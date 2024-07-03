@@ -38,7 +38,7 @@ export default function Dashboard({auth, orders, products}) {
                                   className='order_product'>
                                 {product?.photos && product.photos.length > 0 ?
                                     <img src={`/storage/${product.photos[0].path}`} alt="Product image"/>
-                                    : <p className='empty_image'></p>
+                                    : null
                                 }
                                 <p className='product_name'>{product?.name}</p>
                                 <p className='product_price'>{product?.price} грн</p>

@@ -61,7 +61,7 @@ const Index = ({basket}) => {
 
                 {basketItems.length === 0 ? <h1>Кошик порожній</h1> :
                     <>
-                        <form method="POST" onSubmit={makeOrder} className='add_product basket_order'>
+                        <form method="POST" onSubmit={makeOrder} className='add_product'>
                             <input type="text" name='name' required placeholder='ПІБ'/>
                             <input type="email" name='email' required placeholder='Пошта'/>
                             <input type="text" name='phone' required placeholder='Номер телефону'/>
@@ -77,14 +77,17 @@ const Index = ({basket}) => {
                                                 <p className='product_name'>{item.product.name}</p>
                                             </div>
                                             :
-                                            <p className='product_name'>{item.product.name}</p>
+                                            <div className='basket_product'>
+                                                <img src='/images/empty_image.png' alt="Empty image"/>
+                                                <p className='product_name'>{item.product.name}</p>
+                                            </div>
                                         }
                                         <p className='product_price'>{item.product.price} грн</p>
                                     </Link>
                                 ))}
                             </div>
 
-                            <p className='total_length'>Кількість товарів: <strong>{basketItems.length}</strong></p>
+                            <p className='total_price'>Кількість товарів: <strong>{basketItems.length}</strong></p>
                             <p className='total_price'>До сплати: <strong>{totalPrice}</strong> грн</p>
 
                             <button type="submit" className='black_button green'>Замовити</button>

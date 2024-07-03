@@ -1,9 +1,8 @@
-/* DASHBOARD */
 .orders {
     display: grid;
     grid-template-columns: 1fr;
     gap: 25px;
-    padding: 0 15vw;
+    padding: 0 10vw;
 }
 
 .order {
@@ -11,10 +10,11 @@
     padding: 25px;
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    gap: 25px;
+    gap: 10px;
     justify-items: center;
     align-items: center;
-    background-color: #202020;
+    background: rgb(32, 32, 32);
+    border: #353535 solid 1px;
 }
 
 .order_product {
@@ -22,14 +22,11 @@
     flex-direction: column;
     gap: 10px;
     justify-content: center;
-    align-items: center;
     padding: 10px;
-    border-radius: 10px;
     width: 10vw;
-    height: 30vh;
+    min-height: 30vh;
 }
 
-/* ORDER CONFIRMED */
 .order_confirmed {
     grid-template-columns: repeat(6, 1fr);
 }

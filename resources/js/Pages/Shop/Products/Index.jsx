@@ -26,16 +26,17 @@ const Index = ({products, basket}) => {
                             <Link className="product_link" href={route('products.show', product.id)}>
                                 <p className="product_name">{product.name}</p>
 
-                                {product.photos && product.photos.length > 0 ?
-                                    <img src={`/storage/${product.photos[0].path}`}
-                                         alt="Product image"/>
-                                    : <p className='empty_image'></p>
+                                {product.photos && product.photos.length > 0
+                                    ? <img src={`/storage/${product.photos[0].path}`}
+                                           alt="Product image"/>
+                                    : <img src='/images/empty_image.png' alt="Empty image"/>
                                 }
                             </Link>
 
                             <div className='product_button'>
                                 {product.quantity > 0
-                                    ? <Add product={product} basketQuantity={basketQuantity} setBasketQuantity={setBasketQuantity}/>
+                                    ? <Add product={product} basketQuantity={basketQuantity}
+                                           setBasketQuantity={setBasketQuantity}/>
                                     : <button className='black_button no_product'>Немає в наявності</button>
                                 }
                             </div>

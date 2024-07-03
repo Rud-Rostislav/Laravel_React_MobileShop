@@ -2,12 +2,12 @@ import './bootstrap';
 import '../css/basket.css';
 import '../css/burger_menu.css';
 import '../css/main.css';
-import '../css/media_screen.css';
 import '../css/orders.css';
 import '../css/product_create_edit.css';
 import '../css/product_index.css';
 import '../css/product_show.css';
 import '../css/project_task.css';
+import '../css/media_screen.css';
 
 import {createRoot} from 'react-dom/client';
 import {createInertiaApp} from '@inertiajs/react';

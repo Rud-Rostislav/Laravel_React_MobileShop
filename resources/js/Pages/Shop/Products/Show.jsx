@@ -58,7 +58,7 @@ const Show = ({product, basket}) => {
 
                         </div>
 
-                        : <p className='empty_image'></p>
+                        : <img src='/images/empty_image.png' alt="Empty image"/>
                     }
 
                     <p>{product.description}</p>

@@ -16,7 +16,9 @@ export default function Authenticated({user, header, children}) {
 
                         <Header/>
 
-                        <div className="flex justify-between h-16">
+                        <div
+                            style={{border: '1px solid #323232', padding: '10px', margin: '10px', borderRadius: '15px'}}
+                            className="flex justify-between h-16">
                             <div className="flex">
 
                                 <div className="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">

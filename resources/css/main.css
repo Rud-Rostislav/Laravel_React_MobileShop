@@ -10,8 +10,33 @@
 }
 
 body {
-    background: #090909;
+    background: #0e0e0e;
     color: #ffffff;
+}
+
+input, textarea, select {
+    background: #0e0e0e !important;
+    color: #ffffff !important;
+    border-radius: 15px !important;
+    border: none;
+    height: 5vh;
+}
+
+.black_button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    padding: 5px;
+    background: #0e0e0e;
+    width: 100%;
+    text-align: center;
+    height: 5vh;
+    font-size: 1.25rem;
+
+    &:hover {
+        background: #0e0e0e !important;
+    }
 }
 
 header {
@@ -20,28 +45,18 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 5vw;
 }
 
-img, .empty_image {
+img {
     max-width: 100%;
     height: auto;
     max-height: 25vh;
 }
 
-.empty_image {
-    max-width: 100%;
-    height: 25vh;
-}
-
-.image_show {
-    max-height: 30vh;
-}
-
 .border-b-2:hover {
     transition: 1s;
     border-bottom: 1px solid #858585 !important;
-    margin: 0 5px
+    margin: 0 5px;
 }
 
 .border-b-2 {
@@ -60,7 +75,7 @@ main {
 
 footer {
     background: #202020;
-    color: #8a8a8a;
+    color: #bfbfbf;
     font-size: 1.25rem;
     height: 5vh;
     display: flex;
@@ -68,22 +83,14 @@ footer {
     align-items: center;
 }
 
-input, textarea, select {
-    background: #090909 !important;
-    color: #ffffff !important;
-    border-radius: 10px !important;
-    border: none;
-    height: 5vh;
-}
-
 input::placeholder, textarea::placeholder {
-    color: #535353;
+    color: #777777;
 }
 
 input[type='file'] {
     padding: 10px 0 10px 40%;
     width: 100%;
-    color: #535353 !important;
+    color: #777777 !important;
 }
 
 input::file-selector-button {
@@ -105,23 +112,8 @@ h1 {
 }
 
 .product_price {
-    font-size: 1.25rem;
-    font-weight: bolder;
-}
-
-.total_price {
     font-size: 1.5rem;
     font-weight: bolder;
-}
-
-.black_button {
-    border-radius: 20px;
-    padding: 10px 5px;
-    background: #090909;
-    width: 100%;
-    text-align: center;
-    height: 5vh;
-    font-size: 1.25rem;
 }
 
 .no_product {
@@ -131,10 +123,6 @@ h1 {
 
 .red {
     color: red;
-
-    &:hover {
-        background: #090909 !important;
-    }
 }
 
 .green {
