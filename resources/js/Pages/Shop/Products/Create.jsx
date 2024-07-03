@@ -49,7 +49,7 @@ const Create = () => {
                     {data.photos.length > 0 &&
                         <div className='add_product_image_container'>
                             {data.photos.map((file, index) => (
-                                <img className='add_product_image' key={index} src={URL.createObjectURL(file)}/>
+                                <img key={index} src={URL.createObjectURL(file)} alt='Add product image'/>
                             ))}
                         </div>
                     }

@@ -27,7 +27,7 @@ const Index = ({products, basket}) => {
                                 <p className="product_name">{product.name}</p>
 
                                 {product.photos && product.photos.length > 0 ?
-                                    <img className='image_index' src={`/storage/${product.photos[0].path}`}
+                                    <img src={`/storage/${product.photos[0].path}`}
                                          alt="Product image"/>
                                     : <p className='empty_image'></p>
                                 }

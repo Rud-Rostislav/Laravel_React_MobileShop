@@ -34,11 +34,10 @@ export default function Dashboard({auth, orders, products}) {
                         </p>
 
                         {getProductsByIds(order.products_id).map((product, index) => (
-                            <Link href={route( 'products.show', product?.id)} key={`${product?.id}_${index}`}
-                                 className='order_product'>
+                            <Link href={route('products.show', product?.id)} key={`${product?.id}_${index}`}
+                                  className='order_product'>
                                 {product?.photos && product.photos.length > 0 ?
-                                    <img src={`/storage/${product.photos[0].path}`} alt="Product image"
-                                         className='order_product_image'/>
+                                    <img src={`/storage/${product.photos[0].path}`} alt="Product image"/>
                                     : <p className='empty_image'></p>
                                 }
                                 <p className='product_name'>{product?.name}</p>

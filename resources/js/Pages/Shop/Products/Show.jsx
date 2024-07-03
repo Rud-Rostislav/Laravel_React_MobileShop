@@ -45,7 +45,6 @@ const Show = ({product, basket}) => {
                                 <button onClick={previousSlide} className='slider_button'>&#60;</button>
                             }
 
-
                             <img className='image_show' src={`/storage/${product.photos[slider].path}`}
                                  alt="Product image"/>
 

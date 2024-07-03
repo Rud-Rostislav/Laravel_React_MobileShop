@@ -81,11 +81,11 @@ const Edit = ({product}) => {
                         <div id="photoPreviews" className='add_product_image_container'>
                             {data.photos.map((photo, index) => (
                                 <div key={index}>
-                                    {photo.path && <img className='add_product_image' src={`/storage/${photo.path}`}
+                                    {photo.path && <img src={`/storage/${photo.path}`}
                                                         alt={`Photo ${index + 1}`}
                                     />}
                                     {photo.file && !photo.path &&
-                                        <img className='add_product_image' src={URL.createObjectURL(photo.file)}
+                                        <img src={URL.createObjectURL(photo.file)}
                                              alt={`Photo ${index + 1}`}
                                         />}
                                     <button type="button" onClick={() => removePhoto(photo.id)}>X</button>
