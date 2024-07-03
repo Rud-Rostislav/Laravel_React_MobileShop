@@ -23,6 +23,7 @@ export default function Authenticated({user, header, children}) {
                                 borderRadius: '15px',
                                 display: 'flex',
                                 justifyContent: 'center',
+                                alignItems: 'center',
                                 width: '75vw',
                                 margin: '25px auto 10px auto',
                             }}
@@ -106,21 +107,18 @@ export default function Authenticated({user, header, children}) {
                     </div>
 
                     <div className={(showingNavigationDropdown ? 'block' : 'hidden') + ' sm:hidden'}>
-                        <div className="pt-2 pb-3 space-y-1">
+                        <div className="pt-2 space-y-1 text-white">
                             <ResponsiveNavLink href={route('dashboard')} active={route().current('dashboard')}>
                                 Dashboard
                             </ResponsiveNavLink>
                         </div>
 
-                        <div className="pt-4 pb-1 border-t border-gray-200">
-                            <div className="px-4">
-                                <div className="font-medium text-base">{user.name}</div>
-                                <div className="font-medium text-sm">{user.email}</div>
-                            </div>
-
+                        <div className="pb-1">
                             <div className="mt-3 space-y-1">
-                                <ResponsiveNavLink href={route('profile.edit')}>Profile</ResponsiveNavLink>
-                                <ResponsiveNavLink method="post" href={route('logout')} as="button">
+                                <ResponsiveNavLink className='text-white'
+                                                   href={route('profile.edit')}>Profile</ResponsiveNavLink>
+                                <ResponsiveNavLink className='text-white' method="post" href={route('logout')}
+                                                   as="button">
                                     Log Out
                                 </ResponsiveNavLink>
                             </div>
