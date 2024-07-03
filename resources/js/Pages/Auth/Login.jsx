@@ -34,7 +34,7 @@ export default function Login({status, canResetPassword}) {
 
             <form onSubmit={submit}>
                 <div>
-                    <InputLabel htmlFor="email" value="Пошта"/>
+                    <InputLabel htmlFor="email" value="Пошта" className='text-white'/>
 
                     <TextInput
                         id="email"
@@ -51,7 +51,7 @@ export default function Login({status, canResetPassword}) {
                 </div>
 
                 <div className="mt-4">
-                    <InputLabel htmlFor="password" value="Пароль"/>
+                    <InputLabel htmlFor="password" value="Пароль" className='text-white'/>
 
                     <TextInput
                         id="password"
@@ -73,19 +73,19 @@ export default function Login({status, canResetPassword}) {
                             checked={data.remember}
                             onChange={(e) => setData('remember', e.target.checked)}
                         />
-                        <span className="ms-2 text-sm text-gray-600">Запам'ятати мене</span>
+                        <span className="ms-2 text-sm text-white-600">Запам'ятати мене</span>
                     </label>
                 </div>
 
                 <div className="flex items-center justify-end mt-4">
                     <Link href={route('register')}
-                          className="mr-12 text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                          className="mr-12 text-sm text-white-600 hover:text-white-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                         Реєстрація
                     </Link>
                     {canResetPassword && (
                         <Link
                             href={route('password.request')}
-                            className="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                            className="underline text-sm text-white-600 hover:text-white-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                         >
                             Забули пароль?
                         </Link>

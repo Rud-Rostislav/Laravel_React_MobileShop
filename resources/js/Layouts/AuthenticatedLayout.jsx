@@ -11,13 +11,21 @@ export default function Authenticated({user, header, children}) {
     return (
         <>
             <div className="min-h-screen">
-                <nav style={{background: '#202020', color: '#ffffff !important'}}>
+                <nav style={{background: '#202020', color: '#ffffff !important', padding: '10px'}}>
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
                         <Header/>
 
                         <div
-                            style={{border: '1px solid #323232', padding: '10px', margin: '10px', borderRadius: '15px'}}
+                            style={{
+                                border: '1px solid #323232',
+                                padding: '10px',
+                                borderRadius: '15px',
+                                display: 'flex',
+                                justifyContent: 'center',
+                                width: '75vw',
+                                margin: '25px auto 10px auto',
+                            }}
                             className="flex justify-between h-16">
                             <div className="flex">
 

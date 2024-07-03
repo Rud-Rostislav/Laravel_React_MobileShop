@@ -24,8 +24,8 @@ const Add = ({product, basketQuantity, setBasketQuantity}) => {
             }
         );
         toast.success('Додано до кошика', {
-            position: "bottom-center",
-            autoClose: 2000,
+            position: "top-right",
+            autoClose: 1500,
             theme: "dark",
         });
         setBasketQuantity(basketQuantity + 1);

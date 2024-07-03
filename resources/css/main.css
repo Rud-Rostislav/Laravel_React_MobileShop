@@ -50,7 +50,7 @@ header {
 img {
     max-width: 100%;
     height: auto;
-    max-height: 25vh;
+    max-height: 20vh;
 }
 
 .border-b-2:hover {
@@ -65,7 +65,7 @@ img {
 
 main {
     min-height: 90vh;
-    padding: 25px;
+    padding: 50px;
 }
 
 .main_show, .main_create {

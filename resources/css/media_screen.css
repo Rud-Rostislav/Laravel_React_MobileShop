@@ -1,7 +1,10 @@
-/* MEDIA SCREEN */
-@media screen and (max-width: 1500px) {
-    .basket_products {
-        grid-template-columns: repeat(2, 1fr);
+@media screen and (max-width: 1250px) {
+    .products {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .product_name {
+        font-size: 1.25rem;
     }
 
     .add_product, .edit_product {
@@ -9,33 +12,7 @@
     }
 
     .orders {
-        padding: 0 10vw;
-    }
-
-    .order {
-        grid-template-columns: repeat(4, 1fr);
-    }
-
-    .product_show {
-        width: 40vw;
-    }
-
-    .add_product_image_container {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media screen and (max-width: 1250px) {
-    .products {
-        grid-template-columns: repeat(4, 1fr);
-    }
-
-    .add_product, .edit_product {
-        width: 60vw;
-    }
-
-    .orders {
-        padding: 0 7.5vw;
+        padding: 0 5vw;
     }
 
     .order_product {
@@ -53,15 +30,15 @@
     }
 
     .add_product, .edit_product {
-        width: 70vw;
+        width: 60vw;
     }
 
     .orders {
-        padding: 0 5vw;
+        padding: 0 1vw;
     }
 
     .order {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(4, 1fr);
     }
 
     .order_product {
@@ -79,7 +56,7 @@
     }
 
     .add_product, .edit_product {
-        width: 80vw;
+        width: 70vw;
     }
 
     main {
@@ -94,12 +71,8 @@
         grid-template-columns: repeat(3, 1fr);
     }
 
-    .orders {
-        padding: 0 1vw;
-    }
-
     .order {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(3, 1fr);
     }
 
     .order_product {
@@ -118,14 +91,15 @@
 
     .basket_products {
         grid-template-columns: 1fr;
+        padding: 50px;
     }
 
     .add_product, .edit_product {
-        width: 90vw;
+        width: 80vw;
     }
 
     .order {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
     }
 
     .order_product {
@@ -137,13 +111,24 @@
     }
 
     .black_button {
-        margin: 0 auto;
         font-size: 1rem;
     }
 }
 
 @media screen and (max-width: 350px) {
     main {
-        padding: 15px;
+        padding: 10px;
+    }
+
+    .add_product, .edit_product {
+        width: 90vw;
+    }
+
+    .order {
+        grid-template-columns: 1fr;
+    }
+
+    .order_product {
+        width: 50vw;
     }
 }
