@@ -34,21 +34,18 @@ class OrderController extends Controller
     public function destroy(Order $order)
     {
         $order->delete();
-        return redirect()->route('dashboard');
     }
 
     public function confirm(Order $order)
     {
         $order->confirmed = true;
         $order->save();
-        return redirect()->route('order.confirmed');
     }
 
     public function notConfirm(Order $order)
     {
         $order->confirmed = false;
         $order->save();
-        return redirect()->route('dashboard');
     }
 
     public function confirmed()

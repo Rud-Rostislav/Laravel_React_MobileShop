@@ -3,10 +3,8 @@
 namespace App\Http\Controllers\Manager;
 
 use App\Http\Controllers\Controller;
-use App\Models\Project;
 use App\Models\Task;
 use Illuminate\Http\Request;
-use Inertia\Inertia;
 
 class TaskController extends Controller
 {

@@ -1,20 +1,20 @@
 .orders {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 25px;
-    padding: 0 10vw;
+    gap: 50px;
+}
+
+.order_header {
+    margin-bottom: 5px;
 }
 
 .order {
-    border-radius: 10px;
-    padding: 25px;
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    gap: 10px;
     justify-items: center;
     align-items: center;
-    background: rgb(32, 32, 32);
-    border: #353535 solid 1px;
+    gap: 10px;
+    padding: 10px;
+    background: #202020;
 }
 
 .order_product {

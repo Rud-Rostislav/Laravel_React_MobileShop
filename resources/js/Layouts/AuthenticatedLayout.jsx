@@ -24,7 +24,6 @@ export default function Authenticated({user, header, children}) {
                                 display: 'flex',
                                 justifyContent: 'center',
                                 alignItems: 'center',
-                                width: '75vw',
                                 margin: '25px auto 10px auto',
                             }}
                             className="flex justify-between h-16">
