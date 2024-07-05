@@ -30,7 +30,6 @@ input, textarea, select {
     padding: 5px;
     background: #0e0e0e;
     width: 100%;
-    text-align: center;
     height: 5vh;
     font-size: 1.25rem;
 
@@ -89,7 +88,6 @@ input::placeholder, textarea::placeholder {
 
 input[type='file'] {
     padding: 10px 0 10px 40%;
-    width: 100%;
     color: #777777 !important;
 }
 
@@ -108,7 +106,7 @@ h1 {
 }
 
 .product_name {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
 }
 
 .product_price {

@@ -33,8 +33,8 @@
     align-items: center;
     justify-items: center;
     border-top: 1px solid #5c5c5c;
-    font-size: 1.25rem;
     background: white;
+    font-size: 1.1rem;
 
     &:hover {
         background-color: #dddddd !important;
@@ -49,7 +49,6 @@
 
 .project_edit_name_input {
     border-radius: 0 !important;
-    font-size: 1.25rem;
     background: #202020 !important;
 
     &:first-child {
@@ -70,11 +69,16 @@
     grid-template-columns: 1fr 2fr 1fr;
 }
 
+.task_edit_rows .black_button {
+    height: 4vh;
+    font-size: 1rem;
+}
+
 .task_edit_input {
     background: #ffffff !important;
     color: #000000 !important;
-    font-size: 1.25rem;
     border-radius: 0 !important;
+    height: 4vh;
 
     &:hover {
         background: #dddddd !important;
@@ -83,7 +87,6 @@
 
 .task_edit_buttons {
     border-radius: 0;
-    font-size: 1.25rem;
     background: #202020 !important;
 
     &:hover {
@@ -118,7 +121,6 @@
 }
 
 .form_input {
-    padding: 0 !important;
     background: #202020;
     color: white;
     border-radius: 0 0 10px 10px !important;
