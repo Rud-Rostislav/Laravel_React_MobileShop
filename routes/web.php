@@ -1,11 +1,11 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Auth\ProfileController;
+use App\Http\Controllers\Manager\ProjectController;
+use App\Http\Controllers\Manager\TaskController;
 use App\Http\Controllers\Shop\BasketController;
 use App\Http\Controllers\Shop\OrderController;
 use App\Http\Controllers\Shop\ProductController;
-use App\Http\Controllers\Manager\ProjectController;
-use App\Http\Controllers\Manager\TaskController;
 use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;

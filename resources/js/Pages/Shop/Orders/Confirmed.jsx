@@ -1,6 +1,6 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.jsx';
 import {Head, Link} from '@inertiajs/react';
-import {useState} from "react";
+import React, {useState} from "react";
 import Dropdown from "@/Components/Dropdown.jsx";
 
 export default function Confirmed({auth, orders, products}) {
@@ -25,7 +25,17 @@ export default function Confirmed({auth, orders, products}) {
             <div className='orders'>
                 {ordersList.filter(order => order.confirmed).map(order => (
                     <div key={order.id}>
-                        <div className='order order_confirmed order_header' key={order.id}>
+                        <div className='order order_confirmed_header order_header' key={order.id}>
+                            <p>{new Date(order.created_at).toLocaleString()}</p>
+
+                            <p>{order.name}</p>
+                            <p>{order.email} - {order.phone}</p>
+                            <p>{order.comment.length > 0 ? order.comment : ''}</p>
+
+                            <p>
+                                Загально ({order.products_id.split(',').length})
+                                - {getProductsByIds(order.products_id).reduce((total, product) => total + (product?.price ?? 0), 0)} грн.
+                            </p>
                             <Dropdown.Link as="button" href={route('order.destroy', order.id)}
                                            method="delete" className='black_button red'
                                            onClick={notConfirmOrder}>Видалити</Dropdown.Link>
@@ -33,15 +43,6 @@ export default function Confirmed({auth, orders, products}) {
                             <Dropdown.Link as="button" href={route('order.notConfirm', order)} method='patch'
                                            className='black_button red' onClick={notConfirmOrder}>Не
                                 виконано</Dropdown.Link>
-
-                            <p>{order.name}</p>
-                            <p>{order.email} - {order.phone}</p>
-                            <p>Коментар: {order.comment.length > 0 ? order.comment : ''}</p>
-
-                            <p>
-                                Загально ({order.products_id.split(',').length}) до
-                                сплати: {getProductsByIds(order.products_id).reduce((total, product) => total + (product?.price ?? 0), 0)} грн.
-                            </p>
                         </div>
 
                         <div className='order'>

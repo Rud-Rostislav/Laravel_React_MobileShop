@@ -26,18 +26,19 @@ export default function Dashboard({auth, orders, products}) {
                 {ordersList.filter((order, idx) => order.confirmed === 0).map(order => (
                     <div key={order.id}>
                         <div className='order order_header'>
-                            <Dropdown.Link as="button" href={route('order.confirm', order)} method='patch'
-                                           className='black_button green'
-                                           onClick={confirmOrder}>Виконано</Dropdown.Link>
-
+                            <p>{new Date(order.created_at).toLocaleString()}</p>
                             <p>{order.name}</p>
                             <p>{order.email} - {order.phone}</p>
                             <p>{order.comment.length > 0 ? order.comment : ''}</p>
 
                             <p>
                                 Загально
-                                ({order.products_id.split(',').length}): {getProductsByIds(order.products_id).reduce((total, product) => total + (product?.price ?? 0), 0)} грн.
+                                ({order.products_id.split(',').length}) - {getProductsByIds(order.products_id).reduce((total, product) => total + (product?.price ?? 0), 0)} грн.
                             </p>
+
+                            <Dropdown.Link as="button" href={route('order.confirm', order)} method='patch'
+                                           className='black_button green'
+                                           onClick={confirmOrder}>Виконано</Dropdown.Link>
                         </div>
 
                         <div className='order'>

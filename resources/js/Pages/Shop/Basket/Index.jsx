@@ -69,20 +69,22 @@ const Index = ({basket}) => {
 
                             <div className='basket_products'>
                                 {basketItems.map((item, index) => (
-                                    <Link href={route('products.show', item.product.id)} key={index} className='basket_product'>
+                                    <Link href={route('products.show', item.product.id)} key={index}
+                                          className='basket_product'>
                                         {item.photos.length > 0 ?
-                                            <div className='basket_product'>
+                                            <>
                                                 <img src={`storage/${item.photos[0].path}`}
                                                      alt="Product image"/>
                                                 <p className='product_name'>{item.product.name}</p>
-                                            </div>
+                                                <p className='product_price'>{item.product.price} грн</p>
+                                            </>
                                             :
-                                            <div className='basket_product'>
+                                            <>
                                                 <img src='/images/empty_image.png' alt="Empty image"/>
                                                 <p className='product_name'>{item.product.name}</p>
-                                            </div>
+                                                <p className='product_price'>{item.product.price} грн</p>
+                                            </>
                                         }
-                                        <p className='product_price'>{item.product.price} грн</p>
                                     </Link>
                                 ))}
                             </div>

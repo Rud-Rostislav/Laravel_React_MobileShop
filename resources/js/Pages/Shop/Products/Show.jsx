@@ -37,7 +37,6 @@ const Show = ({product, basket}) => {
             <main className='main_show'>
 
                 <div className="product_show">
-                    <p className="product_name">{product.name}</p>
 
                     {product.photos && product.photos.length > 0 ?
                         <div className={product.photos.length > 1 ? 'slider' : 'slider_single_photo'}>
@@ -60,10 +59,11 @@ const Show = ({product, basket}) => {
 
                         : <img src='/images/empty_image.png' alt="Empty image"/>
                     }
+                    <p className="product_name">{product.name}</p>
 
-                    <p>{product.description}</p>
+                    <p className='product_description'>{product.description}</p>
 
-                    <p className='product_price'>Ціна: {product.price} грн</p>
+                    <p className='product_price'>{product.price} грн</p>
 
                     {product.quantity > 0 ?
                         <Add product={product} basketQuantity={basketQuantity} setBasketQuantity={setBasketQuantity}/>

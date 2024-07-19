@@ -24,13 +24,12 @@ const Index = ({products, basket}) => {
                         <div className="product" key={product.id}>
 
                             <Link className="product_link" href={route('products.show', product.id)}>
-                                <p className="product_name">{product.name}</p>
-
                                 {product.photos && product.photos.length > 0
                                     ? <img src={`/storage/${product.photos[0].path}`}
                                            alt="Product image"/>
                                     : <img src='/images/empty_image.png' alt="Empty image"/>
                                 }
+                                <p className="product_name">{product.name}</p>
                             </Link>
 
                             <div className='product_button'>

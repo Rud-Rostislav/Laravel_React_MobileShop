@@ -28,7 +28,8 @@
     grid-template-columns: 1fr;
     justify-items: center;
     width: 100%;
-    border: 1px solid #333333;
+    border: 1px solid #505050;
+    background: #0e0e0e;
     border-radius: 5px;
     padding: 10px;
 }

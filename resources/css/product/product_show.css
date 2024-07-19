@@ -1,16 +1,16 @@
-.image_show {
-    max-height: 40vh;
-}
-
 .product_show {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 5vh;
+    gap: 3vh;
     background: #202020;
     padding: 25px;
     border-radius: 25px;
     width: 40vw;
+}
+
+.image_show {
+    max-height: 40vh;
 }
 
 .slider {

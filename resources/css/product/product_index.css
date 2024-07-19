@@ -6,14 +6,6 @@
 
 .product {
     background: #202020;
-
-    transition: 0.5s;
-
-    &:hover {
-        transition: 0.5s;
-        scale: 102.5%;
-        background: #151515;
-    }
 }
 
 .product_link {
@@ -25,5 +17,5 @@
 }
 
 .product_button {
-    padding: 0 1vw 2vh 1vw;
+    padding: 0 2vw 2vh 2vw;
 }

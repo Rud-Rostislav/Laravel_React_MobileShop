@@ -5,30 +5,34 @@
 
 .order_header {
     margin-bottom: 5px;
+    border-radius: 10px 10px 0 0 !important;
 }
 
 .order {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     justify-items: center;
     align-items: center;
     gap: 25px;
     padding: 25px;
     background: #202020;
+    border-radius: 0 0 10px 10px;
 }
 
 .order_product {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    justify-content: center;
-    width: 10vw;
-    padding: 5px 10px;
-    min-height: 30vh;
-    border: 1px solid #2b2b2b;
+    padding: 0 0 10px 0;
+    border: 1px solid #505050;
+    background: #0e0e0e;
     border-radius: 10px;
 }
 
-.order_confirmed {
-    grid-template-columns: repeat(6, 1fr);
+.order_product img {
+    border-radius: 10px 10px 0 0;
+}
+
+.order_confirmed_header {
+    grid-template-columns: repeat(7, 1fr);
 }

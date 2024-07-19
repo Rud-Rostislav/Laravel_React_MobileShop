@@ -18,7 +18,7 @@ input, textarea, select {
     background: #0e0e0e !important;
     color: #ffffff !important;
     border-radius: 15px !important;
-    border: none;
+    border: none !important;
     height: 5vh;
 }
 
@@ -49,17 +49,17 @@ header {
 img {
     max-width: 100%;
     height: auto;
-    max-height: 20vh;
+    max-height: 25vh;
 }
 
 .border-b-2:hover {
-    transition: 1s;
+    transition: 0.5s;
     border-bottom: 1px solid #858585 !important;
-    margin: 0 5px;
+    margin: 0 4px;
 }
 
 .border-b-2 {
-    transition: 1s;
+    transition: 0.5s;
 }
 
 main {
@@ -75,7 +75,7 @@ main {
 footer {
     background: #202020;
     color: #bfbfbf;
-    font-size: 1.25rem;
+    font-size: 1.15rem;
     height: 5vh;
     display: flex;
     justify-content: center;
@@ -106,12 +106,16 @@ h1 {
 }
 
 .product_name {
-    font-size: 1.3rem;
+    font-size: 1.5rem;
+}
+
+.product_description {
+    font-size: 1.25rem;
 }
 
 .product_price {
-    font-size: 1.5rem;
-    font-weight: bolder;
+    font-size: 1.35rem;
+    font-weight: 800;
 }
 
 .no_product {

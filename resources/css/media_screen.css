@@ -1,32 +1,18 @@
 @media screen and (max-width: 1250px) {
     .products {
         grid-template-columns: repeat(4, 1fr);
-        border: 1px solid red;
     }
 
-    .add_product, .edit_product {
+    .add_product, .edit_product, .product_show {
         width: 50vw;
     }
 
     .order {
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(5, 1fr);
     }
 
-    .order_product {
-        width: 15vw;
-    }
-
-    .product_show {
-        width: 50vw;
-    }
-
-    .product_name {
+    .product_name, .product_price {
         font-size: 1.15rem;
-    }
-
-    .basket_products {
-        grid-template-columns: 1fr 1fr;
-        padding: 50px;
     }
 }
 
@@ -35,20 +21,12 @@
         grid-template-columns: repeat(3, 1fr);
     }
 
-    .add_product, .edit_product {
+    .add_product, .edit_product, .product_show {
         width: 60vw;
     }
 
     .order {
-        grid-template-columns: repeat(3, 1fr);
-    }
-
-    .order_product {
-        width: 20vw;
-    }
-
-    .product_show {
-        width: 60vw;
+        grid-template-columns: repeat(4, 1fr);
     }
 }
 
@@ -57,20 +35,16 @@
         grid-template-columns: repeat(2, 1fr);
     }
 
-    .add_product, .edit_product {
+    .add_product, .edit_product, .product_show {
         width: 70vw;
     }
 
     .order {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(3, 1fr);
     }
 
-    .order_product {
-        width: 25vw;
-    }
-
-    .product_show {
-        width: 70vw;
+    .basket_products {
+        grid-template-columns: 1fr 1fr;
     }
 
     .black_button {
@@ -84,24 +58,24 @@
         grid-template-columns: 1fr;
     }
 
-    .add_product, .edit_product {
-        width: 80vw;
+    .add_product, .edit_product, .product_show {
+        width: 90vw;
+    }
+
+    .main_show {
+        padding: 25px;
+    }
+
+    .product_show {
+        padding: 10px;
     }
 
     .order {
         grid-template-columns: repeat(1, 1fr);
     }
 
-    .order_product {
-        width: 40vw;
-    }
-
-    .product_show {
-        width: 80vw;
-    }
-
     .basket_products {
         grid-template-columns: 1fr;
-        padding: 75px;
+        padding: 25px;
     }
 }

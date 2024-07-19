@@ -1,6 +1,5 @@
 .main_project_task {
     display: grid;
-    grid-template-columns: 1fr;
     justify-items: center;
     align-items: center;
     gap: 50px;
@@ -13,7 +12,6 @@
     width: 50vw;
     border-radius: 10px;
     color: black;
-    box-shadow: 0 5px 10px -5px rgba(255, 255, 255, 0.25);
 }
 
 .project_header {
@@ -34,7 +32,7 @@
     justify-items: center;
     border-top: 1px solid #5c5c5c;
     background: white;
-    font-size: 1.1rem;
+    font-size: 1.25rem;
 
     &:hover {
         background-color: #dddddd !important;
