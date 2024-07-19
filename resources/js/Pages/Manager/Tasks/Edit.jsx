@@ -40,7 +40,9 @@ export default function Edit(props) {
                     задачу
                 </button>
 
-                <Dropdown.Link onClick={() => window.location.reload()} className="red black_button task_edit_buttons" as="button"
+                <Dropdown.Link onClick={() => setTimeout(() => window.location.reload(), 100)}
+                               className="red black_button task_edit_buttons"
+                               as="button"
                                href={route('tasks.destroy', task.id)}
                                method="delete">Видалити задачу</Dropdown.Link>
 

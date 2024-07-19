@@ -23,3 +23,9 @@
     border: 1px solid #505050;
     border-radius: 10px;
 }
+
+.remove_photo_button {
+    color: red;
+    font-size: 1.5rem;
+    cursor: pointer;
+}

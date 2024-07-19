@@ -33,7 +33,7 @@ const Add = ({product, basketQuantity, setBasketQuantity}) => {
 
     return (
         <>
-            <button onClick={() => addToBasket(product)} className="black_button green">
+            <button onClick={() => setTimeout(() => addToBasket(product), 100)} className="black_button green">
                 Додати у кошик
             </button>
         </>
