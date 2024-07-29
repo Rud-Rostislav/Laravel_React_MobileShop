@@ -57,19 +57,21 @@ const Index = ({products, allProducts, basket}) => {
                     ))}
                 </div>
 
-                <div className='prev_next_container'>
-                    {products.prev_page_url ?
-                        <Link href={products.prev_page_url}><span>&lt;</span></Link>
-                        : <span className='empty_prev_next_buttons'>&lt;</span>
-                    }
+                {!searchQuery &&
+                    <div className='prev_next_container'>
+                        {products.prev_page_url ?
+                            <Link href={products.prev_page_url}><span>&lt;</span></Link>
+                            : <span className='empty_prev_next_buttons'>&lt;</span>
+                        }
 
-                    <p>{products.current_page} / {products.last_page}</p>
+                        <p>{products.current_page} / {products.last_page}</p>
 
-                    {products.next_page_url ?
-                        <Link href={products.next_page_url}>></Link>
-                        : <span className='empty_prev_next_buttons'>></span>
-                    }
-                </div>
+                        {products.next_page_url ?
+                            <Link href={products.next_page_url}>></Link>
+                            : <span className='empty_prev_next_buttons'>></span>
+                        }
+                    </div>
+                }
 
             </main>
             <Footer/>

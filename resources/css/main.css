@@ -20,6 +20,7 @@ input, textarea, select {
     border-radius: 15px !important;
     border: none !important;
     height: 5vh;
+    box-shadow: none !important;
 }
 
 .black_button {
