@@ -16,9 +16,12 @@ class ProductController extends Controller
 {
     public function index(): Response
     {
-        $products = Product::with('photos')->get();
+        $products = Product::with('photos')->paginate(10);
+        $allProducts = Product::with('photos')->get();
+
         return Inertia::render('Shop/Products/Index', [
             'products' => $products,
+            'allProducts' => $allProducts,
             'basket' => session()->get('basket', []),
         ]);
     }

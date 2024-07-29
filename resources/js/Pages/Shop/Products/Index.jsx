@@ -6,9 +6,18 @@ import 'react-toastify/dist/ReactToastify.css';
 import Add from "@/Pages/Shop/Basket/Add.jsx";
 import Footer from "@/Components/Footer.jsx";
 
-const Index = ({products, basket}) => {
-    const [productsList] = useState(products);
+const Index = ({products, allProducts, basket}) => {
+    const [productsList] = useState(products.data);
     const [basketQuantity, setBasketQuantity] = useState(basket.length);
+    const [searchQuery, setSearchQuery] = useState('');
+
+    const handleSearch = (e) => {
+        setSearchQuery(e.target.value);
+    };
+
+    const filteredProducts = searchQuery === ''
+        ? productsList
+        : allProducts.filter((product) => product.name.toLowerCase().includes(searchQuery.toLowerCase()));
 
     return (
         <>
@@ -19,8 +28,12 @@ const Index = ({products, basket}) => {
                 <ToastContainer/>
                 <h1>Всі товари</h1>
 
+                <form onSubmit={(e) => e.preventDefault()} className='search'>
+                    <input type="text" value={searchQuery} placeholder="Пошук" onChange={handleSearch}/>
+                </form>
+
                 <div className="products">
-                    {productsList.map((product) => (
+                    {filteredProducts.map((product) => (
                         <div className="product" key={product.id}>
 
                             <Link className="product_link" href={route('products.show', product.id)}>
@@ -43,8 +56,22 @@ const Index = ({products, basket}) => {
                         </div>
                     ))}
                 </div>
-            </main>
 
+                <div className='prev_next_container'>
+                    {products.prev_page_url ?
+                        <Link href={products.prev_page_url}><span>&lt;</span></Link>
+                        : <span className='empty_prev_next_buttons'>&lt;</span>
+                    }
+
+                    <p>{products.current_page} / {products.last_page}</p>
+
+                    {products.next_page_url ?
+                        <Link href={products.next_page_url}>></Link>
+                        : <span className='empty_prev_next_buttons'>></span>
+                    }
+                </div>
+
+            </main>
             <Footer/>
         </>
     );

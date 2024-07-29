@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
             'is_admin' => true
         ]);
 
-        for ($i = 0; $i <= 10; $i++) {
+        for ($i = 0; $i <= 100; $i++) {
             if ($i !== 4) {
                 if ($i >= 6) {
                     Product::create([
