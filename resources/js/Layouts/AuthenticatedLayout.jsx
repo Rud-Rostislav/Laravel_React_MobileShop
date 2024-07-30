@@ -70,9 +70,9 @@ export default function Authenticated({user, header, children}) {
                                         </Dropdown.Trigger>
 
                                         <Dropdown.Content>
-                                            <Dropdown.Link href={route('profile.edit')}>Profile</Dropdown.Link>
+                                            <Dropdown.Link href={route('profile.edit')}>Профіль</Dropdown.Link>
                                             <Dropdown.Link href={route('logout')} method="post" as="button">
-                                                Log Out
+                                                Вийти
                                             </Dropdown.Link>
                                         </Dropdown.Content>
                                     </Dropdown>
@@ -126,7 +126,7 @@ export default function Authenticated({user, header, children}) {
                 </nav>
 
                 {header && (
-                    <header className="bg-white shadow">
+                    <header className="shadow" style={{ background: '#202020', borderTop: '1px solid rgb(50, 50, 50)'}}>
                         <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">{header}</div>
                     </header>
                 )}
