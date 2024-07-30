@@ -4,8 +4,9 @@ import React, {useState} from "react";
 import Dropdown from "@/Components/Dropdown.jsx";
 
 export default function Confirmed({auth, orders, products}) {
-    const [ordersList, setOrdersList] = useState(orders);
+    const [ordersList] = useState(orders);
     const [productsList] = useState(products);
+    const [openOrders, setOpenOrders] = useState({});
 
     const getProductsByIds = (ids) => {
         const productIds = ids.split(',').map(id => parseInt(id.trim()));
@@ -15,6 +16,13 @@ export default function Confirmed({auth, orders, products}) {
     const notConfirmOrder = () => {
         setTimeout(() => window.location.reload(), 100);
     };
+
+    function toggleProducts(orderId) {
+        setOpenOrders(prev => ({
+            ...prev,
+            [orderId]: !prev[orderId]
+        }));
+    }
 
     return (
         <AuthenticatedLayout user={auth.user}>
@@ -26,7 +34,9 @@ export default function Confirmed({auth, orders, products}) {
                 {ordersList.filter(order => order.confirmed).map(order => (
                     <div key={order.id}>
                         <div className='order order_confirmed_header order_header' key={order.id}>
-                            <p>{new Date(order.created_at).toLocaleString()}</p>
+                            <button onClick={() => toggleProducts(order.id)}>
+                                {openOrders[order.id] ? '⯅' : '⯆'}
+                            </button>
 
                             <p>{order.name}</p>
                             <p>{order.email} - {order.phone}</p>
@@ -45,19 +55,21 @@ export default function Confirmed({auth, orders, products}) {
                                 виконано</Dropdown.Link>
                         </div>
 
-                        <div className='order'>
-                            {getProductsByIds(order.products_id).map((product, index) => (
-                                <Link href={route('products.show', product)} key={`${product?.id}_${index}`}
-                                      className='order_product'>
-                                    {product?.photos && product.photos.length > 0 &&
-                                        <img src={`/storage/${product.photos[0].path}`} alt="Product image"
-                                             className='order_product_image'/>
-                                    }
-                                    <p>{product?.name}</p>
-                                    <p>{product?.price} грн</p>
-                                </Link>
-                            ))}
-                        </div>
+                        {openOrders[order.id] &&
+                            <div className='order'>
+                                {getProductsByIds(order.products_id).map((product, index) => (
+                                    <Link href={route('products.show', product)} key={`${product?.id}_${index}`}
+                                          className='order_product'>
+                                        {product?.photos && product.photos.length > 0 &&
+                                            <img src={`/storage/${product.photos[0].path}`} alt="Product image"
+                                                 className='order_product_image'/>
+                                        }
+                                        <p>{product?.name}</p>
+                                        <p>{product?.price} грн</p>
+                                    </Link>
+                                ))}
+                            </div>
+                        }
 
                     </div>
                 ))}
