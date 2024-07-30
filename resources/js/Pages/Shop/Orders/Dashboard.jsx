@@ -39,10 +39,9 @@ export default function Dashboard({auth, orders, products}) {
                                 {openOrders[order.id] ? '⯅' : '⯆'}
                             </button>
 
-                            <p>{new Date(order.created_at).toLocaleString()}</p>
-
                             <p>{order.name} - {order.email} - {order.phone}</p>
                             <p>{order.comment.length > 0 ? order.comment : ''}</p>
+                            <p>{new Date(order.created_at).toLocaleString()}</p>
 
                             <p>
                                 Загально

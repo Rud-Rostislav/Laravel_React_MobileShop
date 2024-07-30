@@ -6,6 +6,8 @@
 .order_header {
     margin-bottom: 5px;
     border-radius: 10px 10px 0 0 !important;
+    display: grid;
+    grid-template-columns: 0.5fr 2fr 1fr 1fr 1fr 1fr !important;
 }
 
 .order {
@@ -34,5 +36,5 @@
 }
 
 .order_confirmed_header {
-    grid-template-columns: repeat(7, 1fr);
+    grid-template-columns:  0.5fr 2fr 1fr 1fr 1fr 1fr 1fr !important;
 }

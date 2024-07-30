@@ -38,9 +38,10 @@ export default function Confirmed({auth, orders, products}) {
                                 {openOrders[order.id] ? '⯅' : '⯆'}
                             </button>
 
-                            <p>{order.name}</p>
-                            <p>{order.email} - {order.phone}</p>
+                            <p>{order.name} - {order.email} - {order.phone}</p>
                             <p>{order.comment.length > 0 ? order.comment : ''}</p>
+
+                            <p>{new Date(order.updated_at).toLocaleString()}</p>
 
                             <p>
                                 Загально ({order.products_id.split(',').length})
@@ -51,8 +52,7 @@ export default function Confirmed({auth, orders, products}) {
                                            onClick={notConfirmOrder}>Видалити</Dropdown.Link>
 
                             <Dropdown.Link as="button" href={route('order.notConfirm', order)} method='patch'
-                                           className='black_button red' onClick={notConfirmOrder}>Не
-                                виконано</Dropdown.Link>
+                                           className='black_button red' onClick={notConfirmOrder}>Повернути</Dropdown.Link>
                         </div>
 
                         {openOrders[order.id] &&

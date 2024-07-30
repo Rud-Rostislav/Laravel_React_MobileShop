@@ -28,6 +28,10 @@
     .order {
         grid-template-columns: repeat(4, 1fr);
     }
+
+    .order_header, .order_confirmed_header {
+        grid-template-columns: repeat(4, 1fr) !important;
+    }
 }
 
 @media screen and (max-width: 750px) {
@@ -40,7 +44,11 @@
     }
 
     .order {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .order_header, .order_confirmed_header {
+        grid-template-columns: repeat(2, 1fr) !important;
     }
 
     .basket_products {
@@ -72,6 +80,10 @@
 
     .order {
         grid-template-columns: repeat(1, 1fr);
+    }
+
+    .order_header, .order_confirmed_header {
+        grid-template-columns: repeat(1, 1fr) !important;
     }
 
     .basket_products {
