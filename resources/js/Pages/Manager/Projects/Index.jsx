@@ -6,7 +6,6 @@ import Edit from "@/Pages/Manager/Projects/Edit.jsx";
 import EditTask from "@/Pages/Manager/Tasks/Edit.jsx";
 
 export default function Index(props) {
-    // Projects
     const [projects, setProjects] = useState(props.projects);
     const [project, setProject] = useState({
         name: ''
@@ -25,14 +24,13 @@ export default function Index(props) {
         window.location.reload()
     }
 
-    // Tasks
     const {data, setData, post} = useForm({
         name: '',
         description: '',
         project_id: '',
     });
 
-    const [tasks, setTasks] = useState(props.tasks || []);
+    const [tasks] = useState(props.tasks || []);
     let tasksLengths = tasks.length ? tasks[tasks.length - 1].id : 0;
 
     const createTask = (e) => {
@@ -76,9 +74,9 @@ export default function Index(props) {
             <Header/>
             <main className='main_project_task'>
 
-                <form onSubmit={createProject} className='add_product'>
+                <form onSubmit={createProject} className='add_product create_project'>
                     <input type="text" name='name' onChange={e => setProject({name: e.target.value})}
-                           placeholder="Назва проекту"/>
+                           placeholder="Назва"/>
                     <button type="submit" className='black_button'>Створити проект
                     </button>
                 </form>
@@ -97,11 +95,11 @@ export default function Index(props) {
                                 <div key={task.id}>
                                     {editTask !== task.id ?
                                         <div onClick={() => setEditTask(task.id)} className='rows'>
-                                            <p className='capitalize-text border-right'>{task.name.slice(0, 50)}</p>
+                                            <p className='capitalize-text'>{task.name.slice(0, 50)}</p>
                                             <p className='capitalize-text'>{task.description.slice(0, 75)}</p>
                                             <p className={task.completed
-                                                ? 'green border-left remove_background_hover'
-                                                : 'red border-left remove_background_hover'}>
+                                                ? 'green'
+                                                : 'red'}>
                                                 {task.completed ? 'Виконано' : 'У виконанні'}</p>
                                         </div>
                                         :
@@ -121,7 +119,6 @@ export default function Index(props) {
                                 <input type="hidden" name="project_id" value={project.id}/>
 
                                 <button type="submit" onClick={e => addTask(e, project.id)} className='task_input'>Додати
-                                    задачу
                                 </button>
                             </form>
                         </div>

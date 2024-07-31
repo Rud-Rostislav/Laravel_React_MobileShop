@@ -1,16 +1,20 @@
 .main_project_task {
-    display: grid;
-    justify-items: center;
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 50px;
+    gap: 25px;
+}
+
+.create_project {
+    gap: 2.5vh;
+    width: 30vw;
+    padding: 25px;
 }
 
 .project {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    width: 50vw;
-    border-radius: 10px;
+    width: 75vw;
     color: black;
 }
 
@@ -25,23 +29,8 @@
     border-radius: 10px 10px 0 0;
 }
 
-.rows {
-    display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
-    align-items: center;
-    justify-items: center;
-    border-top: 1px solid #5c5c5c;
-    background: white;
-    font-size: 1.25rem;
-
-    &:hover {
-        background-color: #dddddd !important;
-    }
-}
-
 .project_edit_name {
     display: grid;
-    height: 5vh;
     grid-template-columns: 1fr 2fr 1fr;
 }
 
@@ -62,56 +51,42 @@
     }
 }
 
+.rows {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    background: white;
+    font-size: 1.25rem;
+}
+
+.rows p {
+    width: 100%;
+    border: 0.5px solid #a8a8a8;
+}
+
 .task_edit_rows {
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
-}
-
-.task_edit_rows .black_button {
-    height: 4vh;
-    font-size: 1rem;
 }
 
 .task_edit_input {
     background: #ffffff !important;
     color: #000000 !important;
     border-radius: 0 !important;
-    height: 4vh;
-
-    &:hover {
-        background: #dddddd !important;
-    }
+    height: 3vh;
+    padding: 0;
+    font-size: 1.25rem;
+    border: 0.5px solid #a8a8a8 !important;
 }
 
 .task_edit_buttons {
     border-radius: 0;
     background: #202020 !important;
+    font-size: 1rem;
+    height: 3vh;
 
     &:hover {
-        background: #282828 !important;
+        background: #202020 !important;
     }
-}
-
-.task_edit_input_right_border {
-    border-right: 1px solid #5c5c5c;
-}
-
-.task_edit_input_left_border {
-    border-left: 1px solid #5c5c5c;
-    border-top: 1px solid #5c5c5c;
-}
-
-.task_edit_input:first-child {
-    border-top: 1px solid #5c5c5c;
-    border-right: 1px solid #5c5c5c;
-}
-
-.task_edit_input_top_border {
-    border-top: 1px solid #5c5c5c;
-}
-
-.remove_background_hover:hover {
-    background-color: #dddddd !important;
 }
 
 .capitalize-text {
@@ -125,7 +100,6 @@
 }
 
 .task_input {
-    width: 100%;
     background: #202020 !important;
     border-radius: 0 !important;
     height: 5vh;
@@ -133,21 +107,9 @@
 
 .task_input:first-child {
     border-radius: 0 0 0 10px !important;
-    border-right: 1px solid #5c5c5c;
 }
 
 .task_input:last-child {
     border-radius: 0 0 10px 0 !important;
-    border-left: 1px solid #5c5c5c;
     font-size: 1rem;
-}
-
-.border-right {
-    border-right: 1px solid #5c5c5c;
-    width: 100%;
-}
-
-.border-left {
-    border-left: 1px solid #5c5c5c;
-    width: 100%;
 }
