@@ -3,13 +3,14 @@ import Header from "@/Components/Header.jsx";
 import {Head, useForm} from '@inertiajs/react';
 import Footer from "@/Components/Footer.jsx";
 
-const Create = () => {
+const Create = ({categories}) => {
     const {data, setData, post, errors} = useForm({
         name: '',
         description: '',
         price: '',
         quantity: '',
         photos: [],
+        category_id: '',
     });
 
     const submit = (e) => {
@@ -40,6 +41,16 @@ const Create = () => {
                     <input type="number" name="quantity"
                            onChange={e => setData('quantity', e.target.value)} placeholder='Кількість'/>
                     {errors.quantity && <p className='red'>{errors.quantity}</p>}
+
+                    <select name="category_id" onChange={e => setData('category_id', e.target.value)}>
+                        <option value="">Обери категорію</option>
+                        {categories.map((category) => (
+                            <option key={category.id} value={category.id}>
+                                {category.name}
+                            </option>
+                        ))}
+                    </select>
+                    {errors.category_id && <p className='red'>{errors.category_id}</p>}
 
                     <input type="file" name="photos" multiple accept="image/*"
                            onChange={e => setData('photos', Array.from(e.target.files))}

@@ -1,5 +1,5 @@
 @media screen and (max-width: 1250px) {
-    .products {
+    .products, .search_box {
         grid-template-columns: repeat(4, 1fr);
     }
 
@@ -17,7 +17,7 @@
 }
 
 @media screen and (max-width: 1000px) {
-    .products {
+    .products, .search_box {
         grid-template-columns: repeat(3, 1fr);
     }
 
@@ -35,7 +35,7 @@
 }
 
 @media screen and (max-width: 750px) {
-    .products {
+    .products, .search_box {
         grid-template-columns: repeat(2, 1fr);
     }
 
@@ -62,7 +62,7 @@
 
 
 @media screen and (max-width: 500px) {
-    .products {
+    .products, .search_box {
         grid-template-columns: 1fr;
     }
 

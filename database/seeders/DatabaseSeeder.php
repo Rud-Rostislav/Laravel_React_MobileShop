@@ -2,11 +2,14 @@
 
 namespace Database\Seeders;
 
+use App\Models\Category;
+use App\Models\Photo;
 use App\Models\Product;
 use App\Models\Project;
 use App\Models\Task;
 use App\Models\User;
 use Illuminate\Database\Seeder;
+use Carbon\Carbon;
 
 class DatabaseSeeder extends Seeder
 {
@@ -14,28 +17,130 @@ class DatabaseSeeder extends Seeder
     {
         User::create([
             'name' => 'Admin',
-            'email' => 'admin@mail.com',
-            'password' => '1',
+            'email' => 'admin@mail',
+            'password' => 1,
             'is_admin' => true
         ]);
 
-        for ($i = 0; $i <= 18; $i++) {
-            if ($i !== 4) {
-                if ($i >= 6) {
-                    Product::create([
-                        'name' => 'iPhone ' . 5 + $i . " Pro Max",
-                        'description' => 'Опис iPhone ' . 5 + $i . " Pro Max",
-                        'price' => 5000 + ($i * 5000),
-                        'quantity' => 1 + ($i * 10)
-                    ]);
-                } else {
-                    Product::create([
-                        'name' => 'iPhone ' . 5 + $i,
-                        'description' => 'Опис iPhone ' . 5 + $i,
-                        'price' => 5000 + ($i * 1000),
-                        'quantity' => 1 + ($i * 10)
-                    ]);
-                }
+        Category::create(['name' => 'Смартфони']);
+        Category::create(['name' => 'Планшети']);
+        Category::create(['name' => 'Ноутбуки']);
+        Category::create(['name' => 'Навушники']);
+        Category::create(['name' => 'Смарт-годинники']);
+
+        $now = Carbon::now();
+
+        for ($i = 1; $i <= 5; $i++) {
+            $created_at = $now->copy()->subDays(6 - $i);
+            Product::create([
+                'name' => 'iPhone 1' . ($i + 1) . ' Pro Max',
+                'description' => 'Опис для iPhone 1' . $i . ' Pro Max',
+                'price' => 55000 + $i * 1000,
+                'quantity' => 10 * $i,
+                'category_id' => 1,
+                'created_at' => $created_at,
+                'updated_at' => $created_at
+            ]);
+            for ($p = 1; $p <= 2; $p++) {
+                Photo::create([
+                    'product_id' => $i,
+                    'path' => 'product_photos/iPhone_' . $i . '_' . $p . '.jpg'
+                ]);
+            }
+        }
+
+        for ($i = 1; $i <= 5; $i++) {
+            $created_at = $now->copy()->subDays(11 - $i);
+            Product::create([
+                'name' => 'iPad ' . ($i + 4),
+                'description' => 'Опис для iPad ' . ($i + 4),
+                'price' => 35000 + $i * 1000,
+                'quantity' => 10 * $i,
+                'category_id' => 2,
+                'created_at' => $created_at,
+                'updated_at' => $created_at
+            ]);
+            for ($p = 1; $p <= 2; $p++) {
+                Photo::create([
+                    'product_id' => $i + 5,
+                    'path' => 'product_photos/iPad_' . $i . '_' . $p . '.jpg'
+                ]);
+            }
+        }
+
+        for ($i = 1; $i <= 5; $i++) {
+            $created_at = $now->copy()->subDays(16 - $i);
+            Product::create([
+                'name' => 'MacBook ' . $i,
+                'description' => 'Опис для MacBook ' . $i,
+                'price' => 45000 + $i * 1000,
+                'quantity' => 10 * $i,
+                'category_id' => 3,
+                'created_at' => $created_at,
+                'updated_at' => $created_at
+            ]);
+            for ($p = 1; $p <= 2; $p++) {
+                Photo::create([
+                    'product_id' => $i + 10,
+                    'path' => 'product_photos/MacBook_' . $i . '_' . $p . '.jpg'
+                ]);
+            }
+        }
+
+        for ($i = 1; $i <= 5; $i++) {
+            $created_at = $now->copy()->subDays(21 - $i);
+            Product::create([
+                'name' => 'Notebook ' . $i,
+                'description' => 'Опис для Notebook ' . $i,
+                'price' => 40000 + $i * 1000,
+                'quantity' => 10 * $i,
+                'category_id' => 3,
+                'created_at' => $created_at,
+                'updated_at' => $created_at
+            ]);
+            for ($p = 1; $p <= 2; $p++) {
+                Photo::create([
+                    'product_id' => $i + 15,
+                    'path' => 'product_photos/Notebook_' . $i . '_' . $p . '.jpg'
+                ]);
+            }
+        }
+
+        for ($i = 1; $i <= 5; $i++) {
+            $created_at = $now->copy()->subDays(26 - $i);
+            Product::create([
+                'name' => 'AirPods ' . $i,
+                'description' => 'Опис для AirPods ' . $i,
+                'price' => 8000 + $i * 1000,
+                'quantity' => 10 * $i,
+                'category_id' => 4,
+                'created_at' => $created_at,
+                'updated_at' => $created_at
+            ]);
+            for ($p = 1; $p <= 2; $p++) {
+                Photo::create([
+                    'product_id' => $i + 20,
+                    'path' => 'product_photos/AirPods_' . $i . '_' . $p . '.jpg'
+                ]);
+            }
+        }
+
+        for ($i = 1; $i <= 5; $i++) {
+            $created_at = $now->copy()->subDays(31 - $i);
+            Product::create([
+                'name' => 'Apple Watch ' . $i,
+                'description' => 'Опис для Apple Watch ' . $i,
+                'price' => 10000 + $i * 1000,
+                'quantity' => 10 * $i,
+                'category_id' => 5,
+                'created_at' => $created_at,
+                'updated_at' => $created_at
+            ]);
+            for ($p = 1; $p <= 2; $p++) {
+                Photo::create([
+                    'product_id' => $i + 25,
+                    'path' => 'product_photos/Watch_' . $i . '_' . $p . '.jpg'
+                ]);
             }
         }
 
@@ -49,10 +154,9 @@ class DatabaseSeeder extends Seeder
                     'name' => "Задача $j",
                     'description' => "Опис задачі $j",
                     'project_id' => $project->id,
-                    'completed' => rand(false, true)
+                    'completed' => rand(0, 1)
                 ]);
             }
         }
-
     }
 }

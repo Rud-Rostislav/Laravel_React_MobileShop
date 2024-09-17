@@ -54,9 +54,9 @@ img {
 }
 
 .border-b-2:hover {
-    transition: 0.5s;
-    border-bottom: 1px solid #858585 !important;
-    margin: 0 4px;
+    transition: 1s;
+    border-bottom: 1px solid #777777 !important;
+    scale: 103%;
 }
 
 .border-b-2 {

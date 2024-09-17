@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Shop;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Foundation\Application;
 use Illuminate\Http\RedirectResponse;
@@ -16,19 +17,23 @@ class ProductController extends Controller
 {
     public function index(): Response
     {
-        $products = Product::with('photos')->orderBy('created_at', 'desc')->paginate(10);
-        $allProducts = Product::with('photos')->get();
+        $products = Product::with('photos')->orderBy('created_at', 'desc')->paginate(15);
+        $allProducts = Product::with('photos')->orderBy('created_at', 'desc')->get();
 
         return Inertia::render('Shop/Products/Index', [
             'products' => $products,
             'allProducts' => $allProducts,
+            'categories' => Category::all(),
             'basket' => session()->get('basket', []),
         ]);
     }
 
     public function create(): Response
     {
-        return Inertia::render('Shop/Products/Create');
+        $categories = Category::all();
+        return Inertia::render('Shop/Products/Create', [
+            'categories' => $categories
+        ]);
     }
 
     public function show(Product $product): Response
@@ -45,6 +50,7 @@ class ProductController extends Controller
         $product->load('photos');
         return Inertia::render('Shop/Products/Edit', [
             'product' => $product,
+            'categories' => Category::all(),
         ]);
     }
 
@@ -55,17 +61,18 @@ class ProductController extends Controller
             'description' => 'required',
             'price' => 'required',
             'quantity' => 'required',
-            'photos.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
+            'photos.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'category_id' => 'required',
         ]);
 
         if (!$product) {
             $product = new Product();
         }
-
         $product->name = $request->name;
         $product->description = $request->description;
         $product->price = $request->price;
         $product->quantity = $request->quantity;
+        $product->category_id = $request->category_id;
         $product->save();
 
         $productFolder = 'product_photos/' . $product->id;
