@@ -28,7 +28,7 @@ export default function Dashboard({auth, orders, products}) {
         <AuthenticatedLayout user={auth.user}>
             <Head title="Кабінет"/>
 
-            <h1>Кількість замовлень: {ordersList.filter(order => order.confirmed === 0).length}</h1>
+            <h1>Всього замовлень: {ordersList.filter(order => order.confirmed === 0).length}</h1>
 
             <div className='orders'>
                 {ordersList.filter((order) => order.confirmed === 0).map(order => (

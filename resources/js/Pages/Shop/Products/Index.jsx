@@ -9,7 +9,6 @@ import Footer from "@/Components/Footer.jsx";
 const Index = ({products, allProducts, basket, categories}) => {
     const [productsList] = useState(products.data);
     const [basketQuantity, setBasketQuantity] = useState(basket.length);
-
     const [searchName, setSearchName] = useState('');
     const [searchMaxPrice, setSearchMaxPrice] = useState('');
     const [searchCategory, setSearchCategory] = useState('');
@@ -106,8 +105,8 @@ const Index = ({products, allProducts, basket, categories}) => {
                         <p>{products.current_page} - {products.last_page}</p>
 
                         {products.next_page_url
-                            ? <Link href={products.next_page_url}>> </Link>
-                            : <p className='empty_prev_next_buttons'>></p>
+                            ? <Link href={products.next_page_url}>&gt;</Link>
+                            : <p className='empty_prev_next_buttons'>&gt;</p>
                         }
                     </div>
                 }

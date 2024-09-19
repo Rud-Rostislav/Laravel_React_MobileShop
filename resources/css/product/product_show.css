@@ -3,7 +3,7 @@
     flex-direction: column;
     justify-content: center;
     gap: 3vh;
-    background: #202020;
+    background: var(--dark-2-background);
     padding: 25px;
     border-radius: 25px;
     width: 40vw;

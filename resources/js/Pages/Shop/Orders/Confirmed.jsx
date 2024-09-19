@@ -28,7 +28,7 @@ export default function Confirmed({auth, orders, products}) {
         <AuthenticatedLayout user={auth.user}>
             <Head title="Кабінет"/>
 
-            <h1>Кількість архівних замовлень: {ordersList.filter(order => order.confirmed).length}</h1>
+            <h1>Всього виконаних замовлень: {ordersList.filter(order => order.confirmed).length}</h1>
 
             <div className='orders'>
                 {ordersList.filter(order => order.confirmed).map(order => (
@@ -52,7 +52,8 @@ export default function Confirmed({auth, orders, products}) {
                                            onClick={notConfirmOrder}>Видалити</Dropdown.Link>
 
                             <Dropdown.Link as="button" href={route('order.notConfirm', order)} method='patch'
-                                           className='black_button red' onClick={notConfirmOrder}>Повернути</Dropdown.Link>
+                                           className='black_button red'
+                                           onClick={notConfirmOrder}>Повернути</Dropdown.Link>
                         </div>
 
                         {openOrders[order.id] &&
