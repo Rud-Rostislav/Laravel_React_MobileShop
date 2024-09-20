@@ -53,7 +53,7 @@ export default function Confirmed({auth, orders, products}) {
 
                             <Dropdown.Link as="button" href={route('order.notConfirm', order)} method='patch'
                                            className='black_button red'
-                                           onClick={notConfirmOrder}>Повернути</Dropdown.Link>
+                                           onClick={notConfirmOrder}>Не виконано</Dropdown.Link>
                         </div>
 
                         {openOrders[order.id] &&

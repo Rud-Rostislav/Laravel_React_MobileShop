@@ -66,23 +66,27 @@
 .task_edit_rows {
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
+    align-items: center;
+}
+
+.task_edit_rows button {
+    font-weight: normal !important;
+    font-size: 1rem !important;
 }
 
 .task_edit_input {
     background: var(--white) !important;
     color: #000000 !important;
     border-radius: 0 !important;
-    height: 3vh;
     padding: 0;
-    font-size: 1.25rem;
     border: 0.5px solid #a8a8a8 !important;
 }
 
 .task_edit_buttons {
-    border-radius: 0;
+    border-radius: 0 !important;
     background: var(--dark-2-background) !important;
     font-size: 1rem;
-    height: 3vh;
+    height: 100%;
 
     &:hover {
         background: var(--dark-2-background) !important;

@@ -118,7 +118,6 @@ const Edit = ({product, categories}) => {
             </main>
             <Footer/>
         </div>
-
     );
 }
 
