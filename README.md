@@ -1,6 +1,6 @@
 # Run
 
-1. Rename env.example to .env
+1. Rename env.example to .env, uncomment DB_CONNECTION
 2. php artisan migrate
 3. php artisan storage:link
 4. Copy public/images/product_photos to public/storage

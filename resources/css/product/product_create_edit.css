@@ -6,7 +6,7 @@
     border-radius: 10px;
     background: var(--dark-2-background);
     width: 40vw;
-    padding: 2vh 2vw;
+    padding: 4vh 2vw;
 }
 
 .add_product_image_container {
@@ -20,7 +20,6 @@
 }
 
 .add_product_image_container img {
-    border: 1px solid #505050;
     border-radius: 10px;
 }
 
@@ -28,4 +27,13 @@
     color: red;
     font-size: 1.5rem;
     cursor: pointer;
+}
+
+.edit_product_photos {
+    border-radius: 10px;
+    border: 1px solid #505050
+}
+
+.edit_product_photos img {
+    border-radius: 10px 10px 0 0;
 }

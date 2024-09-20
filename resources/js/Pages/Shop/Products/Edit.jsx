@@ -73,13 +73,6 @@ const Edit = ({product, categories}) => {
                     <input placeholder='Кількість' type="number" name="quantity" min='0' value={data.quantity}
                            onChange={e => setData('quantity', e.target.value)}/>
 
-                    <input type="file" name="photos" multiple accept="image/*"
-                           onChange={e => setData('photos', [...data.photos, ...Array.from(e.target.files).map(file => ({
-                               id: null,
-                               file,
-                               path: null
-                           }))])}/>
-
                     <select name="category_id" value={data.category_id}
                             onChange={e => setData('category_id', e.target.value)}>
                         {categories.find((category) => category.id === data.category_id) && (
@@ -93,10 +86,17 @@ const Edit = ({product, categories}) => {
                         ))}
                     </select>
 
+                    <input type="file" name="photos" multiple accept="image/*"
+                           onChange={e => setData('photos', [...data.photos, ...Array.from(e.target.files).map(file => ({
+                               id: null,
+                               file,
+                               path: null
+                           }))])}/>
+
                     {data.photos.length > 0 &&
                         <div id="photoPreviews" className='add_product_image_container'>
                             {data.photos.map((photo, index) => (
-                                <div key={index}>
+                                <div key={index} className='edit_product_photos'>
                                     {photo.path && <img src={`/storage/${photo.path}`}
                                                         alt={`Photo ${index + 1}`}
                                     />}
