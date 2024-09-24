@@ -96,18 +96,18 @@ const Index = ({products, allProducts, basket, categories}) => {
                 </div>
 
                 {!search &&
-                    <div className='prev_next_container'>
-                        {products.prev_page_url
-                            ? <Link href={products.prev_page_url}>&lt;</Link>
-                            : <p className='empty_prev_next_buttons'>&lt;</p>
-                        }
+                    <div className="prev_next_wrapper">
+                        <div className='prev_next_container'>
+                            {products.prev_page_url &&
+                                <Link href={products.prev_page_url}>{products.current_page - 1}</Link>
+                            }
 
-                        <p>{products.current_page} - {products.last_page}</p>
+                            <p>{products.current_page}</p>
 
-                        {products.next_page_url
-                            ? <Link href={products.next_page_url}>&gt;</Link>
-                            : <p className='empty_prev_next_buttons'>&gt;</p>
-                        }
+                            {products.next_page_url &&
+                                <Link href={products.next_page_url}>{products.current_page + 1}</Link>
+                            }
+                        </div>
                     </div>
                 }
 

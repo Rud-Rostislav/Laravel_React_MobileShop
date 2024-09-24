@@ -69,6 +69,15 @@ input[type="range"]::-webkit-slider-runnable-track {
     padding: 0 1vw 2vh 1vw;
 }
 
+.prev_next_wrapper {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+
+    .prev_next_container {
+        grid-column: 3/4;
+    }
+}
+
 .prev_next_container {
     display: flex;
     justify-content: center;
@@ -76,21 +85,16 @@ input[type="range"]::-webkit-slider-runnable-track {
     gap: 50px;
     font-size: 1.5rem;
     background: var(--dark-2-background);
-    width: 20vw;
+    width: 100%;
     margin: 50px auto 0 auto;
     border-radius: 15px;
+    height: 5vh;
 
     a {
-        font-size: 2.5rem;
-        color: #9c9c9c;
+        color: #505050;
+
+        &:hover {
+            color: #777777;
+        }
     }
-}
-
-.prev_next_container a:hover {
-    color: var(--white);
-}
-
-.empty_prev_next_buttons {
-    color: #878787;
-    font-size: 2.5rem;
 }

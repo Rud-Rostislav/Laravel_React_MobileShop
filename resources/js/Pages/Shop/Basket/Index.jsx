@@ -13,8 +13,7 @@ const Index = ({basket}) => {
     useEffect(() => {
         const calculateTotalPrice = () => {
             const total = basketItems.reduce((total, product) => {
-                const quantity = typeof product.quantity === 'number' ? product.quantity : 1;
-                return total + (product.product.price * quantity);
+                return total + (product.product.price);
             }, 0);
             setTotalPrice(total);
         };
