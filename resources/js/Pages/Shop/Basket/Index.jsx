@@ -10,17 +10,6 @@ import Dropdown from "@/Components/Dropdown.jsx";
 const Index = ({basket}) => {
     const [basketItems, setBasketItems] = useState(basket);
     const [totalPrice, setTotalPrice] = useState(0);
-
-    useEffect(() => {
-        const calculateTotalPrice = () => {
-            const total = basketItems.reduce((total, product) => {
-                return total + (product.product.price);
-            }, 0);
-            setTotalPrice(total);
-        };
-        calculateTotalPrice();
-    }, [basketItems]);
-
     const {data, setData} = useForm({
         name: '',
         email: '',
@@ -29,6 +18,18 @@ const Index = ({basket}) => {
         products_id: [],
         products_quantity: {},
     });
+
+    useEffect(() => {
+        const calculateTotalPrice = () => {
+            const total = basketItems.reduce((total, product) => {
+                const quantity = data.products_quantity[product.product.id] || 1;
+                return total + (product.product.price * quantity);
+            }, 0);
+            setTotalPrice(total);
+        };
+        calculateTotalPrice();
+    }, [basketItems, data.products_quantity]);
+
 
     const clearBasket = () => {
         axios.post(route('clear-basket'));
@@ -93,7 +94,7 @@ const Index = ({basket}) => {
                             <div className='basket_products'>
                                 {basketItems.map((item, index) => (
                                     <div className='basket_product' key={index}>
-                                        <Link href={route('products.show', item.product.id)}>
+                                        <Link href={route('products.show', item.product.id)} className='item_1'>
                                             {item.photos.length > 0 ?
                                                 <img src={`storage/${item.photos[0].path}`}
                                                      alt="Product image"/>
@@ -102,31 +103,35 @@ const Index = ({basket}) => {
                                             }
                                         </Link>
 
-                                        <p className='product_name'>{item.product.name}</p>
-                                        <p className='product_price'>{item.product.price} грн</p>
+                                        <p className='item_2'>{item.product.name}</p>
+                                        <p className='item_3'>{item.product.price} грн</p>
 
-                                        <div className='basket_buttons'>
-                                            <input
-                                                type="number"
-                                                name={`quantity-${item.product.id}`}
-                                                onChange={e => {
-                                                    const quantity = e.target.value;
-                                                    setData('products_quantity', {
-                                                        ...data.products_quantity,
-                                                        [item.product.id]: quantity
-                                                    });
-                                                }}
-                                                value={data.products_quantity[item.product.id] || 1}
-                                                min="1"
-                                            />
+                                        <button onClick={(e) => {
+                                            e.preventDefault();
+                                            const currentQuantity = data.products_quantity[item.product.id] || 1;
+                                            if (currentQuantity > 1) {
+                                                setData('products_quantity', {
+                                                    ...data.products_quantity,
+                                                    [item.product.id]: currentQuantity - 1
+                                                });
+                                            }
+                                        }} className='basket_button item_4'>-
+                                        </button>
+                                        <p className='product_quantity item_5'>{data.products_quantity[item.product.id] || 1}</p>
+                                        <button onClick={(e) => {
+                                            e.preventDefault();
+                                            setData('products_quantity', {
+                                                ...data.products_quantity,
+                                                [item.product.id]: (data.products_quantity[item.product.id] || 1) + 1
+                                            });
+                                        }} className='basket_button item_6'>+
+                                        </button>
 
-                                            <Dropdown.Link as="button"
-                                                           href={route('remove-from-basket', item.product.id)}
-                                                           method="delete"
-                                                           onClick={() => removeFromBasket(item.product)}
-                                                           className="black_button red">X</Dropdown.Link>
-                                        </div>
-
+                                        <Dropdown.Link as="button"
+                                                       href={route('remove-from-basket', item.product.id)}
+                                                       method="delete"
+                                                       onClick={() => removeFromBasket(item.product)}
+                                                       className="black_button red basket_delete_product item_7">X</Dropdown.Link>
                                     </div>
                                 ))}
                             </div>

@@ -104,7 +104,7 @@ const Edit = ({product, categories}) => {
                                         <img src={URL.createObjectURL(photo.file)}
                                              alt={`Photo ${index + 1}`}
                                         />}
-                                    <button className='remove_photo_button' type="button"
+                                    <button className='remove_photo_button red' type="button"
                                             onClick={() => removePhoto(photo.id)}>X
                                     </button>
                                 </div>

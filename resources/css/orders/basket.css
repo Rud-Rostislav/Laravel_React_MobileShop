@@ -1,6 +1,5 @@
 .basket_products {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
     gap: 10px;
     background: var(--dark-background);
     border-radius: 10px;
@@ -8,40 +7,37 @@
 }
 
 .basket_product {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 0.5fr 0.25fr 0.5fr 1fr;
     align-items: center;
     gap: 10px;
     border: 1px solid #505050;
     border-radius: 10px;
 
     img {
-        border-radius: 10px 10px 0 0;
-    }
-
-    input[type="number"] {
-        background: var(--dark-2-background) !important;
+        border-radius: 10px 0 0 10px;
+        max-height: 15vh;
     }
 }
 
-.basket_product .product_name, .basket_product .product_price {
-    font-size: 1rem;
+.basket_button {
+    font-size: 1.5rem !important;
+    background: var(--dark-2-background) !important;
+    border-radius: 5px !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.basket_delete_product {
+    font-size: 2rem !important;
+}
+
+.product_quantity {
+    font-size: 1.5rem;
 }
 
 .total_price {
     font-size: 1.25rem;
     font-weight: bolder;
-}
-
-.basket_buttons {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    margin: 0 10px 10px 10px;
-
-    button, input {
-        background: var(--dark-2-background) !important;
-        width: 100%;
-        border-radius: 10px !important;
-    }
 }
