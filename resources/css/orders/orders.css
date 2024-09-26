@@ -38,3 +38,8 @@
 .order_confirmed_header {
     grid-template-columns:  0.5fr 2fr 1fr 1fr 1fr 1fr 1fr !important;
 }
+
+.all_products_toggle {
+    margin-bottom: 25px;
+    font-size: 1.25rem;
+}

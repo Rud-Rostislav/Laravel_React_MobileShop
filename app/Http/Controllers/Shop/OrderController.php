@@ -13,21 +13,26 @@ class OrderController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required',
-            'email' => 'required',
-            'phone' => 'required',
-            'comment' => 'nullable',
-            'products_id' => 'required',
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'phone' => 'required|string|max:15',
+            'comment' => 'nullable|string|max:500',
+            'products_id' => 'required|json',
+            'products_quantity' => 'required|json',
         ]);
+
+        $productsId = json_decode($request->products_id, true);
+        $productsQuantity = json_decode($request->products_quantity, true);
 
         $order = new Order();
         $order->name = $request->name;
         $order->email = $request->email;
         $order->phone = $request->phone;
         $order->comment = $request->comment ?? '';
-        $order->products_id = $request->products_id;
-        $order->save();
+        $order->products_id = json_encode($productsId);
+        $order->products_quantity = json_encode($productsQuantity);
 
+        $order->save();
         return redirect()->route('products.index');
     }
 
@@ -51,7 +56,7 @@ class OrderController extends Controller
     public function confirmed()
     {
         $products = Product::with('photos')->get();
-        $orders = Order::all();
+        $orders = Order::where('confirmed', true)->get();
         return Inertia::render('Shop/Orders/Confirmed', [
             'orders' => $orders,
             'products' => $products

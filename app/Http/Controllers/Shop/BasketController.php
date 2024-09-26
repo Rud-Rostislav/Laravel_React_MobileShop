@@ -32,4 +32,13 @@ class BasketController extends Controller
     {
         Session::forget('basket');
     }
+
+    public function removeFromBasket(Product $product)
+    {
+        $basket = session()->get('basket', []);
+        $basket = array_filter($basket, function ($item) use ($product) {
+            return isset($item['product']['id']) && $item['product']['id'] !== $product->id;
+        });
+        session()->put('basket', array_values($basket));
+    }
 }

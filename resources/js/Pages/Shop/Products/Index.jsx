@@ -84,7 +84,7 @@ const Index = ({products, allProducts, basket, categories}) => {
                                 <div className='product_button'>
                                     {product.quantity > 0
                                         ? <Add product={product} basketQuantity={basketQuantity}
-                                               setBasketQuantity={setBasketQuantity}/>
+                                               setBasketQuantity={setBasketQuantity} basket={basket}/>
                                         : <button className='black_button no_product'>Немає в наявності</button>
                                     }
                                 </div>

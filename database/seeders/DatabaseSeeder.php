@@ -145,65 +145,42 @@ class DatabaseSeeder extends Seeder
             }
         }
 
-        Order::create([
-            'name' => 'Іван',
-            'email' => 'ivan@mail.com',
-            'phone' => '0965662823',
-            'comment' => 'Не телефонуйте',
-            'products_id' => '1',
-            'confirmed' => 0
-        ]);
+        for ($i = 0; $i < 2; $i++) {
+            Order::create([
+                'name' => 'Іван',
+                'email' => 'ivan@mail.com',
+                'phone' => '0965662823',
+                'comment' => 'Не телефонуйте',
+                'products_id' => json_encode([1, 2, 3]),
+                'products_quantity' => json_encode([1, 2, 3]),
+                'confirmed' => $i
+            ]);
 
-        Order::create([
-            'name' => 'Петро',
-            'email' => 'petro@mail.com',
-            'phone' => '0965662823',
-            'comment' => 'Не телефонуйте',
-            'products_id' => '4,5,6',
-            'confirmed' => 0
-        ]);
+            Order::create([
+                'name' => 'Петро',
+                'email' => 'petro@mail.com',
+                'phone' => '0965662823',
+                'comment' => 'Не телефонуйте',
+                'products_id' => json_encode([1, 2, 3, 4, 5]),
+                'products_quantity' => json_encode([1, 2, 3, 4, 5]),
+                'confirmed' => $i
+            ]);
 
-        Order::create([
-            'name' => 'Вася',
-            'email' => 'vasya@mail.com',
-            'phone' => '0965662823',
-            'comment' => 'Не телефонуйте',
-            'products_id' => '1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20',
-            'confirmed' => 0
-        ]);
-
-        Order::create([
-            'name' => 'Маша',
-            'email' => 'masha@mail.com',
-            'phone' => '0965662823',
-            'comment' => 'Не телефонуйте',
-            'products_id' => '1',
-            'confirmed' => 1
-        ]);
-
-        Order::create([
-            'name' => 'Саша',
-            'email' => 'sasha@mail.com',
-            'phone' => '0965662823',
-            'comment' => 'Не телефонуйте',
-            'products_id' => '16,17,18',
-            'confirmed' => 1
-        ]);
-
-        Order::create([
-            'name' => 'Вася',
-            'email' => 'vasya@mail.com',
-            'phone' => '0965662823',
-            'comment' => 'Не телефонуйте',
-            'products_id' => '19,20,21, 1, 3, 7, 9, 12',
-            'confirmed' => 1
-        ]);
+            Order::create([
+                'name' => 'Вася',
+                'email' => 'vasya@mail.com',
+                'phone' => '0965662823',
+                'comment' => 'Не телефонуйте',
+                'products_id' => json_encode([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]),
+                'products_quantity' => json_encode([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]),
+                'confirmed' => $i
+            ]);
+        }
 
         for ($i = 1; $i <= 2; $i++) {
             $project = Project::create([
                 'name' => "Проєкт $i",
             ]);
-
             for ($j = 1; $j <= 5; $j++) {
                 Task::create([
                     'name' => "Задача $j",

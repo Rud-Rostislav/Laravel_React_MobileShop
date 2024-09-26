@@ -8,10 +8,10 @@ export default function Confirmed({auth, orders, products}) {
     const [productsList] = useState(products);
     const [openOrders, setOpenOrders] = useState({});
 
-    const getProductsByIds = (ids) => {
-        const productIds = ids.split(',').map(id => parseInt(id.trim()));
+    const getProductsByIds = (order) => {
+        const productIds = JSON.parse(order.products_id);
         return productIds.map(id => productsList.find(product => product.id === id));
-    }
+    };
 
     const notConfirmOrder = () => {
         setTimeout(() => window.location.reload(), 100);
@@ -24,11 +24,19 @@ export default function Confirmed({auth, orders, products}) {
         }));
     }
 
+    const allProductsToggle = () => {
+        for (let i = 0; i < ordersList.length; i++) {
+            toggleProducts(ordersList[i].id);
+        }
+    };
+
     return (
         <AuthenticatedLayout user={auth.user}>
             <Head title="Кабінет"/>
 
             <h1>Всього виконаних замовлень: {ordersList.filter(order => order.confirmed).length}</h1>
+            <button onClick={allProductsToggle}
+                    className='all_products_toggle'>{openOrders[1] !== true ? 'Приховати все ⯅' : 'Показати все ⯆'}</button>
 
             <div className='orders'>
                 {ordersList.filter(order => order.confirmed).map(order => (
@@ -44,8 +52,13 @@ export default function Confirmed({auth, orders, products}) {
                             <p>{new Date(order.updated_at).toLocaleString()}</p>
 
                             <p>
-                                Загально ({order.products_id.split(',').length})
-                                - {getProductsByIds(order.products_id).reduce((total, product) => total + (product?.price ?? 0), 0)} грн.
+                                Загально
+                                ({JSON.parse(order.products_quantity).reduce((total, quantity) => total + parseInt(quantity), 0)} шт.)
+                                - {getProductsByIds(order).reduce((total, product, index) => {
+                                const quantity = parseInt(JSON.parse(order.products_quantity)[index] || 0);
+                                const price = product?.price || 0;
+                                return total + (price * quantity);
+                            }, 0)} грн.
                             </p>
                             <Dropdown.Link as="button" href={route('order.destroy', order.id)}
                                            method="delete" className='black_button red'
@@ -58,8 +71,8 @@ export default function Confirmed({auth, orders, products}) {
 
                         {openOrders[order.id] &&
                             <div className='order'>
-                                {getProductsByIds(order.products_id).map((product, index) => (
-                                    <Link href={route('products.show', product)} key={`${product?.id}_${index}`}
+                                {getProductsByIds(order).map((product, index) => (
+                                    <Link href={route('products.show', product)} key={product?.id}
                                           className='order_product'>
                                         {product?.photos && product.photos.length > 0 &&
                                             <img src={`/storage/${product.photos[0].path}`} alt="Product image"

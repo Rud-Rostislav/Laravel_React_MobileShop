@@ -29,6 +29,7 @@ Route::get('/products/{product}', [ProductController::class, 'show'])->name('pro
 Route::get('/basket', [BasketController::class, 'showBasket'])->name('basket');
 Route::post('/clear-basket', [BasketController::class, 'clearBasket'])->name('clear-basket');
 Route::post('/add-to-basket/{product}', [BasketController::class, 'addToBasket'])->name('add-to-basket');
+Route::delete('/remove-from-basket/{product}', [BasketController::class, 'removeFromBasket'])->name('remove-from-basket');
 
 Route::post('/order', [OrderController::class, 'store'])->name('order.store');
 Route::group(['middleware' => 'auth'], function () {

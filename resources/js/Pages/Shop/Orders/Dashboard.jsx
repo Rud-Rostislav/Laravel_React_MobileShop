@@ -8,10 +8,10 @@ export default function Dashboard({auth, orders, products}) {
     const [productsList] = useState(products);
     const [openOrders, setOpenOrders] = useState({});
 
-    const getProductsByIds = (ids) => {
-        const productIds = ids.split(',').map(id => parseInt(id.trim()));
+    const getProductsByIds = (order) => {
+        const productIds = JSON.parse(order.products_id);
         return productIds.map(id => productsList.find(product => product.id === id));
-    }
+    };
 
     const confirmOrder = () => {
         setTimeout(() => window.location.reload(), 100);
@@ -24,17 +24,24 @@ export default function Dashboard({auth, orders, products}) {
         }));
     }
 
+    const allProductsToggle = () => {
+        for (let i = 0; i < ordersList.length; i++) {
+            toggleProducts(ordersList[i].id);
+        }
+    };
+
     return (
         <AuthenticatedLayout user={auth.user}>
             <Head title="Кабінет"/>
 
             <h1>Всього замовлень: {ordersList.filter(order => order.confirmed === 0).length}</h1>
+            <button onClick={allProductsToggle}
+                    className='all_products_toggle'>{openOrders[1] === true ? 'Приховати все ⯅' : 'Показати все ⯆'}</button>
 
             <div className='orders'>
                 {ordersList.filter((order) => order.confirmed === 0).map(order => (
                     <div key={order.id}>
                         <div className='order order_header'>
-
                             <button onClick={() => toggleProducts(order.id)}>
                                 {openOrders[order.id] ? '⯅' : '⯆'}
                             </button>
@@ -45,9 +52,14 @@ export default function Dashboard({auth, orders, products}) {
 
                             <p>
                                 Загально
-                                ({order.products_id.split(',').length})
-                                - {getProductsByIds(order.products_id).reduce((total, product) => total + (product?.price ?? 0), 0)} грн.
+                                ({JSON.parse(order.products_quantity).reduce((total, quantity) => total + parseInt(quantity), 0)} шт.)
+                                - {getProductsByIds(order).reduce((total, product, index) => {
+                                const quantity = parseInt(JSON.parse(order.products_quantity)[index] || 0);
+                                const price = product?.price || 0;
+                                return total + (price * quantity);
+                            }, 0)} грн.
                             </p>
+
 
                             <Dropdown.Link as="button" href={route('order.confirm', order)} method='patch'
                                            className='black_button green'
@@ -56,23 +68,22 @@ export default function Dashboard({auth, orders, products}) {
 
                         {openOrders[order.id] &&
                             <div className='order'>
-                                {getProductsByIds(order.products_id).map((product, index) => (
-                                    <Link href={route('products.show', product?.id)} key={`${product?.id}_${index}`}
+                                {getProductsByIds(order).map((product, index) => (
+                                    <Link href={route('products.show', product)} key={product?.id}
                                           className='order_product'>
-                                        {product?.photos && product.photos.length > 0 ?
-                                            <img src={`/storage/${product.photos[0].path}`} alt="Product image"/>
-                                            : null
-                                        }
+                                        {product?.photos && product.photos.length > 0 &&
+                                            <img src={`/storage/${product.photos[0].path}`} alt="Product image"/>}
                                         <p className='product_name'>{product?.name}</p>
                                         <p className='product_price'>{product?.price} грн</p>
+                                        <p className='product_quantity'>{JSON.parse(order.products_quantity)[index]} шт.</p>
                                     </Link>
                                 ))}
                             </div>
                         }
-
                     </div>
                 ))}
             </div>
+
 
         </AuthenticatedLayout>
     );

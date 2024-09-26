@@ -66,7 +66,7 @@ const Show = ({product, basket}) => {
                     <p className='product_price'>{product.price} грн</p>
 
                     {product.quantity > 0 ?
-                        <Add product={product} basketQuantity={basketQuantity} setBasketQuantity={setBasketQuantity}/>
+                        <Add product={product} basketQuantity={basketQuantity} setBasketQuantity={setBasketQuantity} basket={basket}/>
                         : <button className='black_button no_product'>Немає в
                             наявності</button>
 

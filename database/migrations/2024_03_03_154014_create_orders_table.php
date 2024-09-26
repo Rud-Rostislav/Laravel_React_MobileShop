@@ -13,7 +13,8 @@ return new class extends Migration {
             $table->string('email');
             $table->string('phone');
             $table->string('comment');
-            $table->string('products_id');
+            $table->json('products_id');
+            $table->json('products_quantity');
             $table->boolean('confirmed')->default(0);
             $table->timestamps();
         });

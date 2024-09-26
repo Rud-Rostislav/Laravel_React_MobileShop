@@ -1,34 +1,30 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import axios from 'axios';
 import {toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const Add = ({product, basketQuantity, setBasketQuantity}) => {
-    const [csrfToken, setCsrfToken] = useState(null);
+const Add = ({product, basketQuantity, setBasketQuantity, basket}) => {
+    const [basketItems, setBasketItems] = useState(basket);
 
-    useEffect(() => {
-        const token = document.head.querySelector('meta[name="csrf-token"]');
-        if (token) {
-            setCsrfToken(token.content);
+    const addToBasket = (product) => {
+        if (basketItems.some((item) => item.product.id === product.id)) {
+            toast.error('Товар вже в кошику', {
+                position: "top-right",
+                autoClose: 1500,
+                theme: "dark",
+            });
+        } else {
+            axios.post(
+                route('add-to-basket', product.id),
+            );
+            toast.success('Додано до кошика', {
+                position: "top-right",
+                autoClose: 1500,
+                theme: "dark",
+            });
+            setBasketQuantity(basketQuantity + 1);
+            setBasketItems([...basketItems, {product}]);
         }
-    }, []);
-
-    const addToBasket = async (product) => {
-        await axios.post(
-            route('add-to-basket', product.id),
-            null,
-            {
-                headers: {
-                    'X-CSRF-TOKEN': csrfToken,
-                }
-            }
-        );
-        toast.success('Додано до кошика', {
-            position: "top-right",
-            autoClose: 1500,
-            theme: "dark",
-        });
-        setBasketQuantity(basketQuantity + 1);
     };
 
     return (
