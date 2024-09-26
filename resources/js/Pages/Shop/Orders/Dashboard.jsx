@@ -25,9 +25,14 @@ export default function Dashboard({auth, orders, products}) {
     }
 
     const allProductsToggle = () => {
+        const newOpenOrders = {};
+        const allOpen = Object.values(openOrders).some(isOpen => isOpen);
+
         for (let i = 0; i < ordersList.length; i++) {
-            toggleProducts(ordersList[i].id);
+            const orderId = ordersList[i].id;
+            newOpenOrders[orderId] = !allOpen;
         }
+        setOpenOrders(newOpenOrders);
     };
 
     return (

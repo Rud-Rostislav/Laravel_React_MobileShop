@@ -11,6 +11,7 @@
 
 .image_show {
     max-height: 40vh;
+    border-radius: 10px;
 }
 
 .slider {

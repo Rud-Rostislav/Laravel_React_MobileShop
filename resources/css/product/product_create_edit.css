@@ -23,22 +23,16 @@
     border-radius: 10px;
 }
 
-.remove_photo_button {
-    cursor: pointer;
-    position: absolute;
-    top: 0;
-    right: 0;
-    font-size: 1.5rem !important;
-    width: 2vw !important;
-    background: transparent !important;
-}
-
 .edit_product_photos {
     border-radius: 10px;
     border: 1px solid #505050;
     position: relative;
 }
 
+.remove_photo_button {
+    font-size: 1.5rem !important;
+}
+
 .edit_product_photos img {
-    border-radius: 10px;
+    border-radius: 10px 10px 0 0;
 }

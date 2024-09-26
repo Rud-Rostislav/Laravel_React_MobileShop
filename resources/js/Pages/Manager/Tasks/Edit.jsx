@@ -30,7 +30,7 @@ export default function Edit(props) {
                        onChange={e => setData('description', e.target.value)}
                        placeholder="Опис задачі"/>
 
-                <select className='task_edit_input' name="completed"
+                <select className='task_edit_input task_edit_input_last' name="completed"
                         value={data.completed} onChange={e => setData('completed', e.target.value)}>
                     <option value='0'>У виконанні</option>
                     <option value='1'>Виконано</option>
@@ -44,7 +44,9 @@ export default function Edit(props) {
                                href={route('tasks.destroy', task.id)}
                                method="delete">Видалити</Dropdown.Link>
 
-                <button className='red task_edit_buttons' onClick={() => props.setEditTask(false)}>Приховати</button>
+                <button className='red task_edit_buttons task_edit_button_last'
+                        onClick={() => props.setEditTask(false)}>Приховати
+                </button>
             </form>
         </>
     );

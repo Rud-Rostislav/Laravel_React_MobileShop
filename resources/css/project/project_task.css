@@ -69,17 +69,18 @@
     align-items: center;
 }
 
-.task_edit_rows button {
-    font-weight: normal !important;
-    font-size: 1rem !important;
-}
-
 .task_edit_input {
-    background: var(--white) !important;
-    color: #000000 !important;
+    background: var(--dark-2-background) !important;
+    color: var(--white) !important;
     border-radius: 0 !important;
     padding: 0;
-    border: 0.5px solid #a8a8a8 !important;
+    border-right: 0.5px solid #616161 !important;
+    width: 100%;
+    font-size: 20px !important;
+}
+
+.task_edit_input_last {
+    border-right: none !important;
 }
 
 .task_edit_buttons {
@@ -91,6 +92,16 @@
     &:hover {
         background: var(--dark-2-background) !important;
     }
+}
+
+.task_edit_rows button {
+    font-size: 20px !important;
+    border-top: 0.5px solid #616161;
+    border-right: 0.5px solid #616161;
+}
+
+.task_edit_button_last {
+    border-right: none !important;
 }
 
 .capitalize-text {

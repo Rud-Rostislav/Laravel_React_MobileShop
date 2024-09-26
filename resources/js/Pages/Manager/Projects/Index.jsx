@@ -95,7 +95,7 @@ export default function Index(props) {
                                 <div key={task.id}>
                                     {editTask !== task.id ?
                                         <div onClick={() => setEditTask(task.id)} className='rows'>
-                                            <p className='capitalize-text'>{task.name.slice(0, 50)}</p>
+                                            <p className='capitalize-text task-name'>{task.name.slice(0, 50)}</p>
                                             <p className='capitalize-text'>{task.description.slice(0, 75)}</p>
                                             <p className={task.completed
                                                 ? 'green'
