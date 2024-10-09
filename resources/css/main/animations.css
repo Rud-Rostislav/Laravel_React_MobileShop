@@ -1,0 +1,25 @@
+@property --angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+}
+
+@keyframes spin {
+    from {
+        --angle: 0deg;
+    }
+    to {
+        --angle: 360deg;
+    }
+}
+
+@keyframes spin_fade {
+    from {
+        opacity: 0;
+        height: 0;
+    }
+    to {
+        opacity: 1;
+        height: 45vh;
+    }
+}

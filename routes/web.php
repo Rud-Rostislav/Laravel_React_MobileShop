@@ -11,7 +11,12 @@ use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-Route::redirect('/', '/products');
+Route::get('/', function () {
+    return Inertia::render('Shop/Main/Main', [
+        'products' => Product::with('photos')->get()->take(5),
+        'basket' => session()->get('basket', [])
+    ]);
+})->name('main');
 
 Route::get('/dashboard', function () {
     $products = Product::with('photos')->get();

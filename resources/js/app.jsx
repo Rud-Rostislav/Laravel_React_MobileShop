@@ -5,7 +5,9 @@ import '../css/product/product_create_edit.css';
 import '../css/product/product_index.css';
 import '../css/product/product_show.css';
 import '../css/project/project_task.css';
-import '../css/main.css';
+import '../css/app.css';
+import '../css/main/main.css';
+import '../css/main/animations.css';
 import '../css/media_screen/burger_menu.css';
 import '../css/media_screen/media_screen.css';
 

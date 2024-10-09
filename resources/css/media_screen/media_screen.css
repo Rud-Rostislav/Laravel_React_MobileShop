@@ -14,6 +14,14 @@
     .product_name, .product_price {
         font-size: 1.15rem;
     }
+
+    .img_container_2 {
+        transform: scale(120%) !important;
+    }
+
+    .shop_button {
+        width: 40vw;
+    }
 }
 
 @media screen and (max-width: 1000px) {
@@ -54,6 +62,10 @@
         .item_7 {
             grid-column: 2;
         }
+    }
+
+    .img_container_2 {
+        transform: scale(110%) !important;
     }
 }
 
@@ -120,6 +132,14 @@
 
     .add_product_image_container {
         grid-template-columns: 1fr 1fr;
+    }
+
+    .img_container_2 {
+        transform: scale(90%) !important;
+    }
+
+    .shop_button {
+        width: 75vw;
     }
 }
 
@@ -193,5 +213,14 @@
         button {
             width: 50%;
         }
+    }
+
+    .shop_button {
+        width: 80vw;
+        font-size: 2rem;
+    }
+
+    .container_2 {
+        margin-top: 15vh;
     }
 }

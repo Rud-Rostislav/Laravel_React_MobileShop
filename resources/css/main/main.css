@@ -1,0 +1,110 @@
+.container_1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin: 0 auto;
+    width: 50vw;
+    height: 90vh;
+    transition: 1s ease-in-out;
+
+    img {
+        transition: 1s ease-in-out;
+        transform: scale(150%);
+
+        &:hover {
+            transition: 1s ease-in-out;
+            transform: scale(160%);
+            margin-bottom: -0.5rem;
+        }
+    }
+
+    &:hover::before {
+        transition: 1s ease-in-out;
+        width: 35vw;
+    }
+
+    p {
+        font-size: 3rem;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        color: rgba(255, 255, 255, 0.75);
+    }
+}
+
+.container_1::before {
+    content: '';
+    position: absolute;
+    height: 45vh;
+    width: 50vw;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    --angle: 0deg;
+    background-image: conic-gradient(from var(--angle), #ff0000, #00c4ff, #00ffba, #ffc400);
+    animation: spin 15s linear infinite, spin_fade 10s forwards;
+    filter: blur(7rem);
+    transition: 1s ease-in-out;
+}
+
+.container_2 {
+    display: grid;
+    justify-items: center;
+    grid-template-columns: 1fr;
+    gap: 100px;
+    transition: 1s ease-in-out;
+
+    .p_container_2 {
+        font-size: 3rem;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    }
+
+    .img_container_2 {
+        transform: scale(150%);
+        margin-top: 10vh;
+    }
+}
+
+.shop_button {
+    margin-bottom: 50px;
+    background: rgba(32, 32, 32, 0.9) !important;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10vh;
+    width: 25vw;
+    padding: 25px;
+    font-size: 2.25rem;
+    font-weight: 700;
+    position: relative;
+    transition: 1s;
+
+    &:hover {
+        transition: 1s;
+        background: rgba(32, 32, 32, 95) !important;
+    }
+}
+
+.shop_button:hover::after {
+    transition: 1s;
+    filter: blur(1.25rem);
+
+}
+
+.shop_button::after {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    z-index: -1;
+    --angle: 0deg;
+    animation: spin 10s linear infinite;
+    transition: 1s;
+    background-image: conic-gradient(from var(--angle), #ff0000, #00abff, #ff8700, #7400ff);
+    filter: blur(0.5rem);
+    border-radius: 50px;
+}

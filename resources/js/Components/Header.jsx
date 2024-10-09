@@ -22,7 +22,6 @@ const Header = ({basketQuantity}) => {
         root.style.setProperty('--white', darkMode ? '#ffffff' : '#9a9a9a');
     }, [darkMode]);
 
-
     const changeMode = () => {
         const newDarkMode = !darkMode;
         setDarkMode(newDarkMode);
@@ -31,14 +30,17 @@ const Header = ({basketQuantity}) => {
 
     return (
         <header>
-            <div className="burger-menu" onClick={toggleMenu}>
-                ☰
-            </div>
+            <div className="burger-menu" onClick={toggleMenu}>☰</div>
 
             <nav className={`menu ${isMenuOpen ? 'open' : ''}`}>
-                <NavLink href={route('products.index')} active={route().current('products.index')}>
-                    <img className='header_icon' src="/icons/home.png" alt="Home"/>
+                <NavLink href={route('main')} active={route().current('main')}>
+                    <img className='header_icon' src="/icons/main.png" alt="Main"/>
                     {isMenuOpen && <p className='burger_text'>Головна</p>}
+                </NavLink>
+
+                <NavLink href={route('products.index')} active={route().current('products.index')}>
+                    <img className='header_icon' src="/icons/shop.png" alt="Home"/>
+                    {isMenuOpen && <p className='burger_text'>Магазин</p>}
                 </NavLink>
 
                 <NavLink href={route('basket')} active={route().current('basket')}>
