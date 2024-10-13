@@ -41,7 +41,7 @@
         filter: blur(0.5rem);
     }
     50% {
-        filter: blur(1.25rem);
+        filter: blur(1rem);
     }
     100% {
         filter: blur(0.5rem);
