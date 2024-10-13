@@ -1,3 +1,7 @@
+:root {
+    --gradient: #ff0000, #00abff, #ff8000, #7b00ff
+}
+
 .container_1 {
     display: flex;
     flex-direction: column;
@@ -7,28 +11,28 @@
     margin: 0 auto;
     width: 50vw;
     height: 90vh;
-    transition: 1s ease-in-out;
+    transition: 2s;
 
     img {
-        transition: 1s ease-in-out;
+        transition: 2s;
         transform: scale(150%);
 
         &:hover {
-            transition: 1s ease-in-out;
+            transition: 2s;
             transform: scale(160%);
             margin-bottom: -0.5rem;
         }
     }
 
     &:hover::before {
-        transition: 1s ease-in-out;
+        transition: 2s;
         width: 35vw;
     }
 
     p {
         font-size: 3rem;
         font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-        color: rgba(255, 255, 255, 0.75);
+        color: var(--white);
     }
 }
 
@@ -41,10 +45,10 @@
     left: 50%;
     transform: translate(-50%, -50%);
     --angle: 0deg;
-    background-image: conic-gradient(from var(--angle), #ff0000, #00c4ff, #00ffba, #ffc400);
+    background-image: conic-gradient(from var(--angle), var(--gradient));
     animation: spin 15s linear infinite, spin_fade 10s forwards;
     filter: blur(7rem);
-    transition: 1s ease-in-out;
+    transition: 2s;
 }
 
 .container_2 {
@@ -52,16 +56,33 @@
     justify-items: center;
     grid-template-columns: 1fr;
     gap: 100px;
-    transition: 1s ease-in-out;
+    transition: 2s;
 
     .p_container_2 {
         font-size: 3rem;
         font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        background: linear-gradient(90deg, var(--gradient));
+        background-size: 300%;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: gradientAnimation 10s ease infinite;
+        transition: 2s;
+
+        &:hover {
+            transition: 2s;
+            scale: 110%;
+        }
     }
 
     .img_container_2 {
         transform: scale(150%);
         margin-top: 10vh;
+        transition: 2s;
+
+        &:hover {
+            transition: 2s;
+            transform: scale(160%);
+        }
     }
 }
 
@@ -72,24 +93,18 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 10vh;
-    width: 25vw;
+    height: 7.5vh;
+    width: 20vw;
     padding: 25px;
-    font-size: 2.25rem;
+    font-size: 2rem;
     font-weight: 700;
     position: relative;
-    transition: 1s;
+    transition: 2s;
 
     &:hover {
-        transition: 1s;
+        transition: 2s;
         background: rgba(32, 32, 32, 95) !important;
     }
-}
-
-.shop_button:hover::after {
-    transition: 1s;
-    filter: blur(1.25rem);
-
 }
 
 .shop_button::after {
@@ -102,9 +117,9 @@
     translate: -50% -50%;
     z-index: -1;
     --angle: 0deg;
-    animation: spin 10s linear infinite;
-    transition: 1s;
-    background-image: conic-gradient(from var(--angle), #ff0000, #00abff, #ff8700, #7400ff);
+    animation: spin 10s linear infinite, scale_shop_button 5s ease-in-out infinite;
+    transition: 2s;
+    background-image: conic-gradient(from var(--angle), var(--gradient));
     filter: blur(0.5rem);
     border-radius: 50px;
 }
