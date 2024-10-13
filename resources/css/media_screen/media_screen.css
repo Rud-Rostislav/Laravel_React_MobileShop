@@ -75,7 +75,7 @@
 
 @media screen and (max-width: 750px) {
     header {
-        width: 80vw;
+        width: 90vw;
     }
 
     .products, .search_box {
@@ -143,7 +143,7 @@
     }
 
     .img_container_2 {
-        transform: scale(90%) !important;
+        transform: scale(100%) !important;
     }
 
     .shop_button {
