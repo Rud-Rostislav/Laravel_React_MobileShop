@@ -2,7 +2,7 @@
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 10px;
-    margin-bottom: 50px;
+    margin-bottom: 10px;
 }
 
 .search_box input, .search_box select, .search_box .search_price_div, .search_box button {
