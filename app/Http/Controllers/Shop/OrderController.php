@@ -57,7 +57,7 @@ class OrderController extends Controller
     {
         $products = Product::with('photos')->get();
         $orders = Order::where('confirmed', true)->get();
-        return Inertia::render('Shop/Orders/Confirmed', [
+        return Inertia::render('Shop/Orders/Orders_Confirmed', [
             'orders' => $orders,
             'products' => $products
         ]);

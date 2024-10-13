@@ -64,8 +64,8 @@ const Header = ({basketQuantity}) => {
                 )}
 
                 {auth.user && (
-                    <NavLink href={route('dashboard')}
-                             active={route().current('dashboard') || route().current('order.confirmed')}>
+                    <NavLink href={route('orders')}
+                             active={route().current('orders') || route().current('order.confirmed')}>
                         <img className='header_icon' src="/icons/admin.png" alt="Admin"/>
                         {isMenuOpen && <p className='burger_text'>Адмін панель</p>}
                     </NavLink>

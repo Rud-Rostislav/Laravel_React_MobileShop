@@ -18,14 +18,14 @@ Route::get('/', function () {
     ]);
 })->name('main');
 
-Route::get('/dashboard', function () {
+Route::get('/orders', function () {
     $products = Product::with('photos')->get();
-    $orders = Order::all();
-    return Inertia::render('Shop/Orders/Dashboard', [
+    $orders = Order::where('confirmed', false)->get();
+    return Inertia::render('Shop/Orders/Orders', [
         'orders' => $orders,
         'products' => $products
     ]);
-})->middleware(['auth', 'verified'])->name('dashboard');
+})->middleware(['auth', 'verified'])->name('orders');
 
 Route::resource('/products', ProductController::class)->except('index', 'show')->middleware('auth');
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');

@@ -5,7 +5,7 @@ import ResponsiveNavLink from '@/Components/ResponsiveNavLink';
 import Header from "@/Components/Header.jsx";
 import Footer from "@/Components/Footer.jsx";
 
-export default function Authenticated({user, header, children}) {
+export default function Authenticated({user, children}) {
     const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false);
 
     return (
@@ -22,14 +22,14 @@ export default function Authenticated({user, header, children}) {
                             display: 'flex',
                             justifyContent: 'center',
                             alignItems: 'center',
-                            margin: '0px auto 10px auto',
+                            margin: '0px auto 25px auto',
                         }}
                         className="flex justify-between h-16">
                         <div className="flex">
 
                             <div className="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                                <NavLink style={{color: '#ffffff'}} href={route('dashboard')}
-                                         active={route().current('dashboard')}>
+                                <NavLink style={{color: '#ffffff'}} href={route('orders')}
+                                         active={route().current('orders')}>
                                     Замовлення
                                 </NavLink>
 
@@ -105,9 +105,9 @@ export default function Authenticated({user, header, children}) {
 
                 <div className={(showingNavigationDropdown ? 'block' : 'hidden') + ' sm:hidden'}>
                     <div className="pt-2 space-y-1 text-white">
-                        <ResponsiveNavLink href={route('dashboard')} active={route().current('dashboard')}>
-                            Dashboard
-                        </ResponsiveNavLink>
+                        {/*<ResponsiveNavLink href={route('dashboard')} active={route().current('dashboard')}>*/}
+                        {/*    Dashboard*/}
+                        {/*</ResponsiveNavLink>*/}
                     </div>
 
                     <div className="pb-1">
