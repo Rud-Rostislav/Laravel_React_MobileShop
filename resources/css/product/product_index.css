@@ -87,7 +87,7 @@ input[type="range"]::-webkit-slider-runnable-track {
     background: var(--dark-2-background);
     width: 100%;
     margin: 50px auto 0 auto;
-    border-radius: 15px;
+    border-radius: 10px;
     height: 5vh;
 
     a {

@@ -36,7 +36,7 @@ const Main = ({basket, products}) => {
 
                 <div className='container_2'>
                     <motion.div
-                        initial={{x: '15vw'}}
+                        initial={{x: '-15vw'}}
                         whileInView={{x: 0}}
                         transition={{duration: 5}}
                     >

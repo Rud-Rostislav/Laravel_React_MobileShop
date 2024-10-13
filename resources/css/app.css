@@ -47,11 +47,19 @@ input, textarea, select {
 }
 
 header {
-    background: var(--dark-2-background);
+    background: rgba(32, 32, 32, 0.9);
     height: 5vh;
+    width: 25vw;
+    margin: 25px auto 0 auto;
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: 25px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
 }
 
 img {
@@ -71,8 +79,8 @@ img {
 }
 
 main {
-    min-height: 90vh;
-    padding: 50px;
+    min-height: 95vh;
+    padding: 125px 50px 50px 50px;
 }
 
 .main_show, .main_create {
@@ -138,4 +146,11 @@ h1 {
 
 .green {
     color: #21a300;
+}
+
+.light_dark_mode {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }

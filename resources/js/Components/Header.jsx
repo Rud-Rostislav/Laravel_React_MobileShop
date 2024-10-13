@@ -77,9 +77,11 @@ const Header = ({basketQuantity}) => {
                 </NavLink>
 
                 <NavLink>
-                    <button onClick={changeMode}>
+                    <button onClick={changeMode} className="light_dark_mode">
                         <img className='header_icon' src={darkMode ? "/icons/dark_mode.png" : "/icons/light_mode.png"}
                              alt={darkMode ? "Dark Mode" : "Light Mode"}/>
+                        {isMenuOpen &&
+                            <p className='burger_text'>{darkMode ? "Темний режим" : "Світлий режим"}</p>}
                     </button>
                 </NavLink>
             </nav>

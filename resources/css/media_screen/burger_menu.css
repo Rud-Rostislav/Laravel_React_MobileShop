@@ -9,7 +9,7 @@
     flex-direction: column;
     position: absolute;
     top: 50px;
-    background-color: rgba(32, 32, 32);
+    background: rgba(32, 32, 32, 0.95);
     z-index: 1000;
     width: 95%;
     border-radius: 10px;
@@ -19,7 +19,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 10px;
     padding: 5px;
 }
 
@@ -28,9 +27,6 @@
     grid-template-columns: 1fr;
     justify-items: center;
     width: 100%;
-    border: 1px solid #505050;
-    background: var(--dark-2-background);
-    border-radius: 5px;
     padding: 10px;
 }
 

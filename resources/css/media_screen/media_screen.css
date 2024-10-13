@@ -1,4 +1,8 @@
 @media screen and (max-width: 1250px) {
+    header {
+        width: 50vw;
+    }
+
     .products, .search_box {
         grid-template-columns: repeat(4, 1fr);
     }
@@ -8,7 +12,7 @@
     }
 
     .order {
-        grid-template-columns: repeat(5, 1fr);
+        grid-template-columns: repeat(5, 1fr) !important;
     }
 
     .product_name, .product_price {
@@ -70,6 +74,10 @@
 }
 
 @media screen and (max-width: 750px) {
+    header {
+        width: 80vw;
+    }
+
     .products, .search_box {
         grid-template-columns: repeat(2, 1fr);
     }
@@ -153,13 +161,6 @@
         width: 90vw;
     }
 
-    main {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 10px;
-    }
-
     .main_show {
         padding: 25px;
     }
@@ -213,11 +214,6 @@
         button {
             width: 50%;
         }
-    }
-
-    .shop_button {
-        width: 80vw;
-        font-size: 2rem;
     }
 
     .container_2 {
