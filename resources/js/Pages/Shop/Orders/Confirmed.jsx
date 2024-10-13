@@ -41,7 +41,9 @@ export default function Confirmed({auth, orders, products}) {
             <div className='orders'>
                 {ordersList.filter(order => order.confirmed).map(order => (
                     <div key={order.id}>
-                        <div className='order order_confirmed_header order_header' key={order.id}>
+                        <div className='order order_confirmed_header order_header' key={order.id}
+                             style={{borderRadius: openOrders[order.id] ? '10px 10px 0 0' : '10px'}}
+                        >
                             <button onClick={() => toggleProducts(order.id)}>
                                 {openOrders[order.id] ? '⯅' : '⯆'}
                             </button>

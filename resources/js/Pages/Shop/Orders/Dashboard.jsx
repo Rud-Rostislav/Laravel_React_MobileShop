@@ -46,7 +46,8 @@ export default function Dashboard({auth, orders, products}) {
             <div className='orders'>
                 {ordersList.filter((order) => order.confirmed === 0).map(order => (
                     <div key={order.id}>
-                        <div className='order order_header'>
+                        <div className='order order_header'
+                             style={{borderRadius: openOrders[order.id] ? '10px 10px 0 0' : '10px'}}>
                             <button onClick={() => toggleProducts(order.id)}>
                                 {openOrders[order.id] ? '⯅' : '⯆'}
                             </button>
