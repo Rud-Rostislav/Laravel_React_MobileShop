@@ -17,16 +17,6 @@ Route::get('/', function () {
         'basket' => session()->get('basket', [])
     ]);
 })->name('main');
-
-Route::get('/orders', function () {
-    $products = Product::with('photos')->get();
-    $orders = Order::where('confirmed', false)->get();
-    return Inertia::render('Shop/Orders/Orders', [
-        'orders' => $orders,
-        'products' => $products
-    ]);
-})->middleware(['auth', 'verified'])->name('orders');
-
 Route::resource('/products', ProductController::class)->except('index', 'show')->middleware('auth');
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
 Route::get('/products/{product}', [ProductController::class, 'show'])->name('products.show');
@@ -36,6 +26,14 @@ Route::post('/clear-basket', [BasketController::class, 'clearBasket'])->name('cl
 Route::post('/add-to-basket/{product}', [BasketController::class, 'addToBasket'])->name('add-to-basket');
 Route::delete('/remove-from-basket/{product}', [BasketController::class, 'removeFromBasket'])->name('remove-from-basket');
 
+Route::get('/orders', function () {
+    $products = Product::with('photos')->get();
+    $orders = Order::where('confirmed', false)->get();
+    return Inertia::render('Shop/Orders/Orders', [
+        'orders' => $orders,
+        'products' => $products
+    ]);
+})->middleware(['auth', 'verified'])->name('orders');
 Route::post('/order', [OrderController::class, 'store'])->name('order.store');
 Route::group(['middleware' => 'auth'], function () {
     Route::delete('/order/{order}', [OrderController::class, 'destroy'])->name('order.destroy');
@@ -44,14 +42,14 @@ Route::group(['middleware' => 'auth'], function () {
     Route::patch('/order/{order}', [OrderController::class, 'confirm'])->name('order.confirm');
 });
 
-Route::resource('/projects', ProjectController::class)->except('create', 'show', 'edit');
-Route::resource('/tasks', TaskController::class)->except('index', 'create', 'show', 'edit');
-
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+Route::resource('/projects', ProjectController::class)->except('create', 'show', 'edit');
+Route::resource('/tasks', TaskController::class)->except('index', 'create', 'show', 'edit');
 
 Route::fallback(function () {
     return redirect()->route('products.index');

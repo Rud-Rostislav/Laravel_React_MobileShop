@@ -38,12 +38,12 @@
 
 @keyframes scale_shop_button {
     0% {
-        filter: blur(0.5rem);
+        filter: blur(0.25rem);
     }
     50% {
-        filter: blur(1rem);
+        filter: blur(0.5rem);
     }
     100% {
-        filter: blur(0.5rem);
+        filter: blur(0.25rem);
     }
 }

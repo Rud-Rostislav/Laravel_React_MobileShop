@@ -68,14 +68,8 @@ img {
     max-height: 35vh;
 }
 
-.border-b-2:hover {
-    transition: 1s;
-    border-bottom: 1px solid #777777 !important;
-    scale: 103%;
-}
-
 .border-b-2 {
-    transition: 0.5s;
+    transition: 1s ease-in-out;
 }
 
 main {
