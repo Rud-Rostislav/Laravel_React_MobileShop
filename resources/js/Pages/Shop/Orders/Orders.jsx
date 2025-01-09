@@ -39,7 +39,7 @@ export default function Orders({auth, orders, products}) {
         <AuthenticatedLayout user={auth.user}>
             <Head title="Кабінет"/>
 
-            <h1>Всього замовлень: {ordersList.length}</h1>
+            <h1 style={{marginBottom: '0'}}>Всього замовлень: {ordersList.length}</h1>
             <button onClick={allProductsToggle}
                     className='all_products_toggle'>{openOrders[1] === true ? 'Приховати все ⯅' : 'Показати все ⯆'}</button>
 

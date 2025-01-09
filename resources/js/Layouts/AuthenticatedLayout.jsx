@@ -11,18 +11,19 @@ export default function Authenticated({user, children}) {
     return (
         <>
             <main>
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
                     <Header/>
                     <div
                         style={{
-                            border: '1px solid #323232',
+                            border: '1px solid #303030',
                             padding: '10px',
-                            borderRadius: '15px',
+                            borderRadius: '10px',
                             background: '#202020',
                             display: 'flex',
                             justifyContent: 'center',
                             alignItems: 'center',
-                            margin: '0px auto 25px auto',
+                            margin: '20px auto 25px auto',
+                            height: '5vh'
                         }}
                         className="flex justify-between h-16">
                         <div className="flex">
@@ -104,19 +105,13 @@ export default function Authenticated({user, children}) {
                 </div>
 
                 <div className={(showingNavigationDropdown ? 'block' : 'hidden') + ' sm:hidden'}>
-                    <div className="pt-2 space-y-1 text-white">
-                        {/*<ResponsiveNavLink href={route('dashboard')} active={route().current('dashboard')}>*/}
-                        {/*    Dashboard*/}
-                        {/*</ResponsiveNavLink>*/}
-                    </div>
-
                     <div className="pb-1">
                         <div className="mt-3 space-y-1">
                             <ResponsiveNavLink className='text-white'
-                                               href={route('profile.edit')}>Profile</ResponsiveNavLink>
+                                               href={route('profile.edit')}>Профіль</ResponsiveNavLink>
                             <ResponsiveNavLink className='text-white' method="post" href={route('logout')}
                                                as="button">
-                                Log Out
+                                Вийти
                             </ResponsiveNavLink>
                         </div>
                     </div>

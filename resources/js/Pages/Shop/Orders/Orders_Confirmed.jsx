@@ -41,7 +41,8 @@ export default function Orders_Confirmed({auth, orders, products}) {
         <AuthenticatedLayout user={auth.user}>
             <Head title="Кабінет"/>
 
-            <h1>Всього виконаних замовлень: {ordersList.filter(order => order.confirmed).length}</h1>
+            <h1 style={{marginBottom: '0'}}>Всього виконаних
+                замовлень: {ordersList.filter(order => order.confirmed).length}</h1>
             <button onClick={allProductsToggle}
                     className='all_products_toggle'>{isAnyOrderOpen ? 'Приховати все ⯅' : 'Показати все ⯆'}</button>
 
