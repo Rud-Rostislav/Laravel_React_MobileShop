@@ -1,5 +1,6 @@
 # Run
-
+composer install  
+npm install  
 Copy env.example to .env  
 php artisan migrate  
 php artisan storage:link  
